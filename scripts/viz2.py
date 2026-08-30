@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 import os, base64, io, json
 
-BASE = r"C:\Users\Usuario\AppData\Local\Temp\claude\C--Users-Usuario--claude\4e1e3fc3-3daa-446a-a271-77774852efe5\scratchpad\tse"
+BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(BASE, "output")
 
 comp = pd.read_csv(os.path.join(OUT, "comparativo_candidato_prefeito_por_secao.csv"))

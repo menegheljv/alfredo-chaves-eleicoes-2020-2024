@@ -2,7 +2,7 @@
 import pandas as pd
 import os, json
 
-BASE = r"C:\Users\Usuario\AppData\Local\Temp\claude\C--Users-Usuario--claude\4e1e3fc3-3daa-446a-a271-77774852efe5\scratchpad\tse"
+BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(BASE, "data")
 OUT = os.path.join(BASE, "output")
 
