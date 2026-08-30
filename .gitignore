@@ -1,0 +1,5 @@
+output/*.b64
+pesquisas/
+__pycache__/
+*.pyc
+data/*_b64.txt
