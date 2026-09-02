@@ -8,7 +8,7 @@ OUT = os.path.join(BASE, "output")
 with open(os.path.join(OUT, "template.html"), encoding="utf-8") as f:
     html = f.read()
 
-chart_keys = ["historical_arc", "slope", "grid", "municipio", "vereadores_2020", "vereadores_2024", "camara", "votos_vereadores",
+chart_keys = ["historical_arc", "ibge_eleitorado", "slope", "grid", "municipio", "vereadores_2020", "vereadores_2024", "camara", "votos_vereadores",
               "financeiro_chapa", "custo_por_voto", "origem_receitas", "comparecimento",
               "idade_candidatos", "patrimonio_candidatos", "pesquisas_timeline", "pesquisas_evolucao"]
 for key in chart_keys:

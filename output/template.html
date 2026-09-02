@@ -1,4 +1,4 @@
-<title>A Virada em Alfredo Chaves</title>
+<title>Cinco Derrotas, Uma Vitória</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Anton&family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
 
@@ -342,8 +342,8 @@
 
   <header class="masthead">
     <div class="kicker">Estudo de caso &middot; Análise de dados eleitorais</div>
-    <h1 class="title">A virada em Alfredo Chaves</h1>
-    <p class="dek">Como uma candidatura derrotada em 35 das 36 seções eleitorais de 2020 venceu nas 42 seções de 2024 — reconstruído a partir de dados públicos e oficiais do TSE, com pipeline próprio em Python, SQL e visualização.</p>
+    <h1 class="title">Cinco derrotas, uma vitória</h1>
+    <p class="dek">De 2004 a 2020, cinco eleições pra prefeito perdidas em Alfredo Chaves. Em 2024, a virada: candidatura derrotada em 35 das 36 seções eleitorais de 2020 venceu nas 42 seções de 2024. Reconstruído a partir de dados públicos e oficiais do TSE e do IBGE, com pipeline próprio em Python, SQL e visualização.</p>
     <div class="meta-row">
       <span><strong>Município:</strong> Alfredo Chaves &ndash; ES</span>
       <span><strong>Eleições:</strong> Municipais 2020 &amp; 2024</span>
@@ -579,6 +579,17 @@
     <div class="callout">
       <strong>Curiosidade dos dados.</strong> O número de eleitores de 16 a 24 anos foi <strong>exatamente 1.225 em 2020 e 1.225 em 2024</strong> — mesma faixa etária, mesmo total, dois pleitos diferentes. Coincidência real, confirmada linha a linha na base oficial do TSE; não tem explicação causal óbvia, mas descarta a hipótese de que a virada tenha sido puxada por uma onda de eleitores jovens recém-habilitados — a base de eleitores jovens do município simplesmente não cresceu nem encolheu entre as duas eleições.
     </div>
+
+    <h3>Cruzamento com o IBGE: o eleitorado cresceu, a população não</h3>
+    <p>Pra entender se o crescimento do eleitorado (9.247 aptos em 2004 → 12.860 em 2024, +39%) reflete o município crescendo, cruzamos os dados do TSE com as estimativas populacionais anuais do IBGE (SIDRA, tabela 6579, código do município 3200300). A resposta é não: a população estimada de Alfredo Chaves ficou praticamente estável no período (14.113 em 2004, ~14.373 em 2024), até com quedas em alguns anos. O eleitorado não cresceu porque o município cresceu — cresceu porque uma fatia cada vez maior da população já residente passou a estar registrada pra votar.</p>
+
+    <figure class="exhibit">
+      <div class="exhibit-head"><span class="tag">Exhibit R</span><span class="cap">Eleitores aptos como % da população estimada (IBGE)</span></div>
+      <div class="exhibit-body">
+        <img src="data:image/png;base64,{{CHART_IBGE_ELEITORADO}}" alt="Gráfico de linha mostrando o percentual da população estimada pelo IBGE que está registrada para votar em Alfredo Chaves: 65,5% em 2004, 72,7% em 2008, 80,7% em 2012, 79,6% em 2016, 84,0% em 2020, 89,5% em 2024." />
+      </div>
+      <figcaption>Cobertura do eleitorado sobre a população total saltou de 65,5% (2004) pra 89,5% (2024) — um efeito nacional de transição demográfica e biometria, não um fenômeno local de Alfredo Chaves. Fonte: IBGE SIDRA, tabela 6579 (população residente estimada), cruzado com <code>QT_APTOS</code> do TSE por ano.</figcaption>
+    </figure>
   </section>
 
   <section id="candidatos">
