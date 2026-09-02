@@ -2,6 +2,13 @@
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+import matplotlib.font_manager as fm
+import os as _os_early
+_FONT_DIR = _os_early.path.join(_os_early.path.dirname(_os_early.path.abspath(__file__)), "fonts")
+for _f in ["Anton-Regular.ttf", "BricolageGrotesque-Regular.ttf", "BricolageGrotesque-SemiBold.ttf", "BricolageGrotesque-Bold.ttf"]:
+    _p = _os_early.path.join(_FONT_DIR, _f)
+    if _os_early.path.exists(_p):
+        fm.fontManager.addfont(_p)
 import matplotlib.dates as mdates
 import os, base64, io
 from datetime import datetime
@@ -9,21 +16,27 @@ from datetime import datetime
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(BASE, "output")
 
-BLUE = "#1D4E8F"
-RED = "#B23A2E"
-GOLD = "#A8791F"
-GREY = "#7A8B94"
-BG = "#FFFFFF"
-GRID = "#E4E9EC"
-INK = "#142B32"
+BLUE = "#5fd996"
+RED = "#e2554c"
+GOLD = "#caa0ac"
+GREY = "#8f8f8f"
+BG = "#161616"
+GRID = "#2a2a2a"
+INK = "#f5f5f5"
 
 plt.rcParams.update({
-    "font.family": "DejaVu Sans",
+    "font.family": "Bricolage Grotesque",
     "axes.edgecolor": GRID,
     "axes.linewidth": 0.8,
     "figure.facecolor": BG,
     "axes.facecolor": BG,
     "savefig.facecolor": BG,
+    "text.color": INK,
+    "axes.labelcolor": INK,
+    "axes.titlecolor": INK,
+    "xtick.color": INK,
+    "ytick.color": INK,
+    "legend.labelcolor": INK,
 })
 
 def fig_to_b64(fig, dpi=180):
@@ -59,13 +72,13 @@ ax.plot(boldrini_dates, boldrini, color=GOLD, linewidth=1.8, marker='o', markers
 ax.scatter([outlier_date], [outlier_hugo], marker='D', s=70, color=BLUE, alpha=0.35, zorder=6, edgecolor=INK, linewidth=0.8)
 ax.scatter([outlier_date], [outlier_rolmar], marker='D', s=70, color=RED, alpha=0.35, zorder=6, edgecolor=INK, linewidth=0.8)
 ax.annotate("pesquisa de\n17/set\n(atípica)", xy=(outlier_date, outlier_rolmar), xytext=(outlier_date, 68),
-            ha='center', fontsize=8, color=GREY, fontweight='bold',
+            ha='center', fontsize=8, color=GREY, fontweight='bold', fontfamily='Anton',
             arrowprops=dict(arrowstyle='-', color=GREY, linewidth=0.9, shrinkA=2, shrinkB=8))
 
 for d, v in zip(main_dates, hugo):
-    ax.text(d, v+2.6, f"{v:.1f}%", ha='center', fontsize=10, fontweight='bold', color=BLUE)
+    ax.text(d, v+2.6, f"{v:.1f}%", ha='center', fontsize=10, fontweight='bold', fontfamily='Anton', color=BLUE)
 for d, v in zip(main_dates, rolmar):
-    ax.text(d, v-4.4, f"{v:.1f}%", ha='center', fontsize=8.8, fontweight='bold', color=RED)
+    ax.text(d, v-4.4, f"{v:.1f}%", ha='center', fontsize=8.8, fontweight='bold', fontfamily='Anton', color=RED)
 
 ax.set_xticks(main_dates)
 ax.set_xticklabels(labels, fontsize=8.6)
@@ -75,7 +88,7 @@ ax.spines[['top','right']].set_visible(False)
 ax.grid(axis='y', color=GRID, linewidth=0.7)
 ax.set_axisbelow(True)
 ax.legend(loc='lower left', frameon=False, fontsize=9.5, ncol=3)
-ax.set_title("Seis pesquisas reais, abril a outubro: Hugo Luiz nunca saiu da liderança", fontsize=12.5, fontweight='bold', pad=14)
+ax.set_title("Seis pesquisas reais, abril a outubro: Hugo Luiz nunca saiu da liderança", fontsize=12.5, fontweight='bold', fontfamily='Anton', pad=14)
 plt.tight_layout()
 b64 = fig_to_b64(fig)
 with open(os.path.join(OUT, "chart_pesquisas_evolucao.b64"), 'w') as f:

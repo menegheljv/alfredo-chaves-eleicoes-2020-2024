@@ -3,6 +3,13 @@ import pandas as pd
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+import matplotlib.font_manager as fm
+import os as _os_early
+_FONT_DIR = _os_early.path.join(_os_early.path.dirname(_os_early.path.abspath(__file__)), "fonts")
+for _f in ["Anton-Regular.ttf", "BricolageGrotesque-Regular.ttf", "BricolageGrotesque-SemiBold.ttf", "BricolageGrotesque-Bold.ttf"]:
+    _p = _os_early.path.join(_FONT_DIR, _f)
+    if _os_early.path.exists(_p):
+        fm.fontManager.addfont(_p)
 import matplotlib.patches as mpatches
 import os, base64, io, json
 
@@ -12,22 +19,28 @@ OUT = os.path.join(BASE, "output")
 with open(os.path.join(OUT, "extra_summary.json"), encoding="utf-8") as f:
     S = json.load(f)
 
-BLUE = "#1D4E8F"
-BLUE_TINT = "#E6ECF6"
-RED = "#B23A2E"
-GOLD = "#A8791F"
-GREY = "#7A8B94"
-BG = "#FFFFFF"
-GRID = "#E4E9EC"
-INK = "#142B32"
+BLUE = "#5fd996"
+BLUE_TINT = "#1f3d2f"
+RED = "#e2554c"
+GOLD = "#caa0ac"
+GREY = "#8f8f8f"
+BG = "#161616"
+GRID = "#2a2a2a"
+INK = "#f5f5f5"
 
 plt.rcParams.update({
-    "font.family": "DejaVu Sans",
+    "font.family": "Bricolage Grotesque",
     "axes.edgecolor": GRID,
     "axes.linewidth": 0.8,
     "figure.facecolor": BG,
     "axes.facecolor": BG,
     "savefig.facecolor": BG,
+    "text.color": INK,
+    "axes.labelcolor": INK,
+    "axes.titlecolor": INK,
+    "xtick.color": INK,
+    "ytick.color": INK,
+    "legend.labelcolor": INK,
 })
 
 def fig_to_b64(fig, dpi=180):
@@ -62,14 +75,14 @@ for ax, cands, ano in zip(axes, [cand2020, cand2024], [2020, 2024]):
     bars = ax.barh(names, vals, color=colors, height=0.55)
     for bar, v in zip(bars, vals):
         ax.text(v + max(vals)*0.02, bar.get_y()+bar.get_height()/2, f"R$ {v:,.0f}".replace(",", "."),
-                 va='center', fontsize=9.5, fontweight='bold', color=INK)
-    ax.set_title(f"Receita declarada — {ano}", fontsize=12, fontweight='bold')
+                 va='center', fontsize=9.5, fontweight='bold', fontfamily='Anton', color=INK)
+    ax.set_title(f"Receita declarada — {ano}", fontsize=12, fontweight='bold', fontfamily='Anton')
     ax.spines[['top', 'right']].set_visible(False)
     ax.grid(axis='x', color=GRID, linewidth=0.7)
     ax.set_axisbelow(True)
     ax.set_xlim(0, max(vals)*1.32)
 fig.suptitle("Financiamento das campanhas a prefeito — todos os candidatos\nAlfredo Chaves (ES) · nossa candidatura em azul, principal adversário em vermelho, 3º colocado em amarelo",
-             fontsize=12.5, fontweight='bold', y=1.05)
+             fontsize=12.5, fontweight='bold', fontfamily='Anton', y=1.05)
 plt.tight_layout()
 charts['financeiro_chapa'] = fig_to_b64(fig)
 
@@ -92,14 +105,14 @@ for ax, cands, ano in zip(axes, [cvcand2020, cvcand2024], [2020, 2024]):
     bars = ax.barh(names, vals, color=colors, height=0.55)
     for bar, v in zip(bars, vals):
         ax.text(v + max(vals)*0.02, bar.get_y()+bar.get_height()/2, f"R$ {v:.2f}/voto",
-                 va='center', fontsize=9.5, fontweight='bold', color=INK)
-    ax.set_title(f"Eficiência de investimento por voto — {ano}", fontsize=12, fontweight='bold')
+                 va='center', fontsize=9.5, fontweight='bold', fontfamily='Anton', color=INK)
+    ax.set_title(f"Eficiência de investimento por voto — {ano}", fontsize=12, fontweight='bold', fontfamily='Anton')
     ax.spines[['top', 'right']].set_visible(False)
     ax.grid(axis='x', color=GRID, linewidth=0.7)
     ax.set_axisbelow(True)
     ax.set_xlim(0, max(vals)*1.35)
 fig.suptitle("Eficiência de investimento por voto — despesa paga / votos válidos, todos os candidatos a prefeito\nnossa candidatura em azul, principal adversário em vermelho, 3º colocado em amarelo",
-             fontsize=12.5, fontweight='bold', y=1.05)
+             fontsize=12.5, fontweight='bold', fontfamily='Anton', y=1.05)
 plt.tight_layout()
 charts['custo_por_voto'] = fig_to_b64(fig)
 
@@ -118,7 +131,7 @@ ax.set_yticks(list(y))
 ax.set_yticklabels(cats, fontsize=10.5)
 ax.invert_yaxis()
 ax.set_xlabel('Receita declarada (R$)', fontsize=10)
-ax.set_title('De onde veio o dinheiro da chapa', fontsize=13, fontweight='bold', pad=12)
+ax.set_title('De onde veio o dinheiro da chapa', fontsize=13, fontweight='bold', fontfamily='Anton', pad=12)
 ax.spines[['top', 'right']].set_visible(False)
 ax.grid(axis='x', color=GRID, linewidth=0.7)
 ax.set_axisbelow(True)
@@ -137,12 +150,12 @@ y = range(len(anos))
 ax.barh(y, comp, color=BLUE, height=0.5, label='Compareceram')
 ax.barh(y, abst, left=comp, color=GREY, height=0.5, label='Abstenções')
 for i, (c, a) in enumerate(zip(comp, abst)):
-    ax.text(c/2, i, f"{c:,}".replace(",", "."), va='center', ha='center', color='white', fontsize=10.5, fontweight='bold')
-    ax.text(c + a/2, i, f"{a:,}".replace(",", "."), va='center', ha='center', color='white', fontsize=10.5, fontweight='bold')
+    ax.text(c/2, i, f"{c:,}".replace(",", "."), va='center', ha='center', color='white', fontsize=10.5, fontweight='bold', fontfamily='Anton')
+    ax.text(c + a/2, i, f"{a:,}".replace(",", "."), va='center', ha='center', color='white', fontsize=10.5, fontweight='bold', fontfamily='Anton')
 ax.set_yticks(list(y))
 ax.set_yticklabels([f"2020 ({S['turnout']['pct_comparecimento_2020']}%)", f"2024 ({S['turnout']['pct_comparecimento_2024']}%)"], fontsize=11)
 ax.set_xlabel('Eleitores aptos', fontsize=10)
-ax.set_title('Comparecimento vs. abstenção — eleitorado apto ao voto', fontsize=12.5, fontweight='bold', pad=12)
+ax.set_title('Comparecimento vs. abstenção — eleitorado apto ao voto', fontsize=12.5, fontweight='bold', fontfamily='Anton', pad=12)
 ax.spines[['top', 'right', 'left']].set_visible(False)
 ax.tick_params(left=False)
 handles = [mpatches.Patch(color=BLUE, label='Compareceram'), mpatches.Patch(color=GREY, label='Abstenções')]

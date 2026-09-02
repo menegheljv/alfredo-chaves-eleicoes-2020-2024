@@ -2,6 +2,13 @@
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+import matplotlib.font_manager as fm
+import os as _os_early
+_FONT_DIR = _os_early.path.join(_os_early.path.dirname(_os_early.path.abspath(__file__)), "fonts")
+for _f in ["Anton-Regular.ttf", "BricolageGrotesque-Regular.ttf", "BricolageGrotesque-SemiBold.ttf", "BricolageGrotesque-Bold.ttf"]:
+    _p = _os_early.path.join(_FONT_DIR, _f)
+    if _os_early.path.exists(_p):
+        fm.fontManager.addfont(_p)
 import matplotlib.patches as mpatches
 import os, base64, io, json
 
@@ -11,22 +18,28 @@ OUT = os.path.join(BASE, "output")
 with open(os.path.join(OUT, "candidate_profile_summary.json"), encoding="utf-8") as f:
     S = json.load(f)
 
-BLUE = "#1D4E8F"
-RED = "#B23A2E"
-GOLD = "#A8791F"
-GREY = "#7A8B94"
-BG = "#FFFFFF"
-GRID = "#E4E9EC"
-INK = "#142B32"
+BLUE = "#5fd996"
+RED = "#e2554c"
+GOLD = "#caa0ac"
+GREY = "#8f8f8f"
+BG = "#161616"
+GRID = "#2a2a2a"
+INK = "#f5f5f5"
 COR_LADO = {"nossos": BLUE, "adversario": RED, "terceiro": GOLD}
 
 plt.rcParams.update({
-    "font.family": "DejaVu Sans",
+    "font.family": "Bricolage Grotesque",
     "axes.edgecolor": GRID,
     "axes.linewidth": 0.8,
     "figure.facecolor": BG,
     "axes.facecolor": BG,
     "savefig.facecolor": BG,
+    "text.color": INK,
+    "axes.labelcolor": INK,
+    "axes.titlecolor": INK,
+    "xtick.color": INK,
+    "ytick.color": INK,
+    "legend.labelcolor": INK,
 })
 
 def fig_to_b64(fig, dpi=180):
@@ -58,12 +71,12 @@ for ax, cands, ano in zip(axes, [cand2020, cand2024], [2020, 2024]):
     for bar, age in zip(bars, ages):
         ax.text(age + 1.5, bar.get_y()+bar.get_height()/2, f"{age} anos", va='center', fontsize=10, color=INK)
     ax.set_xlim(0, 85)
-    ax.set_title(f"Candidatos a prefeito — {ano}", fontsize=12, fontweight='bold')
+    ax.set_title(f"Candidatos a prefeito — {ano}", fontsize=12, fontweight='bold', fontfamily='Anton')
     ax.spines[['top','right']].set_visible(False)
     ax.grid(axis='x', color=GRID, linewidth=0.7)
     ax.set_axisbelow(True)
     ax.invert_yaxis()
-fig.suptitle("Idade dos candidatos a prefeito — nossa candidatura em azul, 3º colocado em amarelo", fontsize=13, fontweight='bold', y=1.03)
+fig.suptitle("Idade dos candidatos a prefeito — nossa candidatura em azul, 3º colocado em amarelo", fontsize=13, fontweight='bold', fontfamily='Anton', y=1.03)
 plt.tight_layout()
 charts['idade_candidatos'] = fig_to_b64(fig)
 
@@ -78,13 +91,13 @@ for ax, cands, ano in zip(axes, [cand2020, cand2024], [2020, 2024]):
     bars = ax.barh(names, pat, color=colors, height=0.55)
     for bar, p in zip(bars, pat):
         ax.text(p + max(pat)*0.02, bar.get_y()+bar.get_height()/2, f"R$ {p:,.0f}".replace(",","."), va='center', fontsize=9.5, color=INK)
-    ax.set_title(f"Patrimônio declarado — {ano}", fontsize=12, fontweight='bold')
+    ax.set_title(f"Patrimônio declarado — {ano}", fontsize=12, fontweight='bold', fontfamily='Anton')
     ax.spines[['top','right']].set_visible(False)
     ax.grid(axis='x', color=GRID, linewidth=0.7)
     ax.set_axisbelow(True)
     ax.invert_yaxis()
     ax.set_xlim(0, max(max(c[2] for c in cand2020), max(c[2] for c in cand2024))*1.25)
-fig.suptitle("Patrimônio declarado dos candidatos a prefeito — nossa candidatura em azul, 3º colocado em amarelo", fontsize=13, fontweight='bold', y=1.03)
+fig.suptitle("Patrimônio declarado dos candidatos a prefeito — nossa candidatura em azul, 3º colocado em amarelo", fontsize=13, fontweight='bold', fontfamily='Anton', y=1.03)
 plt.tight_layout()
 charts['patrimonio_candidatos'] = fig_to_b64(fig)
 

@@ -3,6 +3,13 @@ import pandas as pd
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+import matplotlib.font_manager as fm
+import os as _os_early
+_FONT_DIR = _os_early.path.join(_os_early.path.dirname(_os_early.path.abspath(__file__)), "fonts")
+for _f in ["Anton-Regular.ttf", "BricolageGrotesque-Regular.ttf", "BricolageGrotesque-SemiBold.ttf", "BricolageGrotesque-Bold.ttf"]:
+    _p = _os_early.path.join(_FONT_DIR, _f)
+    if _os_early.path.exists(_p):
+        fm.fontManager.addfont(_p)
 import matplotlib.patches as mpatches
 import os, sqlite3, base64, io
 
@@ -14,21 +21,28 @@ merged = pd.read_csv(os.path.join(OUT, "vencedor_por_secao.csv"))
 verea = pd.read_csv(os.path.join(OUT, "vereadores_eleitos_2024.csv"))
 
 # --- palette (brand-neutral, per dataviz conventions) ---
-NAVY = "#0B3D5C"
-TEAL = "#1B7A6E"
-CORAL = "#D9603B"
-GOLD = "#D9A441"
-GREY = "#7A8B94"
-BG = "#FFFFFF"
-GRID = "#E4E9EC"
+NAVY = "#3fae78"
+TEAL = "#caa0ac"
+CORAL = "#e2554c"
+GOLD = "#caa0ac"
+GREY = "#8f8f8f"
+BG = "#161616"
+GRID = "#2a2a2a"
+INK = "#f5f5f5"
 
 plt.rcParams.update({
-    "font.family": "DejaVu Sans",
+    "font.family": "Bricolage Grotesque",
     "axes.edgecolor": GRID,
     "axes.linewidth": 0.8,
     "figure.facecolor": BG,
     "axes.facecolor": BG,
     "savefig.facecolor": BG,
+    "text.color": INK,
+    "axes.labelcolor": INK,
+    "axes.titlecolor": INK,
+    "xtick.color": INK,
+    "ytick.color": INK,
+    "legend.labelcolor": INK,
 })
 
 def fig_to_b64(fig, dpi=180):
@@ -57,7 +71,7 @@ ax.set_xlim(-0.15, 1.15)
 ax.set_xticks([0, 1])
 ax.set_xticklabels(['2020\n(derrota, 37,8% no municipio)', '2024\n(vitoria, 56,4% no municipio)'], fontsize=10)
 ax.set_ylabel('% dos votos validos ao cargo de Prefeito, por secao', fontsize=10)
-ax.set_title('Evolucao do candidato a prefeito por secao eleitoral — 2020 vs 2024\nAlfredo Chaves (ES) · 36 secoes comparaveis', fontsize=12, fontweight='bold', pad=14)
+ax.set_title('Evolucao do candidato a prefeito por secao eleitoral — 2020 vs 2024\nAlfredo Chaves (ES) · 36 secoes comparaveis', fontsize=12, fontweight='bold', fontfamily='Anton', pad=14)
 ax.spines[['top', 'right']].set_visible(False)
 ax.grid(axis='y', color=GRID, linewidth=0.7)
 ax.set_axisbelow(True)
@@ -93,7 +107,7 @@ for i, (_, row) in enumerate(m.iterrows()):
                                      linewidth=0, facecolor=color)
     ax.add_patch(rect)
     ax.text(cidx+0.45, nrows-1-r+0.45, str(int(row['NR_SECAO'])), ha='center', va='center',
-            fontsize=9, color='white', fontweight='bold')
+            fontsize=9, color='white', fontweight='bold', fontfamily='Anton')
 ax.set_xlim(0, ncols)
 ax.set_ylim(0, nrows)
 ax.set_aspect('equal')
@@ -101,7 +115,7 @@ ax.axis('off')
 handles = [mpatches.Patch(color=v, label=k) for k, v in cat_colors.items()]
 ax.legend(handles=handles, loc='upper center', bbox_to_anchor=(0.5, -0.03), ncol=3, frameon=False, fontsize=9)
 ax.set_title('Todas as 42 secoes eleitorais de Alfredo Chaves em 2024 — vencedor: nosso candidato em 100%\n(numero = numero oficial da secao TSE)',
-             fontsize=11, fontweight='bold', pad=10)
+             fontsize=11, fontweight='bold', fontfamily='Anton', pad=10)
 plt.tight_layout()
 charts['grid'] = fig_to_b64(fig)
 
@@ -115,7 +129,7 @@ bars = ax.barh(v['NM_URNA_CANDIDATO'], v['QT_VOTOS_NOMINAIS_VALIDOS'], color=col
 for bar, val in zip(bars, v['QT_VOTOS_NOMINAIS_VALIDOS']):
     ax.text(val + 6, bar.get_y() + bar.get_height()/2, str(val), va='center', fontsize=9, color=NAVY)
 ax.set_xlabel('Votos nominais validos', fontsize=10)
-ax.set_title('Vereadores eleitos em 2024 — campanhas coordenadas pelo autor\n9 cadeiras conquistadas na Camara Municipal', fontsize=12, fontweight='bold', pad=12)
+ax.set_title('Vereadores eleitos em 2024 — campanhas coordenadas pelo autor\n9 cadeiras conquistadas na Camara Municipal', fontsize=12, fontweight='bold', fontfamily='Anton', pad=12)
 ax.spines[['top', 'right']].set_visible(False)
 ax.grid(axis='x', color=GRID, linewidth=0.7)
 ax.set_axisbelow(True)
@@ -134,9 +148,9 @@ votos = [3681, 5779]
 pcts = [37.8, 56.4]
 bars = ax.bar(anos, votos, color=[CORAL, TEAL], width=0.55)
 for bar, v_, p_ in zip(bars, votos, pcts):
-    ax.text(bar.get_x()+bar.get_width()/2, v_+80, f"{v_} votos\n({p_}%)", ha='center', fontsize=10, fontweight='bold', color=NAVY)
+    ax.text(bar.get_x()+bar.get_width()/2, v_+80, f"{v_} votos\n({p_}%)", ha='center', fontsize=10, fontweight='bold', fontfamily='Anton', color=NAVY)
 ax.set_ylabel('Votos validos nominais ao cargo de Prefeito', fontsize=10)
-ax.set_title('Resultado municipal — candidato a prefeito\nAlfredo Chaves (ES), 2020 vs 2024', fontsize=12, fontweight='bold', pad=12)
+ax.set_title('Resultado municipal — candidato a prefeito\nAlfredo Chaves (ES), 2020 vs 2024', fontsize=12, fontweight='bold', fontfamily='Anton', pad=12)
 ax.spines[['top', 'right']].set_visible(False)
 ax.grid(axis='y', color=GRID, linewidth=0.7)
 ax.set_axisbelow(True)

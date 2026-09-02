@@ -16,6 +16,12 @@ import base64
 from io import BytesIO
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+_FONT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "fonts")
+for _f in ["Anton-Regular.ttf", "BricolageGrotesque-Regular.ttf", "BricolageGrotesque-SemiBold.ttf", "BricolageGrotesque-Bold.ttf"]:
+    _p = os.path.join(_FONT_DIR, _f)
+    if os.path.exists(_p):
+        fm.fontManager.addfont(_p)
+plt.rcParams['font.family'] = 'Bricolage Grotesque'
 DATA = os.path.join(BASE, "data")
 OUT = os.path.join(BASE, "output")
 os.makedirs(OUT, exist_ok=True)
@@ -63,32 +69,44 @@ print(f"\nSaved: {summary_path}")
 # ---------------------------------------------------------------------------
 # Chart: the group's vote share across six election cycles
 # ---------------------------------------------------------------------------
+BG = "#161616"
+INK = "#f5f5f5"
+MUTED = "#8f8f8f"
+GRID = "#2a2a2a"
+GREEN = "#5fd996"
+RED = "#e2554c"
+
 fig, ax = plt.subplots(figsize=(9, 5.2), dpi=160)
+fig.patch.set_facecolor(BG)
+ax.set_facecolor(BG)
 
 x = summary["ano"].tolist()
 y = summary["pct_candidato_do_grupo"].tolist()
-colors = ["#c0392b" if r == "lost" else "#1e8449" for r in summary["resultado_do_grupo"]]
+colors = [RED if r == "lost" else GREEN for r in summary["resultado_do_grupo"]]
 
-ax.plot(x, y, color="#888888", linewidth=2, zorder=1)
-ax.scatter(x, y, s=180, c=colors, zorder=2, edgecolors="white", linewidths=1.5)
-ax.axhline(50, color="#999999", linestyle="--", linewidth=1, zorder=0)
-ax.text(x[0] - 0.3, 50.8, "50% needed to win", fontsize=9, color="#666666")
+ax.plot(x, y, color=MUTED, linewidth=2, zorder=1)
+ax.scatter(x, y, s=180, c=colors, zorder=2, edgecolors=BG, linewidths=1.5)
+ax.axhline(50, color=GRID, linestyle="--", linewidth=1, zorder=0)
+ax.text(x[0] - 0.3, 50.8, "50% needed to win", fontsize=9, color=MUTED)
 
 for xi, yi, name in zip(x, y, summary["candidato_do_grupo"]):
     label = f"{name.title()}\n{yi:.1f}%"
     ax.annotate(label, (xi, yi), textcoords="offset points", xytext=(0, 16),
-                ha="center", fontsize=8.5, color="#333333")
+                ha="center", fontsize=8.5, color=INK)
 
 ax.set_xticks(x)
 ax.set_ylim(0, 70)
-ax.set_ylabel("Vote share of the group's candidate")
-ax.set_title("Five losses, then a win: mayoral elections in Alfredo Chaves, 2004-2024", fontsize=13, pad=14)
+ax.set_ylabel("Vote share of the group's candidate", color=INK)
+ax.set_title("Five losses, then a win: mayoral elections in Alfredo Chaves, 2004-2024", fontsize=13, pad=14, color=INK, fontfamily='Anton')
+ax.tick_params(colors=MUTED)
 for spine in ["top", "right"]:
     ax.spines[spine].set_visible(False)
+for spine in ["left", "bottom"]:
+    ax.spines[spine].set_color(GRID)
 
 plt.tight_layout()
 buf = BytesIO()
-plt.savefig(buf, format="png")
+plt.savefig(buf, format="png", facecolor=BG)
 plt.close(fig)
 b64 = base64.b64encode(buf.getvalue()).decode("ascii")
 

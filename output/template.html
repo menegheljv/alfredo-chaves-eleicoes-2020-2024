@@ -1,23 +1,23 @@
 <title>A Virada em Alfredo Chaves</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Anton&family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
 
   :root {
-    --paper: #F1F5F4;
-    --paper-raised: #FFFFFF;
-    --ink: #142B32;
-    --ink-soft: #3E545C;
-    --caption: #647278;
-    --border: #D7E0DE;
-    --blue: #1D4E8F;
-    --blue-deep: #123A6B;
-    --blue-tint: #E6ECF6;
-    --red: #B23A2E;
-    --red-tint: #F6E7E4;
-    --gold: #A8791F;
-    --gold-tint: #F6EEDC;
-    --code-bg: #0F2A2A;
-    --code-ink: #D9EEE8;
+    --paper: #0a0a0a;
+    --paper-raised: #161616;
+    --ink: #f5f5f5;
+    --ink-soft: rgba(245,245,245,0.7);
+    --caption: rgba(245,245,245,0.45);
+    --border: rgba(245,245,245,0.14);
+    --blue: #5fd996;
+    --blue-deep: #9df0c0;
+    --blue-tint: rgba(95,217,150,0.12);
+    --red: #e2554c;
+    --red-tint: rgba(226,85,76,0.16);
+    --gold: #caa0ac;
+    --gold-tint: rgba(202,160,172,0.16);
+    --code-bg: #161616;
+    --code-ink: #9df0c0;
   }
 
   @media (prefers-color-scheme: dark) {
@@ -39,31 +39,18 @@
       --code-ink: #C9E8DE;
     }
   }
-  :root[data-theme="dark"] {
-    --paper: #0F1B1C;
-    --paper-raised: #16262A;
-    --ink: #E7F0EE;
-    --ink-soft: #B7C9C6;
-    --caption: #8AA09B;
-    --border: #26383A;
-    --blue: #6C9BDE;
-    --blue-deep: #9FC1EE;
-    --blue-tint: #17263D;
-    --red: #E08977;
-    --red-tint: #3A211D;
-    --gold: #D8B15C;
-    --gold-tint: #2E2717;
-    --code-bg: #0A1616;
-    --code-ink: #C9E8DE;
-  }
 
   * { box-sizing: border-box; }
+  .exhibit-body img, figure.chart-block img {
+    display: block;
+    border-radius: 10px;
+  }
   html { text-size-adjust: 100%; }
   body {
     margin: 0;
     background: var(--paper);
     color: var(--ink);
-    font-family: "IBM Plex Sans", system-ui, sans-serif;
+    font-family: "Bricolage Grotesque", system-ui, sans-serif;
     font-size: 16.5px;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
@@ -99,7 +86,7 @@
     display: inline-block;
   }
   h1.title {
-    font-family: "Fraunces", Georgia, serif;
+    font-family: "Anton", sans-serif; font-weight: 400;
     font-weight: 600;
     font-size: clamp(2.4rem, 5vw, 3.4rem);
     line-height: 1.05;
@@ -141,7 +128,7 @@
     padding: 22px 20px;
   }
   .stat .n {
-    font-family: "Fraunces", serif;
+    font-family: "Anton", sans-serif; font-weight: 400;
     font-weight: 600;
     font-size: 2.1rem;
     line-height: 1;
@@ -169,7 +156,7 @@
     margin-bottom: 10px;
   }
   h2 {
-    font-family: "Fraunces", Georgia, serif;
+    font-family: "Anton", sans-serif; font-weight: 400;
     font-weight: 600;
     font-size: 1.85rem;
     letter-spacing: -0.005em;
@@ -178,7 +165,7 @@
     max-width: 24ch;
   }
   h3 {
-    font-family: "IBM Plex Sans", sans-serif;
+    font-family: "Bricolage Grotesque", sans-serif;
     font-weight: 600;
     font-size: 1.05rem;
     margin: 32px 0 12px;
@@ -287,7 +274,7 @@
   }
   table.data th {
     text-align: right;
-    font-family: "IBM Plex Sans", sans-serif;
+    font-family: "Bricolage Grotesque", sans-serif;
     font-size: 11.5px;
     text-transform: uppercase;
     letter-spacing: 0.06em;
@@ -302,7 +289,7 @@
   :not([data-theme="light"]) table.data tr.flip td, [data-theme="dark"] table.data tr.flip td { color: var(--blue); }
   .pill {
     display: inline-block;
-    font-family: "IBM Plex Sans", sans-serif;
+    font-family: "Bricolage Grotesque", sans-serif;
     font-size: 10.5px;
     font-weight: 600;
     padding: 2px 8px;
