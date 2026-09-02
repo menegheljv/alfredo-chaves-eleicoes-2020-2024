@@ -8,7 +8,7 @@ A case study analyzing municipal election data in Alfredo Chaves, ES (Brazil), b
 
 Between 2004 and 2020, the political group behind this project lost five mayoral elections in a row in Alfredo Chaves, ES. In 2024, the same group elected Hugo Luiz, 25 at the time, the youngest mayor in the history of Espírito Santo. This repository documents the data pipeline used to analyze that turnaround, from raw TSE data to the final case study.
 
-**Full disclosure**: Hugo Luiz is my brother. This started as campaign work. The data pipeline came after, to understand what actually moved the result.
+**Full disclosure**: Jorge Gabriel Meneghel (2004 candidate) is my father, and Hugo Luiz (2024 winner) is my brother. This started as campaign work. The data pipeline came after, to understand what actually moved the result.
 
 ## What's here
 
