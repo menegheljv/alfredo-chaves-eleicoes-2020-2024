@@ -1,36 +1,38 @@
-# A Virada em Alfredo Chaves
+# The Turnaround in Alfredo Chaves
 
-Estudo de caso de análise de dados eleitorais comparando as eleições municipais de 2020 e 2024 em Alfredo Chaves-ES, construído inteiramente a partir de dados públicos oficiais do TSE (Tribunal Superior Eleitoral).
+A case study analyzing municipal election data in Alfredo Chaves, ES (Brazil), built entirely from official public data from the TSE (Brazil's Superior Electoral Court).
 
-**[Ver o estudo de caso completo →](https://claude.ai/code/artifact/657ffe57-13bf-494e-a571-dcf90b30b295)**
+**[See the full case study →](https://claude.ai/code/artifact/657ffe57-13bf-494e-a571-dcf90b30b295)**
 
-## Contexto
+## Context
 
-Em 2020, a candidatura a prefeito apoiada por esta coordenação perdeu a eleição em Alfredo Chaves-ES. Em 2024, o mesmo grupo elegeu Hugo Luiz, então com 25 anos — o prefeito mais jovem da história do Espírito Santo. Este repositório documenta o pipeline de dados usado para analisar essa virada, do dado bruto do TSE ao estudo de caso final.
+Between 2004 and 2020, the political group behind this project lost five mayoral elections in a row in Alfredo Chaves, ES. In 2024, the same group elected Hugo Luiz, 25 at the time, the youngest mayor in the history of Espírito Santo. This repository documents the data pipeline used to analyze that turnaround, from raw TSE data to the final case study.
 
-## O que tem aqui
+**Full disclosure**: Hugo Luiz is my brother. This started as campaign work. The data pipeline came after, to understand what actually moved the result.
 
-- **`scripts/`** — pipeline Python (pandas) e SQL: ingestão, limpeza, normalização e junção dos dados de 2020↔2024, geração de todos os gráficos e montagem final do HTML.
-- **`data/`** — CSVs brutos baixados do [dadosabertos.tse.jus.br](https://dadosabertos.tse.jus.br), filtrados para Alfredo Chaves-ES: votação por seção, resultado por candidato, prestação de contas, comparecimento/abstenção, perfil do eleitorado, perfil e bens dos candidatos.
-- **`output/`** — resultado do pipeline: tabelas intermediárias (CSV), o template HTML e o `case_study.html` final.
+## What's here
 
-## Datasets TSE usados
+- **`scripts/`**: the Python (pandas) and SQL pipeline. Ingestion, cleaning, normalization and joins, chart generation, and the final HTML build. Currently wired for the 2020 vs 2024 comparison; extending it to the full 2004 to 2024 arc is the next step.
+- **`data/`**: raw CSVs pulled from [dadosabertos.tse.jus.br](https://dadosabertos.tse.jus.br), filtered down to Alfredo Chaves, ES, covering every municipal election from 2004 to 2024: votes by section, results by candidate, campaign finance, turnout and abstention, electorate profile, and candidate profile and declared assets.
+- **`output/`**: what the pipeline produces. Intermediate tables (CSV), the HTML template, and the final `case_study.html`.
 
-| Dataset | Uso |
-|---|---|
-| Votação por seção eleitoral | Mapear a virada seção a seção, 2020 → 2024 |
-| Resultado por candidato (prefeito e vereador) | Comparar desempenho de toda a chapa |
-| Prestação de contas eleitorais | Financiamento e eficiência de investimento por voto, todos os candidatos |
-| Detalhamento de votação | Comparecimento e abstenção |
-| Perfil do eleitorado | Composição por idade e gênero |
-| Perfil e bens dos candidatos | Idade, escolaridade, patrimônio declarado |
-| Pesquisas eleitorais registradas | Trajetória de intenção de voto ao longo da campanha de 2024 |
+## TSE datasets used
 
-## Metodologia
+| Dataset | What it's for | Years covered |
+|---|---|---|
+| Votes by electoral section | Mapping the turnaround section by section | 2004, 2008, 2012, 2016, 2020, 2024 |
+| Results by candidate (mayor and city council) | Comparing performance across the full ticket | 2004, 2008, 2012, 2016, 2020, 2024 |
+| Campaign finance | Funding and spend efficiency per vote, for every candidate | 2004, 2008, 2012, 2016, 2020, 2024 |
+| Turnout detail | Turnout and abstention | 2004, 2008, 2012, 2016, 2020, 2024 |
+| Electorate profile | Age and gender composition | 2008, 2012, 2016, 2020, 2024 (not published for 2004) |
+| Candidate profile and assets | Age, education, declared wealth | 2008, 2012, 2016, 2020, 2024 (asset data not published for 2004) |
+| Registered election polls | Voting-intention trajectory during the 2024 campaign | 2024 only, out of scope for the historical arc |
 
-Ingestão e limpeza em `pandas`, junção e agregações em `SQLite`, visualizações em `matplotlib`, montagem final em HTML estático com os gráficos embutidos como base64. Todo achado reportado no estudo de caso é rastreável a um dataset público do TSE — quando um dado não estava publicamente disponível, isso é declarado no texto em vez de estimado.
+## Methodology
 
-## Como rodar
+Ingestion and cleaning in `pandas`, joins and aggregations in `SQLite`, charts in `matplotlib`, final build as static HTML with charts embedded as base64. Every finding in the case study traces back to a public TSE dataset. When a number wasn't publicly available, that's stated in the text instead of estimated.
+
+## How to run
 
 ```bash
 python scripts/pipeline.py
@@ -42,4 +44,4 @@ python scripts/viz.py && python scripts/viz2.py && python scripts/viz3.py && pyt
 python scripts/build_artifact.py
 ```
 
-Gera `output/case_study.html`.
+Produces `output/case_study.html`.
