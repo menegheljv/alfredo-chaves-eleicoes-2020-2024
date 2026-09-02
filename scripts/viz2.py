@@ -31,9 +31,9 @@ RED = "#e2554c"
 RED_SOFT = "#ef8f87"
 RED_TINT = "#3a211d"
 GREY = "#8f8f8f"
-BG = "#161616"
-GRID = "#2a2a2a"
-INK = "#f5f5f5"
+BG = "#ffffff"
+GRID = "#e2e2e2"
+INK = "#161616"
 
 plt.rcParams.update({
     "font.family": "Bricolage Grotesque",

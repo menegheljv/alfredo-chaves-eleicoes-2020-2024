@@ -26,10 +26,10 @@ for _f in ["Anton-Regular.ttf", "BricolageGrotesque-Regular.ttf", "BricolageGrot
         fm.fontManager.addfont(_p)
 plt.rcParams["font.family"] = "Bricolage Grotesque"
 
-BG = "#161616"
-INK = "#f5f5f5"
+BG = "#ffffff"
+INK = "#161616"
 MUTED = "#8f8f8f"
-GRID = "#2a2a2a"
+GRID = "#e2e2e2"
 GREEN = "#5fd996"
 MAUVE = "#caa0ac"
 
