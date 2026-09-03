@@ -242,6 +242,29 @@
     .pipeline { grid-template-columns: repeat(5, 1fr); align-items: stretch; position: relative; }
   }
 
+  /* mini-stat cards (poll numbers, small callouts) */
+  .mini-stat-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 22px 0;
+  }
+  @media (max-width: 620px) { .mini-stat-grid { grid-template-columns: repeat(2, 1fr); } }
+  .mini-stat {
+    background: var(--paper-raised);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 16px 14px;
+  }
+  .mini-stat .num {
+    font-family: "Anton", sans-serif; font-weight: 400;
+    font-size: 1.7rem;
+    color: var(--blue-deep);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .mini-stat .desc { font-size: 12.5px; color: var(--caption); line-height: 1.42; }
+
   /* table */
   .table-scroll { overflow-x: auto; }
   table.data {
@@ -666,16 +689,16 @@
 
     <h3>Depois da eleição: aprovação da gestão</h3>
     <p>Esses dados são de pesquisa de opinião, não de urna, e por isso ficam fora do pipeline oficial baseado em dados do TSE que sustenta o resto deste estudo &mdash; mas ajudam a fechar o quadro. Em março de 2026, já no segundo ano de mandato, o <strong>Instituto de Pesquisas e Estatística do Espírito Santo (IPESES)</strong> ouviu 405 eleitores da sede e dos distritos de Alfredo Chaves (11 e 12/03/2026, margem de erro de 4,9 p.p., 95% de confiança, cotas por sexo e idade).</p>
-    <div class="stat-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:20px 0;">
-      <div class="pipestep"><div class="name">75,0%</div><div class="desc">aprovam a gestão do prefeito Hugo Luiz (13,0% desaprovam; 12,0% não souberam responder)</div></div>
-      <div class="pipestep"><div class="name">70,2%</div><div class="desc">consideram Hugo Luiz uma pessoa honesta (6,9% discordam; 23,0% não souberam responder)</div></div>
-      <div class="pipestep"><div class="name">63,3%</div><div class="desc">consideram a gestão transparente (21,7% discordam; 15,1% não sabem dizer)</div></div>
-      <div class="pipestep"><div class="name">59,4%</div><div class="desc">votariam nele de novo, se pudessem escolher hoje (19,4% não votariam; 21,2% não sabem)</div></div>
-      <div class="pipestep"><div class="name">51,3%</div><div class="desc">dizem que está cumprindo as promessas de campanha (23,7% dizem parcialmente; 15,1% dizem que não)</div></div>
-      <div class="pipestep"><div class="name">48,5%</div><div class="desc">votariam em candidatos a governador, senador ou deputado apoiados por ele</div></div>
-      <div class="pipestep"><div class="name">71,2%</div><div class="desc">avaliam que Alfredo Chaves está no rumo certo</div></div>
-      <div class="pipestep"><div class="name">72,4%</div><div class="desc">aprovam a Educação da gestão</div></div>
-      <div class="pipestep"><div class="name">65,8%</div><div class="desc">aprovam a Saúde pública</div></div>
+    <div class="mini-stat-grid">
+      <div class="mini-stat"><div class="num">75,0%</div><div class="desc">aprovam a gestão do prefeito Hugo Luiz (13,0% desaprovam; 12,0% não souberam responder)</div></div>
+      <div class="mini-stat"><div class="num">70,2%</div><div class="desc">consideram Hugo Luiz uma pessoa honesta (6,9% discordam; 23,0% não souberam responder)</div></div>
+      <div class="mini-stat"><div class="num">63,3%</div><div class="desc">consideram a gestão transparente (21,7% discordam; 15,1% não sabem dizer)</div></div>
+      <div class="mini-stat"><div class="num">59,4%</div><div class="desc">votariam nele de novo, se pudessem escolher hoje (19,4% não votariam; 21,2% não sabem)</div></div>
+      <div class="mini-stat"><div class="num">51,3%</div><div class="desc">dizem que está cumprindo as promessas de campanha (23,7% dizem parcialmente; 15,1% dizem que não)</div></div>
+      <div class="mini-stat"><div class="num">48,5%</div><div class="desc">votariam em candidatos a governador, senador ou deputado apoiados por ele</div></div>
+      <div class="mini-stat"><div class="num">71,2%</div><div class="desc">avaliam que Alfredo Chaves está no rumo certo</div></div>
+      <div class="mini-stat"><div class="num">72,4%</div><div class="desc">aprovam a Educação da gestão</div></div>
+      <div class="mini-stat"><div class="num">65,8%</div><div class="desc">aprovam a Saúde pública</div></div>
     </div>
     <p class="prose" style="font-size:13px;color:var(--caption)">Fontes: <a href="https://aquinoticias.com/2026/03/gestao-do-prefeito-hugo-luiz-tem-aprovacao-de-75-da-populacao-de-alfredo-chaves/" target="_blank" rel="noopener">Aqui Notícias</a>, <a href="https://imprensacapixaba.com.br" target="_blank" rel="noopener">Imprensa Capixaba</a> e <a href="https://informecapixaba.com.br" target="_blank" rel="noopener">Informe Capixaba</a>, todas de março de 2026, divulgando a mesma pesquisa do IPESES.</p>
   </section>
