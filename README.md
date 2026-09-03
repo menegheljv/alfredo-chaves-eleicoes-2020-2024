@@ -1,8 +1,8 @@
-# The Turnaround in Alfredo Chaves
+# The Metamorphosis of Power
 
-A case study analyzing municipal election data in Alfredo Chaves, ES (Brazil), built entirely from official public data from the TSE (Brazil's Superior Electoral Court).
+*"A metamorfose do poder em Alfredo Chaves: não vivemos mais como nossos pais"* (a nod to Belchior's "Como Nossos Pais"). A case study analyzing municipal election data in Alfredo Chaves, ES (Brazil), built entirely from official public data from the TSE (Brazil's Superior Electoral Court) and cross-referenced with IBGE population data.
 
-**[See the full case study →](https://claude.ai/code/artifact/657ffe57-13bf-494e-a571-dcf90b30b295)**
+**[Read it in Portuguese →](https://claude.ai/code/artifact/22daf01e-c77d-446e-beb4-51d6a1c879a7)** · **[Read it in English →](https://claude.ai/code/artifact/487ac675-6174-4eee-be60-57189dc11525)**
 
 ## Context
 
