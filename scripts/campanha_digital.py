@@ -72,6 +72,12 @@ print(f"Engajamento medio geral: {df['engajamento'].mean():.0f}")
 print(f"Post de maior engajamento: {df.loc[df['engajamento'].idxmax(), 'tema']} ({df['engajamento'].max()})")
 print(f"Saved: {resumo_path}")
 
+por_categoria = df.groupby("categoria").agg(
+    posts=("data", "count"), views_media=("views", "mean"), engajamento_medio=("engajamento", "mean"),
+).sort_values("posts", ascending=False)
+print("\n=== Resumo por categoria de conteúdo ===")
+print(por_categoria.round(0).to_string())
+
 # ---------------------------------------------------------------------------
 # Chart 1: views over time, colored by phase, with milestones annotated
 # ---------------------------------------------------------------------------
@@ -155,3 +161,63 @@ b64 = base64.b64encode(buf.getvalue()).decode("ascii")
 with open(os.path.join(OUT, "chart_campanha_engajamento.b64"), "w", encoding="utf-8") as f:
     f.write(b64)
 print("Saved: chart_campanha_engajamento.b64")
+
+# ---------------------------------------------------------------------------
+# Chart 3: post count and average engagement by content category
+# ---------------------------------------------------------------------------
+CAT_LABEL = {
+    "evento": "Evento / caminhada", "administrativo": "Administrativo\n(vereador)",
+    "coligacao": "Coligação / apoios", "proposta": "Proposta de governo",
+    "pesquisa": "Pesquisa eleitoral", "testemunho": "Testemunho / depoimento",
+    "resposta-ataque": "Resposta a ataque", "contagem-regressiva": "Contagem regressiva",
+    "data-comemorativa": "Data comemorativa", "resultado": "Resultado", "marco": "Marco da campanha",
+    "midia": "Repercussão na mídia", "filiacao": "Filiação",
+}
+cat_order = por_categoria.index.tolist()
+GOLD = "#9c6b7a"
+
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12.5, 6), dpi=160)
+fig.patch.set_facecolor(BG)
+for ax in (ax1, ax2):
+    ax.set_facecolor(BG)
+
+y = range(len(cat_order))
+ax1.barh(list(y), [por_categoria.loc[c, "posts"] for c in cat_order], color=MUTED, height=0.62)
+ax1.set_yticks(list(y))
+ax1.set_yticklabels([CAT_LABEL.get(c, c).split("\n")[0] for c in cat_order], fontsize=9.5)
+ax1.invert_yaxis()
+ax1.set_xlabel("Número de posts", fontsize=9.5, color=INK)
+ax1.set_title("O QUE FOI POSTADO", fontsize=11.5, fontweight="bold", fontfamily="Anton", color=INK, loc="left", pad=10)
+for spine in ["top", "right"]:
+    ax1.spines[spine].set_visible(False)
+for spine in ["left", "bottom"]:
+    ax1.spines[spine].set_color(GRID)
+ax1.tick_params(colors=MUTED)
+ax1.xaxis.grid(True, color=GRID, linewidth=0.7)
+ax1.set_axisbelow(True)
+
+cat_order2 = por_categoria.sort_values("engajamento_medio", ascending=True).index.tolist()
+y2 = range(len(cat_order2))
+colors2 = [GREEN if c in ("resultado", "testemunho", "resposta-ataque") else GOLD for c in cat_order2]
+ax2.barh(list(y2), [por_categoria.loc[c, "engajamento_medio"] for c in cat_order2], color=colors2, height=0.62)
+ax2.set_yticks(list(y2))
+ax2.set_yticklabels([CAT_LABEL.get(c, c).split("\n")[0] for c in cat_order2], fontsize=9.5)
+ax2.set_xlabel("Engajamento médio por post", fontsize=9.5, color=INK)
+ax2.set_title("O QUE MAIS ENGAJOU", fontsize=11.5, fontweight="bold", fontfamily="Anton", color=INK, loc="left", pad=10)
+for spine in ["top", "right"]:
+    ax2.spines[spine].set_visible(False)
+for spine in ["left", "bottom"]:
+    ax2.spines[spine].set_color(GRID)
+ax2.tick_params(colors=MUTED)
+ax2.xaxis.grid(True, color=GRID, linewidth=0.7)
+ax2.set_axisbelow(True)
+
+fig.text(0.06, 0.985, "EVENTO DE RUA É O CONTEÚDO MAIS COMUM — MAS TESTEMUNHO ENGAJA MAIS", fontsize=12.5, color=INK, fontfamily="Anton", ha="left", va="top")
+plt.tight_layout(rect=[0, 0, 1, 0.92])
+buf = BytesIO()
+plt.savefig(buf, format="png", facecolor=BG)
+plt.close(fig)
+b64 = base64.b64encode(buf.getvalue()).decode("ascii")
+with open(os.path.join(OUT, "chart_campanha_categorias.b64"), "w", encoding="utf-8") as f:
+    f.write(b64)
+print("Saved: chart_campanha_categorias.b64")

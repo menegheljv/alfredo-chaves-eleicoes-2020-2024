@@ -754,19 +754,29 @@
     <figure class="exhibit">
       <div class="exhibit-head"><span class="tag">Figura 18</span><span class="cap">Engajamento médio por fase da campanha</span></div>
       <div class="exhibit-body">
-        <img src="data:image/png;base64,{{CHART_CAMPANHA_ENGAJAMENTO}}" alt="Gráfico de barras mostrando o engajamento médio (curtidas mais comentários mais compartilhamentos) por fase da campanha: 533 na filiação, 280 na pré-campanha, 260 no lançamento, 355 na campanha, 317 na reta final, e 1.267 no resultado." />
+        <img src="data:image/png;base64,{{CHART_CAMPANHA_ENGAJAMENTO}}" alt="Gráfico de barras mostrando o engajamento médio (curtidas mais comentários mais compartilhamentos) por fase da campanha: 533 na filiação, 264 na pré-campanha, 232 no lançamento, 306 na campanha, 317 na reta final, e 1.201 no resultado." />
       </div>
-      <figcaption>O engajamento médio por post quase quintuplica entre a pré-campanha e a fase de resultado — puxado sobretudo pelas fotos de celebração e pelo post de agradecimento na noite da vitória.</figcaption>
+      <figcaption>O engajamento médio por post quase quintuplica entre a pré-campanha e a fase de resultado — puxado sobretudo pelas fotos de celebração e pelo post de agradecimento na noite da vitória. A filiação, em março, teve um único post de engajamento fora da curva (533) — amostra pequena demais para tirar conclusão sozinha.</figcaption>
+    </figure>
+
+    <p>Classificamos cada um dos 118 posts revisados por tipo de conteúdo, para entender não só quando o alcance cresceu, mas o que a campanha efetivamente postava. <strong>Eventos de rua e caminhadas</strong> são o formato mais comum — cerca de um terço dos posts revisados — seguidos por comunicação administrativa de rotina do mandato de vereador (convocações de sessão da Câmara) e por propostas de governo. Mas o volume não é o mesmo que engajamento: <strong>testemunhos e depoimentos de eleitores</strong>, um formato raro (só 5 posts revisados), engajam quase tanto quanto os posts de resultado — quase o dobro da média de eventos de rua ou propostas de governo, e muito acima da comunicação administrativa de rotina.</p>
+
+    <figure class="exhibit">
+      <div class="exhibit-head"><span class="tag">Figura 19</span><span class="cap">Volume de posts e engajamento por tipo de conteúdo</span></div>
+      <div class="exhibit-body">
+        <img src="data:image/png;base64,{{CHART_CAMPANHA_CATEGORIAS}}" alt="Dois gráficos de barras horizontais. À esquerda, número de posts por categoria: 37 eventos ou caminhadas, 17 posts administrativos, 15 propostas de governo, 11 de coligação, 8 respostas a ataques, 7 pesquisas, 6 datas comemorativas, 5 testemunhos, 4 de resultado, 3 contagens regressivas, 2 marcos, 2 de repercussão na mídia, 1 de filiação. À direita, engajamento médio por categoria, do maior para o menor: resultado (1.201), testemunho (567), filiação (533), pesquisa (395), marco (364), coligação (356), data comemorativa (311), evento (309), proposta (275), resposta a ataque (263), contagem regressiva (203), administrativo (150), mídia (104)." />
+      </div>
+      <figcaption>Posts administrativos (convocações de sessão da Câmara) são o segundo formato mais frequente, mas o que menos engaja — o público reage mais a gente falando de gente (testemunhos) do que a comunicação institucional de rotina.</figcaption>
     </figure>
 
     <div class="mini-stat-grid">
-      <div class="mini-stat"><div class="num">79</div><div class="desc">posts revisados individualmente, de um arquivo de mais de 160 publicações no período</div></div>
-      <div class="mini-stat"><div class="num">964,9 mil</div><div class="desc">visualizações somadas nos posts revisados, de março a outubro de 2024</div></div>
+      <div class="mini-stat"><div class="num">118</div><div class="desc">posts revisados individualmente, cobrindo os dois arquivos enviados na íntegra (90 e 75 capturas de tela)</div></div>
+      <div class="mini-stat"><div class="num">1,32 milhão</div><div class="desc">visualizações somadas nos posts revisados, de março a outubro de 2024</div></div>
       <div class="mini-stat"><div class="num">1.841</div><div class="desc">curtidas + comentários + compartilhamentos no post de maior engajamento &mdash; o agradecimento pelos 5.779 votos</div></div>
     </div>
 
     <div class="callout warn">
-      <strong>Limite dos dados.</strong> Diferente do resto deste estudo, esta seção não vem de um repositório público e auditável &mdash; é uma leitura manual de capturas de tela do próprio histórico de posts da campanha, sem acesso à API do Instagram nem a métricas de alcance pago, impressões ou perfil demográfico da audiência. Dos mais de 160 posts capturados no período, 79 foram revisados individualmente para esta análise; posts administrativos repetidos (convocações de sessão ordinária da Câmara, por exemplo) foram amostrados em vez de contados um a um. Os números de visualizações e engajamento são os exibidos pelo próprio Instagram no momento da captura &mdash; não necessariamente o total final de cada post, que continua mudando enquanto a publicação recebe interações.
+      <strong>Limite dos dados.</strong> Diferente do resto deste estudo, esta seção não vem de um repositório público e auditável &mdash; é uma leitura manual de capturas de tela do próprio histórico de posts da campanha, sem acesso à API do Instagram nem a métricas de alcance pago, impressões ou perfil demográfico da audiência. Revisamos todas as páginas dos dois arquivos enviados (90 capturas em um, 75 no outro), extraindo 118 posts distintos com data, visualizações, curtidas, comentários e compartilhamentos legíveis; alguns quadros eram fotos adicionais do mesmo post (carrossel) ou convocações de sessão da Câmara repetidas com engajamento perto de zero, contadas como um único registro em vez de duplicadas. A classificação por tipo de conteúdo é nossa, feita a partir da legenda e do formato de cada post &mdash; não uma categoria do próprio Instagram. Datas de alguns posts administrativos mais antigos (abril a julho) foram estimadas pela posição na linha do tempo quando não apareciam com clareza na captura. Os números de visualizações e engajamento são os exibidos pelo próprio Instagram no momento da captura &mdash; não necessariamente o total final de cada post, que continua mudando enquanto a publicação recebe interações.
     </div>
   </section>
 
@@ -776,7 +786,7 @@
     <p>Dados de <code>consulta_cand</code> e <code>bem_candidato</code> (TSE) trazem idade, escolaridade, ocupação e patrimônio declarado de cada candidato — informação pública, prestada por lei a cada eleição. O contraste com <strong style="color:var(--blue)">Hugo Luiz</strong> é o mais nítido do estudo inteiro.</p>
 
     <figure class="exhibit">
-      <div class="exhibit-head"><span class="tag">Figura 19</span><span class="cap">Idade dos candidatos a prefeito</span></div>
+      <div class="exhibit-head"><span class="tag">Figura 20</span><span class="cap">Idade dos candidatos a prefeito</span></div>
       <div class="exhibit-body">
         <img src="data:image/png;base64,{{CHART_IDADE_CANDIDATOS}}" alt="Dois gráficos de barras horizontais comparando a idade dos três candidatos a prefeito em 2020 (Ronaldo Bianchi 58, Fernando 73, Armando Zanata 64) e em 2024 (Hugo Luiz 25, Rolmar Boteccia 71, Boldrini 61)." />
       </div>
@@ -786,7 +796,7 @@
     <p>Hugo Luiz tinha 25 anos no dia da eleição de 2024, é advogado formado (Direito &ndash; UFES) e, segundo o cadastro do TSE, é <strong>branco e solteiro</strong>. Os outros dois candidatos a prefeito daquele ano tinham 61 e 71 anos.</p>
 
     <figure class="exhibit">
-      <div class="exhibit-head"><span class="tag">Figura 20</span><span class="cap">Patrimônio declarado dos candidatos a prefeito</span></div>
+      <div class="exhibit-head"><span class="tag">Figura 21</span><span class="cap">Patrimônio declarado dos candidatos a prefeito</span></div>
       <div class="exhibit-body">
         <img src="data:image/png;base64,{{CHART_PATRIMONIO_CANDIDATOS}}" alt="Dois gráficos de barras horizontais comparando o patrimônio declarado dos candidatos a prefeito: em 2020, Ronaldo Bianchi R$366 mil, Fernando R$621 mil, Armando Zanata R$1,38 milhão; em 2024, Hugo Luiz R$29,5 mil, Rolmar Boteccia R$718 mil, Boldrini R$0." />
       </div>
@@ -797,7 +807,7 @@
     <p>O TSE mantém um sistema próprio de registro de pesquisas eleitorais (<a href="https://www.tse.jus.br/eleicoes/pesquisa-eleitorais/consulta-as-pesquisas-registradas" target="_blank" rel="noopener">pesqele&#8209;divulgacao.tse.jus.br</a>), exigido pelo art.&nbsp;33 da Lei&nbsp;9.504/97. Para Alfredo Chaves em 2024 constam <strong>9 pesquisas registradas</strong>, por 5 empresas diferentes, entre abril e setembro. Abrimos e lemos o conteúdo de todos os 9 editais de publicação em PDF — e vale registrar um limite real dos dados públicos: <strong>o TSE não publica o resultado</strong> (percentual de intenção de voto por candidato) nesses editais, apenas a confirmação formal do registro (empresa, protocolo, data, abrangência). Quem divulga o resultado é a empresa contratante, tipicamente via um veículo de imprensa local.</p>
 
     <figure class="exhibit">
-      <div class="exhibit-head"><span class="tag">Figura 21</span><span class="cap">Registro das 9 pesquisas eleitorais — linha do tempo</span></div>
+      <div class="exhibit-head"><span class="tag">Figura 22</span><span class="cap">Registro das 9 pesquisas eleitorais — linha do tempo</span></div>
       <div class="exhibit-body">
         <img src="data:image/png;base64,{{CHART_PESQUISAS_TIMELINE}}" alt="Linha do tempo com as 9 pesquisas eleitorais registradas para Alfredo Chaves em 2024, de 19/04 a 27/09, por 5 empresas diferentes, com o dia da eleição (06/10/2024) marcado em verde." />
       </div>
@@ -815,7 +825,7 @@
     </ul>
 
     <figure class="exhibit">
-      <div class="exhibit-head"><span class="tag">Figura 22</span><span class="cap">Trajetória da intenção de voto (estimulada) até o resultado</span></div>
+      <div class="exhibit-head"><span class="tag">Figura 23</span><span class="cap">Trajetória da intenção de voto (estimulada) até o resultado</span></div>
       <div class="exhibit-body">
         <img src="data:image/png;base64,{{CHART_PESQUISAS_EVOLUCAO}}" alt="Gráfico de linha mostrando a intenção de voto estimulada de Hugo Luiz (verde) em 54,8% (abril), 57,4% (agosto), 51,2% (21/set), 47,75% (28/set), 51,5% (2/out) e 58,05% no resultado final; Rolmar Botecchia (vermelho) em trajetória inversa mais baixa; Boldrini (cinza, tracejado) entre 9,4% e 12,25% a partir de agosto; e um ponto isolado de 17/set marcado como atípico, com Rolmar em 53,23% e Hugo em 22,90%." />
       </div>
