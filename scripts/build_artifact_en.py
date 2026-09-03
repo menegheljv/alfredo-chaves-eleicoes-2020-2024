@@ -18,6 +18,7 @@ with open(os.path.join(OUT, "template_en.html"), encoding="utf-8") as f:
 chart_keys = ["historical_arc", "ibge_eleitorado", "slope", "grid", "municipio", "vereadores_2020", "vereadores_2024", "camara", "votos_vereadores",
               "financeiro_chapa", "custo_por_voto", "origem_receitas", "comparecimento",
               "genero_candidatos", "raca_candidatos",
+              "campanha_visualizacoes", "campanha_engajamento",
               "idade_candidatos", "patrimonio_candidatos", "pesquisas_timeline", "pesquisas_evolucao"]
 for key in chart_keys:
     with open(os.path.join(OUT_EN, f"chart_{key}.b64"), encoding="utf-8") as f:

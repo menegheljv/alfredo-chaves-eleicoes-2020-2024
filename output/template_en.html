@@ -736,13 +736,47 @@
 
   </section>
 
+  <section id="campanha-digital">
+    <div class="eyebrow">07 &middot; Digital campaign</div>
+    <h2>What the posts show about the race</h2>
+    <p>This section steps outside the TSE dataset and uses a different source: the post history of the candidacy's official Instagram account (<code>@hugoluiz11_</code>), from the day of party affiliation through the election result. It isn't public, auditable data like the rest of this study &mdash; it's the campaign's own archive, reviewed post by post from screenshots exported from the app, with date, views, likes, comments and shares for each publication. We treat these numbers the way the campaign team saw them in real time: a measure of organic reach and engagement, not voting intention.</p>
+
+    <p>The timeline covers six milestones: <strong>affiliation to Progressistas (PP)</strong> on March 27, 2024; the <strong>pre-candidacy launch</strong> on June 7; the <strong>running-mate announcement</strong> for Cleber Bianchi, at the August 3 party convention; the public dispute over a <strong>suspended poll</strong> on September 22; the <strong>win</strong> on October 6; and the thank-you post for <strong>5,779 votes</strong>, published hours after the result &mdash; the highest-engagement post of the entire campaign.</p>
+
+    <figure class="exhibit">
+      <div class="exhibit-head"><span class="tag">Figure 17</span><span class="cap">Views per post, affiliation through the win</span></div>
+      <div class="exhibit-body">
+        <img src="data:image/png;base64,{{CHART_CAMPANHA_VISUALIZACOES}}" alt="Scatter chart showing views on each Instagram post from the candidacy between March and October 2024, trending upward: from about 9,300 views on the affiliation post to peaks above 40,000 views in the home stretch and on the result." />
+      </div>
+      <figcaption>Routine pre-campaign posts (April to May) range between 1,500 and 19,000 views. In the home stretch (September and October), peaks of 30,000 to 56,000 views become common &mdash; more than 4&times; the average reach from earlier in the year.</figcaption>
+    </figure>
+
+    <figure class="exhibit">
+      <div class="exhibit-head"><span class="tag">Figure 18</span><span class="cap">Average engagement by campaign phase</span></div>
+      <div class="exhibit-body">
+        <img src="data:image/png;base64,{{CHART_CAMPANHA_ENGAJAMENTO}}" alt="Bar chart showing average engagement (likes plus comments plus shares) by campaign phase: 533 at affiliation, 280 in the pre-campaign, 260 at launch, 355 during the campaign, 317 in the home stretch, and 1,267 in the result phase." />
+      </div>
+      <figcaption>Average engagement per post nearly quintuples between the pre-campaign and the result phase &mdash; driven mostly by celebration photos and the thank-you post on election night.</figcaption>
+    </figure>
+
+    <div class="mini-stat-grid">
+      <div class="mini-stat"><div class="num">79</div><div class="desc">posts reviewed individually, out of an archive of more than 160 publications in the period</div></div>
+      <div class="mini-stat"><div class="num">964.9K</div><div class="desc">combined views across the posts reviewed, March to October 2024</div></div>
+      <div class="mini-stat"><div class="num">1,841</div><div class="desc">likes + comments + shares on the highest-engagement post &mdash; the thank-you for 5,779 votes</div></div>
+    </div>
+
+    <div class="callout warn">
+      <strong>Limits of this data.</strong> Unlike the rest of this study, this section doesn't come from a public, auditable repository &mdash; it's a manual read of screenshots from the campaign's own post history, without access to the Instagram API or to paid-reach, impression, or audience-demographic metrics. Of the more than 160 posts captured for the period, 79 were reviewed individually for this analysis; repeated administrative posts (routine City Council session notices, for instance) were sampled rather than counted one by one. View and engagement counts are whatever Instagram displayed at the moment of capture &mdash; not necessarily each post's final total, which keeps changing as it continues to receive interactions.
+    </div>
+  </section>
+
   <section id="candidatos">
-    <div class="eyebrow">07 &middot; Candidate profile</div>
+    <div class="eyebrow">08 &middot; Candidate profile</div>
     <h2>Who the candidates were, beyond the votes</h2>
     <p><code>consulta_cand</code> and <code>bem_candidato</code> data (TSE) bring age, education, occupation and declared net worth for each candidate &mdash; public information, required by law at every election. The contrast with <strong style="color:var(--blue)">Hugo Luiz</strong> is the sharpest in the entire study.</p>
 
     <figure class="exhibit">
-      <div class="exhibit-head"><span class="tag">Figure 17</span><span class="cap">Age of mayoral candidates</span></div>
+      <div class="exhibit-head"><span class="tag">Figure 19</span><span class="cap">Age of mayoral candidates</span></div>
       <div class="exhibit-body">
         <img src="data:image/png;base64,{{CHART_IDADE_CANDIDATOS}}" alt="Two horizontal bar charts comparing the age of the three mayoral candidates in 2020 (Ronaldo Bianchi 58, Fernando 73, Armando Zanata 64) and in 2024 (Hugo Luiz 25, Rolmar Boteccia 71, Boldrini 61)." />
       </div>
@@ -752,7 +786,7 @@
     <p>Hugo Luiz was 25 on election day in 2024, holds a law degree (UFES) and, per the TSE's records, is <strong>white and single</strong>. The other two mayoral candidates that year were 61 and 71.</p>
 
     <figure class="exhibit">
-      <div class="exhibit-head"><span class="tag">Figure 18</span><span class="cap">Declared net worth of mayoral candidates</span></div>
+      <div class="exhibit-head"><span class="tag">Figure 20</span><span class="cap">Declared net worth of mayoral candidates</span></div>
       <div class="exhibit-body">
         <img src="data:image/png;base64,{{CHART_PATRIMONIO_CANDIDATOS}}" alt="Two horizontal bar charts comparing declared net worth of mayoral candidates: in 2020, Ronaldo Bianchi R$366 thousand, Fernando R$621 thousand, Armando Zanata R$1.38 million; in 2024, Hugo Luiz R$29.5 thousand, Rolmar Boteccia R$718 thousand, Boldrini R$0." />
       </div>
@@ -763,7 +797,7 @@
     <p>The TSE maintains its own system for registering election polls (<a href="https://www.tse.jus.br/eleicoes/pesquisa-eleitorais/consulta-as-pesquisas-registradas" target="_blank" rel="noopener">pesqele&#8209;divulgacao.tse.jus.br</a>), required under Article&nbsp;33 of Law&nbsp;9,504/97. For Alfredo Chaves in 2024, <strong>9 polls</strong> are on record, from 5 different firms, between April and September. We opened and read all 9 registration filings in PDF &mdash; and it's worth noting a real limit of the public data: <strong>the TSE doesn't publish the result</strong> (voting-intention percentage per candidate) in these filings, only formal confirmation of registration (firm, protocol, date, scope). It's the commissioning firm that releases the result, typically through a local press outlet.</p>
 
     <figure class="exhibit">
-      <div class="exhibit-head"><span class="tag">Figure 19</span><span class="cap">Registration of the 9 election polls — timeline</span></div>
+      <div class="exhibit-head"><span class="tag">Figure 21</span><span class="cap">Registration of the 9 election polls — timeline</span></div>
       <div class="exhibit-body">
         <img src="data:image/png;base64,{{CHART_PESQUISAS_TIMELINE}}" alt="Timeline of the 9 election polls registered for Alfredo Chaves in 2024, from 04/19 to 09/27, by 5 different firms, with election day (10/06/2024) marked in green." />
       </div>
@@ -781,7 +815,7 @@
     </ul>
 
     <figure class="exhibit">
-      <div class="exhibit-head"><span class="tag">Figure 20</span><span class="cap">Voting-intention trajectory (prompted) through to the result</span></div>
+      <div class="exhibit-head"><span class="tag">Figure 22</span><span class="cap">Voting-intention trajectory (prompted) through to the result</span></div>
       <div class="exhibit-body">
         <img src="data:image/png;base64,{{CHART_PESQUISAS_EVOLUCAO}}" alt="Line chart showing Hugo Luiz's prompted voting intention (green) at 54.8% (April), 57.4% (August), 51.2% (Sep 21), 47.75% (Sep 28), 51.5% (Oct 2), and 58.05% in the official result; Rolmar Botecchia (red) on a lower, inverse trajectory; Boldrini (gray, dashed) between 9.4% and 12.25% from August on; and an isolated outlier data point from Sep 17 with Rolmar at 53.23% and Hugo at 22.90%." />
       </div>
@@ -810,7 +844,7 @@
   </section>
 
   <section id="detalhamento">
-    <div class="eyebrow">08 &middot; Full breakdown</div>
+    <div class="eyebrow">09 &middot; Full breakdown</div>
     <h2>Precinct by precinct, with polling location</h2>
     <p>The complete table of the mayoral candidacy's valid-vote share in every voting precinct, across both elections, plus the <strong>physical polling location</strong> of each precinct in 2024 (school, community hall, or church &mdash; per the TSE's official registry). Rows highlighted in green mark precincts that moved from a loss to an absolute majority.</p>
     <div class="exhibit">
@@ -881,7 +915,7 @@
   </section>
 
   <section id="conclusao">
-    <div class="eyebrow">09 &middot; Conclusion</div>
+    <div class="eyebrow">10 &middot; Conclusion</div>
     <h2>What the data shows</h2>
     <div class="prose">
       <p>Reading the results precinct by precinct confirms the 2020-to-2024 turnaround wasn't concentrated in a few strongholds: it was <strong>spread across nearly the entire electoral territory</strong> of the municipality, with an average gain of more than 20 percentage points in precincts where the majority flipped. That's consistent with a strategy of territorial reach rather than reinforcing already-favorable bases &mdash; the one precinct already won in 2020 (precinct&nbsp;9) saw a relatively modest additional gain (+13.7&nbsp;p.p.) compared with precincts that started from a loss.</p>

@@ -1,0 +1,130 @@
+# -*- coding: utf-8 -*-
+"""English twin of campanha_digital.py. Same data, translated chart text."""
+import pandas as pd
+import matplotlib
+matplotlib.use("Agg")
+import matplotlib.pyplot as plt
+import matplotlib.dates as mdates
+import matplotlib.font_manager as fm
+import os, base64
+from io import BytesIO
+
+BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DATA = os.path.join(BASE, "data")
+OUT = os.path.join(BASE, "output", "en")
+os.makedirs(OUT, exist_ok=True)
+
+_FONT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "fonts")
+for _f in ["Anton-Regular.ttf", "BricolageGrotesque-Regular.ttf", "BricolageGrotesque-SemiBold.ttf", "BricolageGrotesque-Bold.ttf"]:
+    _p = os.path.join(_FONT_DIR, _f)
+    if os.path.exists(_p):
+        fm.fontManager.addfont(_p)
+plt.rcParams["font.family"] = "Bricolage Grotesque"
+
+BG = "#ffffff"
+INK = "#333333"
+MUTED = "#8f8f8f"
+GRID = "#e2e2e2"
+GREEN = "#5fd996"
+RED = "#e2554c"
+
+df = pd.read_csv(os.path.join(DATA, "campanha_digital_posts.csv"), sep=";")
+df["data"] = pd.to_datetime(df["data"])
+df["engajamento"] = df["likes"] + df["comentarios"] + df["compartilhamentos"]
+df = df.sort_values("data")
+
+FASE_ORDER = ["filiacao", "pre-campanha", "lancamento", "campanha", "reta-final", "resultado"]
+FASE_LABEL = {
+    "filiacao": "Affiliation\n(Mar/24)",
+    "pre-campanha": "Pre-campaign\n(Apr-May/24)",
+    "lancamento": "Launch\n(Jun/24)",
+    "campanha": "Campaign\n(Jul-Aug/24)",
+    "reta-final": "Home stretch\n(Sep-Oct/24)",
+    "resultado": "Result\n(10/06/24)",
+}
+
+resumo = df.groupby("fase").agg(engajamento_medio=("engajamento", "mean")).reindex(FASE_ORDER)
+
+FASE_COLOR = {
+    "filiacao": "#3d7fc4", "pre-campanha": MUTED, "lancamento": "#c9781f",
+    "campanha": RED, "reta-final": GREEN, "resultado": GREEN,
+}
+
+# ---------------------------------------------------------------------------
+# Chart 1: views over time
+# ---------------------------------------------------------------------------
+fig, ax = plt.subplots(figsize=(10.5, 5.8), dpi=160)
+fig.patch.set_facecolor(BG)
+ax.set_facecolor(BG)
+
+for fase in FASE_ORDER:
+    sub = df[df["fase"] == fase]
+    ax.scatter(sub["data"], sub["views"], s=32, color=FASE_COLOR[fase], zorder=3, label=FASE_LABEL[fase].split("\n")[0])
+ax.plot(df["data"], df["views"], color=GRID, linewidth=1, zorder=1)
+
+milestones = [
+    ("2024-03-27", "Affiliation to PP"),
+    ("2024-06-07", "Pre-candidacy\nlaunch"),
+    ("2024-08-03", "Running mate\nannounced"),
+    ("2024-10-06", "Win"),
+]
+for d, label in milestones:
+    dt = pd.Timestamp(d)
+    y = df.loc[(df["data"] - dt).abs().idxmin(), "views"]
+    ax.annotate(label, (dt, y), textcoords="offset points", xytext=(0, 14), ha="center",
+                fontsize=8, color=INK, fontweight="bold")
+
+ax.set_ylabel("Views per post", color=INK)
+ax.xaxis.set_major_formatter(mdates.DateFormatter("%b/%y"))
+ax.tick_params(colors=MUTED)
+for spine in ["top", "right"]:
+    ax.spines[spine].set_visible(False)
+for spine in ["left", "bottom"]:
+    ax.spines[spine].set_color(GRID)
+ax.yaxis.grid(True, color=GRID, linewidth=0.8)
+ax.set_axisbelow(True)
+ax.legend(loc="upper left", frameon=False, fontsize=8.5, ncol=3)
+fig.text(0.085, 0.965, "FROM 9,300 TO 41,000 VIEWS PER POST", fontsize=15, color=INK, fontfamily="Anton", ha="left", va="top")
+fig.text(0.085, 0.905, "Views per Instagram post, from party affiliation (Mar/24) to the win (10/06/24)", fontsize=10, color=MUTED, ha="left", va="top")
+plt.tight_layout(rect=[0, 0, 1, 0.86])
+buf = BytesIO()
+plt.savefig(buf, format="png", facecolor=BG)
+plt.close(fig)
+b64 = base64.b64encode(buf.getvalue()).decode("ascii")
+with open(os.path.join(OUT, "chart_campanha_visualizacoes.b64"), "w", encoding="utf-8") as f:
+    f.write(b64)
+print("Saved: chart_campanha_visualizacoes.b64")
+
+# ---------------------------------------------------------------------------
+# Chart 2: average engagement by phase
+# ---------------------------------------------------------------------------
+fig, ax = plt.subplots(figsize=(9, 5.4), dpi=160)
+fig.patch.set_facecolor(BG)
+ax.set_facecolor(BG)
+
+x = range(len(FASE_ORDER))
+vals = [resumo.loc[f, "engajamento_medio"] for f in FASE_ORDER]
+colors = [FASE_COLOR[f] for f in FASE_ORDER]
+bars = ax.bar(x, vals, color=colors, width=0.6)
+for bar, v in zip(bars, vals):
+    ax.text(bar.get_x() + bar.get_width() / 2, v + 15, f"{v:.0f}", ha="center", fontsize=10, fontweight="bold", fontfamily="Anton", color=INK)
+ax.set_xticks(list(x))
+ax.set_xticklabels([FASE_LABEL[f] for f in FASE_ORDER], fontsize=9)
+ax.set_ylabel("Average engagement per post\n(likes + comments + shares)", color=INK, fontsize=10)
+fig.text(0.085, 0.965, "ENGAGEMENT NEARLY QUINTUPLED BY THE RESULT", fontsize=13.5, color=INK, fontfamily="Anton", ha="left", va="top")
+fig.text(0.085, 0.9, "Average engagement by campaign phase (likes, comments and shares) — the affiliation phase has just 1 post in the sample", fontsize=9.5, color=MUTED, ha="left", va="top")
+ax.tick_params(colors=MUTED)
+for spine in ["top", "right"]:
+    ax.spines[spine].set_visible(False)
+for spine in ["left", "bottom"]:
+    ax.spines[spine].set_color(GRID)
+ax.yaxis.grid(True, color=GRID, linewidth=0.8)
+ax.set_axisbelow(True)
+plt.tight_layout(rect=[0, 0, 1, 0.84])
+buf = BytesIO()
+plt.savefig(buf, format="png", facecolor=BG)
+plt.close(fig)
+b64 = base64.b64encode(buf.getvalue()).decode("ascii")
+with open(os.path.join(OUT, "chart_campanha_engajamento.b64"), "w", encoding="utf-8") as f:
+    f.write(b64)
+print("Saved: chart_campanha_engajamento.b64")
