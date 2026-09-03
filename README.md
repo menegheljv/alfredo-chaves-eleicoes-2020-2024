@@ -58,11 +58,14 @@ python scripts/ibge_cruzamento.py
 python scripts/ibge_demografico.py
 python scripts/geocode_locais.py
 python scripts/fetch_basemap.py
+python scripts/campanha_digital.py
 python scripts/viz2.py && python scripts/viz3.py && python scripts/viz4.py && python scripts/viz5.py && python scripts/viz6.py
 python scripts/build_artifact.py
 ```
 
 Produces `output/case_study.html` (Portuguese).
+
+`campanha_digital.py` reads `data/campanha_digital_posts.csv`, a manually-transcribed log of the candidacy's Instagram post history (not TSE data) - see the "Digital campaign" section of the case study for how it was built and its limits.
 
 ### English build
 
@@ -72,6 +75,7 @@ Produces `output/case_study.html` (Portuguese).
 python scripts/historical_arc_en.py
 python scripts/ibge_cruzamento_en.py
 python scripts/ibge_demografico_en.py
+python scripts/campanha_digital_en.py
 python scripts/viz2_en.py && python scripts/viz3_en.py && python scripts/viz4_en.py && python scripts/viz5_en.py && python scripts/viz6_en.py
 python scripts/build_artifact_en.py
 ```
