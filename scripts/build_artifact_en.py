@@ -128,6 +128,16 @@ for i, r in locais.iterrows():
     )
 html = html.replace("{{MAP_PINS_JSON}}", "[" + ",".join(pins_js) + "]")
 
+# official municipality outline (IBGE malhas territoriais), overlaid on the map
+with open(os.path.join(BASE, "data", "ibge", "malha_alfredo_chaves.geojson"), encoding="utf-8") as f:
+    malha = json.load(f)
+ring = malha["features"][0]["geometry"]["coordinates"][0]
+boundary_pts = []
+for lon, lat in ring:
+    px, py = deg2px(lat, lon)
+    boundary_pts.append(f"{px / W * 100:.3f},{py / H * 100:.3f}")
+html = html.replace("{{BOUNDARY_POINTS}}", " ".join(boundary_pts))
+
 with open(os.path.join(OUT, "basemap_alfredo_chaves.b64"), encoding="utf-8") as f:
     basemap_b64 = f.read().strip()
 html = html.replace("{{BASEMAP_B64}}", basemap_b64)
