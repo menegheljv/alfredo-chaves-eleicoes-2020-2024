@@ -64,7 +64,7 @@ cand2024 = [("Hugo Luiz\n(PP — eleito)", 155597.43, "nossos"),
             ("Boteccia\n(PSB)", 119400.00, "adversario"),
             ("Boldrini\n(PL)", 141130.00, "terceiro")]
 
-COR_LADO = {"nossos": BLUE, "adversario": RED, "terceiro": GOLD}
+COR_LADO = {"nossos": BLUE, "adversario": RED, "terceiro": "#3d7fc4"}
 
 fig, axes = plt.subplots(1, 2, figsize=(11.5, 5.4), sharey=False)
 for ax, cands, ano in zip(axes, [cand2020, cand2024], [2020, 2024]):

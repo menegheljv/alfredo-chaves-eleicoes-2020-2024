@@ -25,7 +25,7 @@ GREY = "#8f8f8f"
 BG = "#ffffff"
 GRID = "#e2e2e2"
 INK = "#161616"
-COR_LADO = {"nossos": BLUE, "adversario": RED, "terceiro": GOLD}
+COR_LADO = {"nossos": BLUE, "adversario": RED, "terceiro": "#3d7fc4"}
 
 plt.rcParams.update({
     "font.family": "Bricolage Grotesque",

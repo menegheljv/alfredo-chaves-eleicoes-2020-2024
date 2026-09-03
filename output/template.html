@@ -26,6 +26,7 @@
     display: block;
     border-radius: 10px;
   }
+  figure.chart-block { margin: 32px 0; }
   html { text-size-adjust: 100%; }
   body {
     margin: 0;
@@ -77,8 +78,8 @@
   }
   h1.title .subtitle{
     display: block;
-    font-size: 0.58em;
-    color: var(--ink-soft);
+    font-size: 1em;
+    color: inherit;
     margin-top: 12px;
     white-space: normal;
   }
@@ -170,7 +171,7 @@
     background: var(--paper-raised);
     border: 1px solid var(--border);
     border-radius: 12px;
-    margin: 28px 0;
+    margin: 40px 0;
     overflow: hidden;
   }
   .exhibit-head {
@@ -192,7 +193,7 @@
   }
   :not([data-theme="light"]) .exhibit-head .tag, [data-theme="dark"] .exhibit-head .tag { color: var(--blue); }
   .exhibit-head .cap { font-size: 13px; color: var(--ink-soft); }
-  .exhibit-body { padding: 22px; }
+  .exhibit-body { padding: 28px; }
   .exhibit-body.tight { padding: 0; }
   .exhibit img { width: 100%; height: auto; display: block; border-radius: 4px; }
   .exhibit figcaption {
@@ -272,8 +273,8 @@
   table.data {
     border-collapse: collapse;
     width: 100%;
-    font-size: 13px;
-    font-family: "IBM Plex Mono", monospace;
+    font-size: 13.5px;
+    font-family: "Bricolage Grotesque", sans-serif;
     min-width: 620px;
   }
   table.data th, table.data td {
