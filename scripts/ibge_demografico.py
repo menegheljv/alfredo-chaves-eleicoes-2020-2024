@@ -108,7 +108,7 @@ print(f"\nCandidatos por ano:\n{cand_demog.to_string(index=False)}")
 # ---------------------------------------------------------------------------
 # Chart 1: % mulheres — populacao, eleitorado 2024, candidatos 2020, candidatos 2024
 # ---------------------------------------------------------------------------
-cats = ["População\n(IBGE 2022)", "Eleitorado\n(TSE 2024)", "Candidatos\n2020", "Candidatos\n2024"]
+cats = ["Mulheres na\npopulação (2022)", "Mulheres no\neleitorado (2024)", "Candidatas\nem 2020", "Candidatas\nem 2024"]
 vals = [pop_pct_mulheres,
         genero_eleitorado[genero_eleitorado["ano"] == 2024]["pct_mulheres"].iloc[0],
         cand_demog[cand_demog["ano"] == 2020]["pct_mulheres"].iloc[0],

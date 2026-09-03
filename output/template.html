@@ -272,6 +272,61 @@
   }
   .mini-stat .desc { font-size: 12.5px; color: var(--caption); line-height: 1.42; }
 
+  /* ---------- Mapa interativo dos locais de votação ---------- */
+  .voting-map-wrap { margin: 24px 0 40px; }
+  .voting-map {
+    position: relative;
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: #eef2f5;
+    line-height: 0;
+  }
+  .voting-map img { display: block; width: 100%; height: auto; }
+  .map-pin {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    background: var(--blue-deep);
+    color: #fff;
+    font-family: "Anton", sans-serif; font-weight: 400;
+    font-size: 12px;
+    display: flex; align-items: center; justify-content: center;
+    border: 2px solid #fff;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.4);
+    cursor: pointer;
+    padding: 0;
+    transition: transform 0.12s ease, background 0.12s ease;
+  }
+  .map-pin:hover { transform: translate(-50%, -50%) scale(1.15); }
+  .map-pin.active { background: var(--red); transform: translate(-50%, -50%) scale(1.2); z-index: 2; }
+  .map-detail {
+    margin-top: 14px;
+    padding: 16px 20px;
+    background: var(--paper-raised);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    min-height: 26px;
+  }
+  .map-detail-empty { color: var(--caption); font-style: italic; margin: 0; }
+  .map-detail-num {
+    font-family: "Anton", sans-serif; font-weight: 400;
+    font-size: 1.3rem;
+    color: var(--blue-deep);
+    background: var(--blue-tint);
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex: none;
+  }
+  .map-detail-addr { font-size: 13px; color: var(--ink-soft); margin-top: 2px; }
+  .map-detail-secoes { font-size: 12.5px; color: var(--caption); margin-top: 4px; }
+
   /* table */
   .table-scroll { overflow-x: auto; }
   table.data {
@@ -516,19 +571,36 @@
     <div class="table-scroll">
       <table class="data">
         <thead>
-          <tr><th>Ano</th><th>Partido do grupo</th><th class="num">Partidos na coligação</th><th>Vencedor</th><th>Partido do vencedor</th><th>Resultado</th></tr>
+          <tr><th>Ano</th><th>Partido do grupo</th><th>Espectro</th><th class="num">Partidos</th><th>Coligação</th><th>Resultado</th></tr>
         </thead>
         <tbody>
-          <tr><td>2004</td><td>PT</td><td class="num">5</td><td>Dr. Fernando</td><td>PSB</td><td>derrota</td></tr>
-          <tr><td>2008</td><td>PSDB</td><td class="num">5</td><td>Dr. Fernando</td><td>PSB</td><td>derrota</td></tr>
-          <tr><td>2012</td><td>PSD</td><td class="num">6</td><td>Roberto Fiorin</td><td>PSB</td><td>derrota</td></tr>
-          <tr><td>2016</td><td>PMDB</td><td class="num">9</td><td>Dr. Fernando</td><td>PSB</td><td>derrota (maior coligação da série)</td></tr>
-          <tr><td>2020</td><td>Republicanos</td><td class="num">3</td><td>Dr. Fernando</td><td>PSB</td><td>derrota (menor coligação da série)</td></tr>
-          <tr class="flip"><td>2024</td><td>PP</td><td class="num">5</td><td>Hugo Luiz (grupo)</td><td>PP</td><td>vitória</td></tr>
+          <tr><td>2004</td><td>PT</td><td>Esquerda</td><td class="num">5</td><td>PPS / PT / PSDB / PTN / PT do B</td><td>derrota</td></tr>
+          <tr><td>2008</td><td>PSDB</td><td>Centro</td><td class="num">5</td><td>PTB / PSDB / PMDB / PT do B / PPS</td><td>derrota</td></tr>
+          <tr><td>2012</td><td>PSD</td><td>Centro</td><td class="num">6</td><td>PT / PTB / PMDB / PPS / DEM / PSD</td><td>derrota</td></tr>
+          <tr><td>2016</td><td>PMDB</td><td>Centro</td><td class="num">9</td><td>PMDB / PPS / PSD / PTB / PT / PDT / PATRIOTA / REDE / DEM</td><td>derrota (maior coligação da série)</td></tr>
+          <tr><td>2020</td><td>Republicanos</td><td>Direita</td><td class="num">3</td><td>PTB / REPUBLICANOS / PATRIOTA</td><td>derrota (menor coligação da série)</td></tr>
+          <tr class="flip"><td>2024</td><td>PP</td><td>Direita</td><td class="num">5</td><td>REPUBLICANOS / PP / MDB / Federação PSDB&#8209;Cidadania</td><td>vitória</td></tr>
         </tbody>
       </table>
     </div>
-    <p style="font-size:13px;color:var(--caption)">Fonte: <code>consulta_cand</code>, campos <code>DS_COMPOSICAO_COLIGACAO</code>, <code>SG_PARTIDO</code> e <code>DS_SIT_TOT_TURNO</code>, TSE, por ano.</p>
+    <p style="font-size:13px;color:var(--caption)">Fonte: <code>consulta_cand</code>, campo <code>DS_COMPOSICAO_COLIGACAO</code>, TSE, por ano. Espectro classificado pelo partido de registro da candidatura (legenda principal), não pela coligação inteira.</p>
+
+    <div class="table-scroll">
+      <table class="data">
+        <thead>
+          <tr><th>Ano</th><th>Vencedor</th><th>Partido do vencedor</th><th>Espectro</th><th class="num">Partidos</th><th>Coligação</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>2004</td><td>Dr. Fernando</td><td>PSB</td><td>Centro-esquerda</td><td class="num">5</td><td>PSB / PP / PTB / PL / PMN</td></tr>
+          <tr><td>2008</td><td>Dr. Fernando</td><td>PSB</td><td>Centro-esquerda</td><td class="num">7</td><td>PR / PP / PRTB / PV / PRB / PHS / PSB</td></tr>
+          <tr><td>2012</td><td>Roberto Fiorin</td><td>PSB</td><td>Centro-esquerda</td><td class="num">6</td><td>PRB / PP / PDT / PR / PSB / PSDB</td></tr>
+          <tr><td>2016</td><td>Dr. Fernando</td><td>PSB</td><td>Centro-esquerda</td><td class="num">9</td><td>PSB / PROS / PMN / PSDB / PP / PSC / PR / PTN / PV</td></tr>
+          <tr><td>2020</td><td>Dr. Fernando</td><td>PSB</td><td>Centro-esquerda</td><td class="num">7</td><td>PP / PSL / PODE / CIDADANIA / DEM / PSB / PSDB</td></tr>
+          <tr class="flip"><td>2024</td><td>Hugo Luiz (grupo)</td><td>PP</td><td>Direita</td><td class="num">5</td><td>REPUBLICANOS / PP / MDB / Federação PSDB&#8209;Cidadania</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:13px;color:var(--caption)">Fonte: <code>consulta_cand</code>, campos <code>SG_PARTIDO</code>, <code>DS_COMPOSICAO_COLIGACAO</code> e <code>DS_SIT_TOT_TURNO</code>, TSE, por ano. Espectro classificado pelo partido de registro do vencedor, não pela coligação inteira.</p>
   </section>
 
   <section id="vereadores">
@@ -643,10 +715,14 @@
     <figure class="exhibit">
       <div class="exhibit-head"><span class="tag">Figura 15</span><span class="cap">Participação feminina — população, eleitorado e candidatos</span></div>
       <div class="exhibit-body">
-        <img src="data:image/png;base64,{{CHART_GENERO_CANDIDATOS}}" alt="Gráfico de barras comparando o percentual de mulheres em quatro grupos: população do IBGE em 2022 (49,3%%), eleitorado do TSE em 2024 (50,0%%), candidatos de 2020 (37,3%%) e candidatos de 2024 (31,6%%)." />
+        <img src="data:image/png;base64,{{CHART_GENERO_CANDIDATOS}}" alt="Gráfico de barras comparando o percentual de mulheres em quatro grupos: população do IBGE em 2022 (49,3%%), eleitorado do TSE em 2024 (50,0%%), candidatas de 2020 (37,3%%) e candidatas de 2024 (31,6%%)." />
       </div>
       <figcaption>População e eleitorado são praticamente 50/50; entre os candidatos, a fatia de mulheres é bem menor — e caiu ainda mais de 2020 para 2024.</figcaption>
     </figure>
+
+    <div class="callout">
+      <strong>Um nome por trás do número.</strong> O registro legislativo da própria Câmara Municipal de Alfredo Chaves (<a href="https://spl.camaraalfredochaves.es.gov.br/spl/processo.aspx?id=2443&amp;tipo=23&amp;autor=239" target="_blank" rel="noopener">Moção de Louvor n.º 003/2024</a>, de autoria do então vereador e hoje prefeito Hugo Luiz) homenageia <strong>Regina Puppin</strong> como &ldquo;primeira e única Vereadora do Município de Alfredo Chaves a ocupar um cargo no Legislativo Municipal&rdquo; — ou seja, a única mulher a ocupar uma cadeira na Câmara em toda a história do município, até hoje. Ela não aparece em nenhum dos candidatos a vereador registrados pelo TSE entre 2004 e 2024 consultados neste estudo, o que indica que seu mandato foi anterior a esse período — o hiato de representação feminina na Câmara é mais antigo e mais profundo do que os seis pleitos analisados aqui.
+    </div>
 
     <p>A composição racial das candidaturas segue um padrão parecido. Em 2020, candidatos brancos eram 61,3% do total — quase idêntico aos 61,4% da população do município. Em 2024 essa proporção subiu para 69,7%, enquanto candidatos pardos caíram de 29,3% para 22,4%: um afastamento em relação à composição racial de Alfredo Chaves, ainda que a fatia de candidatos pretos tenha crescido ligeiramente (6,7% → 7,9%).</p>
 
@@ -658,10 +734,6 @@
       <figcaption>Em 2020, a composição racial dos candidatos era quase um espelho da população. Em 2024, brancos ficaram sobrerrepresentados e pardos, sub-representados.</figcaption>
     </figure>
 
-    <p>O mesmo Censo traz a renda nominal mensal domiciliar per capita do município: média de R$ 1.469,82 (mediana R$ 1.212,00). Cruzada por raça, essa renda varia de forma consistente com o padrão nacional: R$ 1.618,38 entre moradores brancos, R$ 1.230,73 entre pardos e R$ 1.152,90 entre pretos — uma diferença de 40% entre os extremos. Por sexo, a diferença é pequena (R$ 1.474,30 entre homens, R$ 1.465,22 entre mulheres).</p>
-    <div class="callout warn">
-      <strong>Limite dos dados.</strong> A renda domiciliar per capita do Censo é a renda total do domicílio dividida pelo número de moradores — não a renda individual do trabalho de cada pessoa, e por isso não captura diretamente uma eventual desigualdade salarial entre homens e mulheres no mercado de trabalho local, apenas a renda média de quem mora na mesma casa. A raça ou cor dos candidatos é autodeclarada ao TSE no ato da candidatura (campo <code>DS_COR_RACA</code>), obrigatória desde 2014; já a raça ou cor do eleitorado (<code>perfil_eleitor_secao</code>) é de preenchimento facultativo e ficou sem resposta em mais de 89% dos registros de 2024 — dado real, mas incompleto demais para comparação, por isso não usado aqui.
-    </div>
   </section>
 
   <section id="candidatos">
@@ -759,13 +831,53 @@
     <div class="exhibit">
       <div class="exhibit-body tight table-scroll">
         <table class="data locais" style="min-width:520px">
-          <thead><tr><th>Local de votação</th><th>Endereço</th><th>Seções atendidas</th></tr></thead>
+          <thead><tr><th class="num">#</th><th>Local de votação</th><th>Endereço</th><th>Seções atendidas</th></tr></thead>
           <tbody>
 {{TABLE_LOCAIS}}
           </tbody>
         </table>
       </div>
     </div>
+
+    <h3>Mapa dos locais de votação</h3>
+    <p>Os números no mapa correspondem à coluna <strong>#</strong> da tabela acima. Em geocodificação por endereço oficial (a maioria dos endereços rurais do TSE não tem numeração — apenas &ldquo;Rua Principal, S/Nº&rdquo;), os locais da sede do município (marcadores próximos entre si, no centro do mapa) são aproximados e ligeiramente espalhados apenas para não se sobreporem; os locais dos distritos rurais correspondem à localidade identificada.</p>
+    <div class="voting-map-wrap">
+      <div class="voting-map" id="votingMap">
+        <img src="data:image/png;base64,{{BASEMAP_B64}}" alt="Mapa de Alfredo Chaves, ES, com os 18 locais de votação numerados" loading="lazy" />
+      </div>
+      <div class="map-detail" id="mapDetail">
+        <p class="map-detail-empty">Clique em um número no mapa para ver o local de votação.</p>
+      </div>
+      <p style="font-size:12px;color:var(--caption);margin-top:8px">Mapa-base: &copy; colaboradores do <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>. Coordenadas por geocodificação (Photon/Komoot) dos nomes de local e distrito do cadastro do TSE.</p>
+    </div>
+    <script>
+      (function(){
+        var PINS = {{MAP_PINS_JSON}};
+        var map = document.getElementById('votingMap');
+        var detail = document.getElementById('mapDetail');
+        var active = null;
+        PINS.forEach(function(p){
+          var btn = document.createElement('button');
+          btn.className = 'map-pin';
+          btn.type = 'button';
+          btn.style.left = p.x + '%';
+          btn.style.top = p.y + '%';
+          btn.textContent = p.n;
+          btn.setAttribute('aria-label', p.n + '. ' + p.local);
+          btn.addEventListener('click', function(){
+            if (active) active.classList.remove('active');
+            btn.classList.add('active');
+            active = btn;
+            detail.innerHTML =
+              '<div class="map-detail-num">' + p.n + '</div>' +
+              '<div><strong>' + p.local + '</strong>' +
+              '<div class="map-detail-addr">' + p.endereco + '</div>' +
+              '<div class="map-detail-secoes">Seções atendidas: ' + p.secoes + '</div></div>';
+          });
+          map.appendChild(btn);
+        });
+      })();
+    </script>
   </section>
 
   <section id="conclusao">

@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import pandas as pd
 import os
+import json
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(BASE, "output")
@@ -63,12 +64,65 @@ locais = comp.dropna(subset=['local_votacao']).groupby(['local_votacao', 'endere
     lambda s: ', '.join(str(int(x)) for x in sorted(s))
 ).reset_index().sort_values('local_votacao')
 
+locais = locais.reset_index(drop=True)
 loc_rows = []
-for _, r in locais.iterrows():
+for i, r in locais.iterrows():
     loc_rows.append(
-        f'<tr><td>{esc(r["local_votacao"])}</td><td>{esc(r["endereco_votacao"])}</td><td>{esc(r["NR_SECAO"])}</td></tr>'
+        f'<tr><td class="num">{i + 1}</td><td>{esc(r["local_votacao"])}</td><td>{esc(r["endereco_votacao"])}</td><td>{esc(r["NR_SECAO"])}</td></tr>'
     )
 html = html.replace("{{TABLE_LOCAIS}}", "\n".join(loc_rows))
+
+# ---------------------------------------------------------------------
+# mapa interativo dos 18 locais de votação
+# ---------------------------------------------------------------------
+with open(os.path.join(BASE, "data", "locais_votacao_geocoded.csv"), encoding="utf-8") as f:
+    geo = pd.read_csv(f)
+with open(os.path.join(OUT, "basemap_meta.json"), encoding="utf-8") as f:
+    meta = json.load(f)
+
+import math
+ZOOM, TS, X1, Y1 = meta["zoom"], meta["tile_size"], meta["x1"], meta["y1"]
+W, H = meta["width_px"], meta["height_px"]
+
+def deg2px(lat, lon):
+    lat_rad = math.radians(lat)
+    n = 2 ** ZOOM
+    xtile = (lon + 180.0) / 360.0 * n
+    ytile = (1.0 - math.log(math.tan(lat_rad) + 1 / math.cos(lat_rad)) / math.pi) / 2.0 * n
+    return (xtile - X1) * TS, (ytile - Y1) * TS
+
+# order pins to match the numbered table above (same alphabetical order)
+geo_by_local = {row["local_votacao"]: row for _, row in geo.iterrows()}
+from collections import defaultdict
+by_coord = defaultdict(list)
+for i, r in locais.iterrows():
+    g = geo_by_local[r["local_votacao"]]
+    by_coord[(round(g["lat"], 5), round(g["lon"], 5))].append(i)
+
+pins_js = []
+for i, r in locais.iterrows():
+    g = geo_by_local[r["local_votacao"]]
+    px, py = deg2px(g["lat"], g["lon"])
+    cluster = by_coord[(round(g["lat"], 5), round(g["lon"], 5))]
+    if len(cluster) > 1:
+        j = cluster.index(i)
+        ang = 2 * math.pi * j / len(cluster)
+        px += 52 * math.cos(ang)
+        py += 52 * math.sin(ang)
+    pct_x, pct_y = round(px / W * 100, 3), round(py / H * 100, 3)
+    pins_js.append(
+        '{n:%d,x:%s,y:%s,local:"%s",endereco:"%s",secoes:"%s"}' % (
+            i + 1, pct_x, pct_y,
+            r["local_votacao"].replace('"', "'"),
+            str(r["endereco_votacao"]).replace('"', "'"),
+            r["NR_SECAO"],
+        )
+    )
+html = html.replace("{{MAP_PINS_JSON}}", "[" + ",".join(pins_js) + "]")
+
+with open(os.path.join(OUT, "basemap_alfredo_chaves.b64"), encoding="utf-8") as f:
+    basemap_b64 = f.read().strip()
+html = html.replace("{{BASEMAP_B64}}", basemap_b64)
 
 final_path = os.path.join(OUT, "case_study.html")
 with open(final_path, "w", encoding="utf-8") as f:
