@@ -24,7 +24,7 @@ GOLD = "#caa0ac"
 GREY = "#8f8f8f"
 BG = "#ffffff"
 GRID = "#e2e2e2"
-INK = "#161616"
+INK = "#333333"
 COR_LADO = {"nossos": BLUE, "adversario": RED, "terceiro": "#3d7fc4"}
 
 plt.rcParams.update({
@@ -71,12 +71,12 @@ for ax, cands, ano in zip(axes, [cand2020, cand2024], [2020, 2024]):
     for bar, age in zip(bars, ages):
         ax.text(age + 1.5, bar.get_y()+bar.get_height()/2, f"{age} anos", va='center', fontsize=10, color=INK)
     ax.set_xlim(0, 85)
-    ax.set_title(f"Candidatos a prefeito — {ano}", fontsize=12, fontweight='bold', fontfamily='Anton')
+    ax.set_title(f"CANDIDATOS A PREFEITO — {ano}", fontsize=12, fontweight='bold', fontfamily='Anton')
     ax.spines[['top','right']].set_visible(False)
     ax.grid(axis='x', color=GRID, linewidth=0.7)
     ax.set_axisbelow(True)
     ax.invert_yaxis()
-fig.suptitle("Idade dos candidatos a prefeito — nossa candidatura em azul, 3º colocado em amarelo", fontsize=13, fontweight='bold', fontfamily='Anton', y=1.03)
+fig.suptitle("IDADE DOS CANDIDATOS A PREFEITO — CANDIDATURA DO GRUPO EM VERDE, 3º COLOCADO EM AZUL", fontsize=13, fontweight='bold', fontfamily='Anton', y=1.03)
 plt.tight_layout()
 charts['idade_candidatos'] = fig_to_b64(fig)
 
@@ -91,13 +91,13 @@ for ax, cands, ano in zip(axes, [cand2020, cand2024], [2020, 2024]):
     bars = ax.barh(names, pat, color=colors, height=0.55)
     for bar, p in zip(bars, pat):
         ax.text(p + max(pat)*0.02, bar.get_y()+bar.get_height()/2, f"R$ {p:,.0f}".replace(",","."), va='center', fontsize=9.5, color=INK)
-    ax.set_title(f"Patrimônio declarado — {ano}", fontsize=12, fontweight='bold', fontfamily='Anton')
+    ax.set_title(f"PATRIMÔNIO DECLARADO — {ano}", fontsize=12, fontweight='bold', fontfamily='Anton')
     ax.spines[['top','right']].set_visible(False)
     ax.grid(axis='x', color=GRID, linewidth=0.7)
     ax.set_axisbelow(True)
     ax.invert_yaxis()
     ax.set_xlim(0, max(max(c[2] for c in cand2020), max(c[2] for c in cand2024))*1.25)
-fig.suptitle("Patrimônio declarado dos candidatos a prefeito — nossa candidatura em azul, 3º colocado em amarelo", fontsize=13, fontweight='bold', fontfamily='Anton', y=1.03)
+fig.suptitle("PATRIMÔNIO DECLARADO DOS CANDIDATOS A PREFEITO — CANDIDATURA DO GRUPO EM VERDE, 3º COLOCADO EM AZUL", fontsize=13, fontweight='bold', fontfamily='Anton', y=1.03)
 plt.tight_layout()
 charts['patrimonio_candidatos'] = fig_to_b64(fig)
 

@@ -21,7 +21,7 @@ GOLD = "#caa0ac"
 GREY = "#8f8f8f"
 BG = "#ffffff"
 GRID = "#e2e2e2"
-INK = "#161616"
+INK = "#333333"
 
 plt.rcParams.update({
     "font.family": "Bricolage Grotesque",
@@ -82,7 +82,7 @@ ax.spines[['top','right','left']].set_visible(False)
 ax.tick_params(left=False)
 ax.grid(axis='x', color=GRID, linewidth=0.7)
 ax.set_axisbelow(True)
-ax.set_title("Registro das 9 pesquisas eleitorais — Alfredo Chaves, 2024", fontsize=13, fontweight='bold', fontfamily='Anton', pad=14)
+ax.set_title("REGISTRO DAS 9 PESQUISAS ELEITORAIS — ALFREDO CHAVES, 2024", fontsize=13, fontweight='bold', fontfamily='Anton', pad=14)
 plt.tight_layout()
 b64 = fig_to_b64(fig)
 with open(os.path.join(OUT, "chart_pesquisas_timeline.b64"), 'w') as f:

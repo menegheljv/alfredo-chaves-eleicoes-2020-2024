@@ -70,7 +70,7 @@ print(f"\nSaved: {summary_path}")
 # Chart: the group's vote share across six election cycles
 # ---------------------------------------------------------------------------
 BG = "#ffffff"
-INK = "#161616"
+INK = "#333333"
 MUTED = "#8f8f8f"
 GRID = "#e2e2e2"
 GREEN = "#5fd996"
@@ -87,7 +87,7 @@ colors = [RED if r == "lost" else GREEN for r in summary["resultado_do_grupo"]]
 ax.plot(x, y, color=MUTED, linewidth=2, zorder=1)
 ax.scatter(x, y, s=180, c=colors, zorder=2, edgecolors=BG, linewidths=1.5)
 ax.axhline(50, color=GRID, linestyle="--", linewidth=1, zorder=0)
-ax.text(x[0] - 0.3, 50.8, "50% needed to win", fontsize=9, color=MUTED)
+ax.text(x[0] - 0.3, 50.8, "50% necessários para vencer", fontsize=9, color=MUTED)
 
 for xi, yi, name in zip(x, y, summary["candidato_do_grupo"]):
     label = f"{name.title()}\n{yi:.1f}%"
@@ -96,8 +96,8 @@ for xi, yi, name in zip(x, y, summary["candidato_do_grupo"]):
 
 ax.set_xticks(x)
 ax.set_ylim(0, 70)
-ax.set_ylabel("Vote share of the group's candidate", color=INK)
-ax.set_title("Five losses, then a win: mayoral elections in Alfredo Chaves, 2004-2024", fontsize=13, pad=14, color=INK, fontfamily='Anton')
+ax.set_ylabel("Votação do candidato do grupo, % dos votos válidos", color=INK)
+ax.set_title("CINCO DERROTAS, DEPOIS UMA VITÓRIA — PREFEITO, ALFREDO CHAVES 2004–2024", fontsize=13, pad=14, color=INK, fontfamily='Anton')
 ax.tick_params(colors=MUTED)
 for spine in ["top", "right"]:
     ax.spines[spine].set_visible(False)

@@ -27,7 +27,7 @@ for _f in ["Anton-Regular.ttf", "BricolageGrotesque-Regular.ttf", "BricolageGrot
 plt.rcParams["font.family"] = "Bricolage Grotesque"
 
 BG = "#ffffff"
-INK = "#161616"
+INK = "#333333"
 MUTED = "#8f8f8f"
 GRID = "#e2e2e2"
 GREEN = "#5fd996"
@@ -96,9 +96,10 @@ for xi, yi in zip(x, y):
 ax.set_xticks(x)
 ax.set_ylim(50, 100)
 ax.set_ylabel("Eleitores aptos como % da população estimada (IBGE)", color=INK)
-ax.set_title("O eleitorado cresceu, a população não", fontsize=15, pad=40, color=INK, fontfamily="Anton")
-ax.text(0.0, 1.14, "Alfredo Chaves, ES. Cruzamento TSE (eleitores aptos) x IBGE (população estimada)",
-        transform=ax.transAxes, fontsize=10.5, color=MUTED)
+fig.text(0.085, 0.94, "O ELEITORADO CRESCEU, A POPULAÇÃO NÃO",
+         fontsize=15, color=INK, fontfamily="Anton", ha="left", va="top")
+fig.text(0.085, 0.865, "Alfredo Chaves, ES. Cruzamento TSE (eleitores aptos) x IBGE (população estimada)",
+         fontsize=10.5, color=MUTED, ha="left", va="top")
 ax.tick_params(colors=MUTED)
 for spine in ["top", "right"]:
     ax.spines[spine].set_visible(False)
@@ -107,7 +108,7 @@ for spine in ["left", "bottom"]:
 ax.yaxis.grid(True, color=GRID, linewidth=0.8)
 ax.set_axisbelow(True)
 
-plt.tight_layout()
+plt.tight_layout(rect=[0, 0, 1, 0.82])
 buf = BytesIO()
 plt.savefig(buf, format="png", facecolor=BG)
 plt.close(fig)

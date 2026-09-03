@@ -166,7 +166,7 @@
   ul.list, ol.list { max-width: 66ch; padding-left: 22px; color: var(--ink-soft); }
   ul.list li, ol.list li { margin-bottom: 8px; }
 
-  /* ---------- Exhibit blocks (data/code/charts) ---------- */
+  /* ---------- Figuras (data/code/charts) ---------- */
   .exhibit {
     background: var(--paper-raised);
     border: 1px solid var(--border);
@@ -355,7 +355,7 @@
   <header class="masthead">
     <div class="kicker">Estudo de caso &middot; Análise de dados eleitorais</div>
     <h1 class="title">A metamorfose do poder em Alfredo Chaves:<span class="subtitle">não vivemos mais como nossos pais</span></h1>
-    <p class="dek">De 2004 a 2020, cinco eleições pra prefeito perdidas em Alfredo Chaves. Em 2024, a virada: candidatura derrotada em 35 das 36 seções eleitorais de 2020 venceu nas 42 seções de 2024. Reconstruído a partir de dados públicos e oficiais do TSE e do IBGE, com pipeline próprio em Python, SQL e visualização.</p>
+    <p class="dek">De 2004 a 2020, cinco eleições para prefeito perdidas em Alfredo Chaves. Em 2024, a virada: candidatura derrotada em 35 das 36 seções eleitorais de 2020 venceu nas 42 seções de 2024. Reconstruído a partir de dados públicos e oficiais do TSE e do IBGE, com pipeline próprio em Python, SQL e visualização.</p>
     <div class="meta-row">
       <span><strong>Município:</strong> Alfredo Chaves &ndash; ES</span>
       <span><strong>Eleições:</strong> Municipais 2004 a 2024 (seis pleitos)</span>
@@ -394,10 +394,10 @@
       <p>Antes da virada de 2020&rarr;2024 documentada abaixo, esse mesmo município conta uma história mais longa. De 2004 a 2020, o grupo por trás desta candidatura perdeu cinco eleições consecutivas para prefeito em Alfredo Chaves, ES. Em 2004 o candidato foi Jorge Gabriel Meneghel, meu pai. A linhagem familiar e política atravessa cada ciclo desde então, até chegar no meu irmão Hugo Luiz em 2024. O gráfico abaixo, construído do mesmo jeito que todo o resto deste estudo, a partir de dados oficiais do TSE por seção eleitoral em cada uma das seis eleições, mostra a votação fechando o intervalo, ciclo a ciclo, até 2024.</p>
     </div>
     <figure class="chart-block">
-      <img src="data:image/png;base64,{{CHART_HISTORICAL_ARC}}" alt="Gráfico de linha mostrando a votação do candidato do grupo pra prefeito em Alfredo Chaves ao longo de seis eleições: 26,4% em 2004, 33,1% em 2008, 36,4% em 2012, 48,0% em 2016, 40,0% em 2020, e 58,1% em 2024, a única vitória." />
+      <img src="data:image/png;base64,{{CHART_HISTORICAL_ARC}}" alt="Gráfico de linha mostrando a votação do candidato do grupo para prefeito em Alfredo Chaves ao longo de seis eleições: 26,4% em 2004, 33,1% em 2008, 36,4% em 2012, 48,0% em 2016, 40,0% em 2020, e 58,1% em 2024, a única vitória." />
     </figure>
     <div class="callout warn">
-      <strong>Divulgação completa.</strong> Jorge Gabriel Meneghel, candidato em 2004, é meu pai. Hugo Luiz, vencedor em 2024, é meu irmão. Este projeto começou como trabalho de campanha. O pipeline de dados veio depois, pra entender o que realmente moveu o resultado.
+      <strong>Divulgação completa.</strong> Jorge Gabriel Meneghel, candidato em 2004, é meu pai. Hugo Luiz, vencedor em 2024, é meu irmão. Este projeto começou como trabalho de campanha. O pipeline de dados veio depois, para entender o que realmente moveu o resultado.
     </div>
   </section>
 
@@ -444,7 +444,7 @@
 
     <h3>Limpeza e normalização (pandas)</h3>
     <div class="exhibit">
-      <div class="exhibit-head"><span class="tag">Exhibit A</span><span class="cap">clean_secao() — trecho do pipeline</span></div>
+      <div class="exhibit-head"><span class="tag">Figura 1</span><span class="cap">clean_secao() — trecho do pipeline</span></div>
       <div class="exhibit-body tight">
 <pre class="code"><span class="k">def</span> clean_secao(df, ano):
     keep = [<span class="s">'NR_ZONA'</span>, <span class="s">'NR_SECAO'</span>, <span class="s">'CD_CARGO'</span>, <span class="s">'DS_CARGO'</span>,
@@ -460,7 +460,7 @@
 
     <h3>Análise comparativa (SQL)</h3>
     <div class="exhibit">
-      <div class="exhibit-head"><span class="tag">Exhibit B</span><span class="cap">vencedor por seção, por ano</span></div>
+      <div class="exhibit-head"><span class="tag">Figura 2</span><span class="cap">vencedor por seção, por ano</span></div>
       <div class="exhibit-body tight">
 <pre class="code"><span class="c">-- vencedor de cada seção, por ano (maior nº de votos nominais ao cargo de Prefeito)</span>
 <span class="k">SELECT</span> NR_SECAO, NM_VOTAVEL, <span class="k">SUM</span>(QT_VOTOS) <span class="k">AS</span> votos
@@ -480,7 +480,7 @@
     <p>Em 2020, a candidatura majoritária desta base política venceu em <strong>apenas 1 das 36 seções comparáveis</strong> (seção&nbsp;9), obtendo 37,8% dos votos válidos no município (3.681 votos), contra 53,4% do candidato eleito. Em 2024, a mesma base &mdash; agora sob a coligação <strong>&ldquo;Renovação e Juventude&rdquo;</strong> (Republicanos / PP / MDB / Federação PSDB&#8209;Cidadania) &mdash; venceu nas <strong>42 seções</strong> do município, com 56,4% dos votos válidos (5.779 votos).</p>
 
     <figure class="exhibit">
-      <div class="exhibit-head"><span class="tag">Exhibit C</span><span class="cap">% de votos por seção, 2020 vs. 2024</span></div>
+      <div class="exhibit-head"><span class="tag">Figura 3</span><span class="cap">% de votos por seção, 2020 vs. 2024</span></div>
       <div class="exhibit-body">
         <img src="data:image/png;base64,{{CHART_SLOPE}}" alt="Gráfico de linhas conectando o percentual de votos do candidato a prefeito em cada seção eleitoral, 2020 à esquerda e 2024 à direita, mostrando quase todas as linhas subindo de baixo do corte de 50%25 para cima." />
       </div>
@@ -490,7 +490,7 @@
     <p>Das 36 seções comparáveis, <strong>28 passaram de minoria (&lt;50%) para maioria absoluta (&ge;50%)</strong> dos votos válidos entre uma eleição e outra — uma virada de 20,9 pontos percentuais em média nessas seções.</p>
 
     <figure class="exhibit">
-      <div class="exhibit-head"><span class="tag">Exhibit D</span><span class="cap">Todas as 42 seções de Alfredo Chaves em 2024</span></div>
+      <div class="exhibit-head"><span class="tag">Figura 4</span><span class="cap">Todas as 42 seções de Alfredo Chaves em 2024</span></div>
       <div class="exhibit-body">
         <img src="data:image/png;base64,{{CHART_GRID}}" alt="Grade com todas as 42 seções eleitorais numeradas, coloridas por categoria: seções que viraram de derrota para vitória, a única já vencida em 2020, e seções novas criadas até 2024." />
       </div>
@@ -498,32 +498,33 @@
     </figure>
 
     <figure class="exhibit">
-      <div class="exhibit-head"><span class="tag">Exhibit E</span><span class="cap">Resultado agregado do município</span></div>
+      <div class="exhibit-head"><span class="tag">Figura 5</span><span class="cap">Resultado agregado do município</span></div>
       <div class="exhibit-body">
         <img src="data:image/png;base64,{{CHART_MUNICIPIO}}" alt="Gráfico de barras comparando o total de votos válidos do candidato a prefeito em 2020 (3.681 votos, 37,8%%) e em 2024 (5.779 votos, 56,4%%)." />
       </div>
     </figure>
 
     <h3>Uma legenda diferente a cada eleição</h3>
-    <p>Os dados de <code>consulta_cand</code> mostram que o candidato do grupo nunca disputou pelo mesmo partido duas vezes em vinte anos: PT em 2004, PSDB em 2008, PSD em 2012, PMDB em 2016, Republicanos em 2020, PP em 2024. O espectro ideológico também se moveu, de um partido de esquerda em 2004 pra partidos de centro e direita a partir de 2012, acompanhando o realinhamento nacional da política brasileira no período &mdash; não uma escolha isolada de estratégia local.</p>
+    <p>Os dados de <code>consulta_cand</code> mostram que o candidato do grupo nunca disputou pelo mesmo partido duas vezes em vinte anos: PT em 2004, PSDB em 2008, PSD em 2012, PMDB em 2016, Republicanos em 2020, PP em 2024. O espectro ideológico também se moveu, de um partido de esquerda em 2004 para partidos de centro e direita a partir de 2012, acompanhando o realinhamento nacional da política brasileira no período &mdash; não uma escolha isolada de estratégia local.</p>
     <p>O tamanho da coligação, porém, <strong>não explica a vitória sozinho</strong>: em 2016, o candidato concorreu pela maior coligação de toda a série (9 partidos) e mesmo assim perdeu, com 48,0% dos votos. Em 2020, com a menor coligação (3 partidos), também perdeu. A coligação de 2024 (5 partidos: Republicanos, PP, MDB e Federação PSDB&#8209;Cidadania) tem tamanho mediano na série &mdash; nem a maior, nem a menor.</p>
+    <p>Do lado adversário, o padrão é o oposto. Nas cinco eleições perdidas por este grupo, entre 2004 e 2020, quem venceu foi sempre o <strong>PSB</strong>: Dr. Fernando levou 2004, 2008, 2016 e 2020, e Roberto Fiorin, também PSB, levou 2012 &mdash; quatro mandatos e dois nomes diferentes sob a mesma legenda, vinte anos seguidos. Essa sequência só se rompe em 2024, quando Rolmar Boteccia tenta manter o PSB no poder e perde para o PP de Hugo Luiz. Ou seja: enquanto o lado que perdia trocava de partido a cada pleito, o lado que vencia tinha uma legenda estável havia duas décadas &mdash; e foi justamente essa estabilidade que quebrou em 2024, junto com o resultado.</p>
 
     <div class="table-scroll">
       <table class="data">
         <thead>
-          <tr><th>Ano</th><th>Partido</th><th class="num">Partidos na coligação</th><th>Resultado</th></tr>
+          <tr><th>Ano</th><th>Partido do grupo</th><th class="num">Partidos na coligação</th><th>Vencedor</th><th>Partido do vencedor</th><th>Resultado</th></tr>
         </thead>
         <tbody>
-          <tr><td>2004</td><td>PT</td><td class="num">5</td><td>derrota</td></tr>
-          <tr><td>2008</td><td>PSDB</td><td class="num">5</td><td>derrota</td></tr>
-          <tr><td>2012</td><td>PSD</td><td class="num">6</td><td>derrota</td></tr>
-          <tr><td>2016</td><td>PMDB</td><td class="num">9</td><td>derrota (maior coligação da série)</td></tr>
-          <tr><td>2020</td><td>Republicanos</td><td class="num">3</td><td>derrota (menor coligação da série)</td></tr>
-          <tr class="flip"><td>2024</td><td>PP</td><td class="num">5</td><td>vitória</td></tr>
+          <tr><td>2004</td><td>PT</td><td class="num">5</td><td>Dr. Fernando</td><td>PSB</td><td>derrota</td></tr>
+          <tr><td>2008</td><td>PSDB</td><td class="num">5</td><td>Dr. Fernando</td><td>PSB</td><td>derrota</td></tr>
+          <tr><td>2012</td><td>PSD</td><td class="num">6</td><td>Roberto Fiorin</td><td>PSB</td><td>derrota</td></tr>
+          <tr><td>2016</td><td>PMDB</td><td class="num">9</td><td>Dr. Fernando</td><td>PSB</td><td>derrota (maior coligação da série)</td></tr>
+          <tr><td>2020</td><td>Republicanos</td><td class="num">3</td><td>Dr. Fernando</td><td>PSB</td><td>derrota (menor coligação da série)</td></tr>
+          <tr class="flip"><td>2024</td><td>PP</td><td class="num">5</td><td>Hugo Luiz (grupo)</td><td>PP</td><td>vitória</td></tr>
         </tbody>
       </table>
     </div>
-    <p style="font-size:13px;color:var(--caption)">Fonte: <code>consulta_cand</code>, campo <code>DS_COMPOSICAO_COLIGACAO</code>, TSE, por ano.</p>
+    <p style="font-size:13px;color:var(--caption)">Fonte: <code>consulta_cand</code>, campos <code>DS_COMPOSICAO_COLIGACAO</code>, <code>SG_PARTIDO</code> e <code>DS_SIT_TOT_TURNO</code>, TSE, por ano.</p>
   </section>
 
   <section id="vereadores">
@@ -532,7 +533,7 @@
     <p>A Câmara de Alfredo Chaves tem <strong>9 cadeiras</strong>. Em 2020, a base política de Hugo Luiz Picoli Meneghel (então candidato a vereador pelo PTB, na coligação majoritária &ldquo;Mudança com Transparência&rdquo; — PTB / Republicanos / Patriota) elegeu apenas <strong style="color:var(--blue)">3 vereadores</strong>, contra <strong style="color:var(--red)">6 de partidos adversários</strong> (coligação vencedora para prefeito: PP / PSB / PSDB, entre outros) — minoria clara. Em 2024, com a coordenação de campanha estendida a todos os candidatos a vereador da coligação &ldquo;Renovação e Juventude&rdquo; (Republicanos / PP / PSDB), a bancada da chapa cresceu para <strong style="color:var(--blue)">5 de 9 cadeiras</strong>: maioria simples, ainda que apertada.</p>
 
     <figure class="exhibit">
-      <div class="exhibit-head"><span class="tag">Exhibit F</span><span class="cap">Composição da Câmara, 2020 vs. 2024</span></div>
+      <div class="exhibit-head"><span class="tag">Figura 6</span><span class="cap">Composição da Câmara, 2020 vs. 2024</span></div>
       <div class="exhibit-body">
         <img src="data:image/png;base64,{{CHART_CAMARA}}" alt="Gráfico de barras horizontais empilhadas comparando a composição da Câmara Municipal: em 2020, 3 cadeiras da chapa (verde) contra 6 de adversários (vermelho); em 2024, 5 cadeiras da chapa contra 4 de adversários — virando de minoria para maioria." />
       </div>
@@ -542,7 +543,7 @@
     <p>Somando a votação nominal de <em>todos</em> os candidatos a vereador da chapa (eleitos e não eleitos), o crescimento também aparece na urna, não só nas cadeiras:</p>
 
     <figure class="exhibit">
-      <div class="exhibit-head"><span class="tag">Exhibit G</span><span class="cap">Total de votos dos candidatos a vereador da chapa</span></div>
+      <div class="exhibit-head"><span class="tag">Figura 7</span><span class="cap">Total de votos dos candidatos a vereador da chapa</span></div>
       <div class="exhibit-body">
         <img src="data:image/png;base64,{{CHART_VOTOS_VEREADORES}}" alt="Gráfico de barras comparando o total de votos somados de todos os candidatos a vereador da chapa: 3.427 votos (38,8%% do pleito) em 2020 contra 4.206 votos (43,8%% do pleito) em 2024." />
       </div>
@@ -555,7 +556,7 @@
     </div>
 
     <figure class="exhibit">
-      <div class="exhibit-head"><span class="tag">Exhibit H</span><span class="cap">Vereadores eleitos em 2020</span></div>
+      <div class="exhibit-head"><span class="tag">Figura 8</span><span class="cap">Vereadores eleitos em 2020</span></div>
       <div class="exhibit-body">
         <img src="data:image/png;base64,{{CHART_VEREADORES_2020}}" alt="Gráfico de barras horizontais com os 9 vereadores eleitos em 2020, coloridos por lado: 3 da chapa de Hugo Luiz em verde, 6 de adversários em vermelho." />
       </div>
@@ -563,7 +564,7 @@
     </figure>
 
     <figure class="exhibit">
-      <div class="exhibit-head"><span class="tag">Exhibit I</span><span class="cap">Vereadores eleitos em 2024</span></div>
+      <div class="exhibit-head"><span class="tag">Figura 9</span><span class="cap">Vereadores eleitos em 2024</span></div>
       <div class="exhibit-body">
         <img src="data:image/png;base64,{{CHART_VEREADORES_2024}}" alt="Gráfico de barras horizontais com os 9 vereadores eleitos em 2024, coloridos por lado: 5 da chapa em verde, 4 de adversários em vermelho." />
       </div>
@@ -581,15 +582,15 @@
     <p>Dados da <strong>prestação de contas eleitorais</strong> do TSE (receitas e despesas declaradas por cada candidato, incluindo adversários) e do <strong>detalhamento de apuração</strong> (comparecimento e abstenção) completam o quadro: a virada não veio de um eleitorado maior, e a receita mobilizada pela candidatura do grupo nunca foi destacadamente superior à dos concorrentes — mas a campanha do grupo converteu esse recurso em voto com mais eficiência que qualquer outro candidato ao cargo, nas duas eleições.</p>
 
     <figure class="exhibit">
-      <div class="exhibit-head"><span class="tag">Exhibit J</span><span class="cap">Receita declarada — todos os candidatos a prefeito</span></div>
+      <div class="exhibit-head"><span class="tag">Figura 10</span><span class="cap">Receita declarada — todos os candidatos a prefeito</span></div>
       <div class="exhibit-body">
         <img src="data:image/png;base64,{{CHART_FINANCEIRO_CHAPA}}" alt="Gráfico de barras horizontais com a receita declarada por cada candidato a prefeito. 2020: Fernando (PSB, eleito) R$108.642; Bianchi (Republicanos, grupo) R$53.120; Zanata (PDT) R$32.722. 2024: Hugo Luiz (PP, grupo, eleito) R$155.597; Boldrini (PL) R$141.130; Boteccia (PSB) R$119.400." />
       </div>
-      <figcaption>Com todos os candidatos lado a lado, fica claro que nossa campanha nunca foi a mais bem financiada: em 2020, Bianchi arrecadou menos da metade do vencedor Fernando; em 2024, Hugo Luiz teve a maior receita entre os três — mas a diferença para os adversários foi pequena, não uma vantagem esmagadora de caixa.</figcaption>
+      <figcaption>Com todos os candidatos lado a lado, fica claro que a campanha do grupo nunca foi a mais bem financiada: em 2020, Bianchi arrecadou menos da metade do vencedor Fernando; em 2024, Hugo Luiz teve a maior receita entre os três — mas a diferença para os adversários foi pequena, não uma vantagem esmagadora de caixa.</figcaption>
     </figure>
 
     <figure class="exhibit">
-      <div class="exhibit-head"><span class="tag">Exhibit K</span><span class="cap">Eficiência de investimento por voto — todos os candidatos a prefeito</span></div>
+      <div class="exhibit-head"><span class="tag">Figura 11</span><span class="cap">Eficiência de investimento por voto — todos os candidatos a prefeito</span></div>
       <div class="exhibit-body">
         <img src="data:image/png;base64,{{CHART_CUSTO_POR_VOTO}}" alt="Gráfico de barras horizontais com a eficiência de investimento por voto (despesa paga dividida por votos válidos) de cada candidato a prefeito. 2020: Bianchi (grupo) R$13,58/voto; Fernando R$19,70/voto; Zanata R$80,36/voto. 2024: Hugo Luiz (grupo, eleito) R$26,69/voto; Boteccia R$36,20/voto; Boldrini R$141,27/voto." />
       </div>
@@ -597,7 +598,7 @@
     </figure>
 
     <figure class="exhibit">
-      <div class="exhibit-head"><span class="tag">Exhibit L</span><span class="cap">Origem das receitas da chapa</span></div>
+      <div class="exhibit-head"><span class="tag">Figura 12</span><span class="cap">Origem das receitas da chapa</span></div>
       <div class="exhibit-body">
         <img src="data:image/png;base64,{{CHART_ORIGEM_RECEITAS}}" alt="Gráfico de barras horizontais comparando a origem das receitas da chapa em 2020 e 2024, por categoria: recursos de partido político, recursos próprios, pessoas físicas e outros candidatos." />
       </div>
@@ -608,7 +609,7 @@
     <p>O eleitorado apto cresceu apenas 4,6% (12.294 → 12.860) e o comparecimento às urnas ficou praticamente estável — <strong>79,15% em 2020, 79,74% em 2024</strong>. Como o candidato da chapa cresceu 57% em votos absolutos (3.681 → 5.779) enquanto o eleitorado total mal se moveu, a virada foi predominantemente <strong>conversão de eleitores que já votavam</strong>, não mobilização de novos votantes.</p>
 
     <figure class="exhibit">
-      <div class="exhibit-head"><span class="tag">Exhibit M</span><span class="cap">Comparecimento vs. abstenção</span></div>
+      <div class="exhibit-head"><span class="tag">Figura 13</span><span class="cap">Comparecimento vs. abstenção</span></div>
       <div class="exhibit-body">
         <img src="data:image/png;base64,{{CHART_COMPARECIMENTO}}" alt="Gráfico de barras horizontais empilhadas comparando comparecimento e abstenção do eleitorado apto: 9.731 compareceram e 2.563 se abstiveram em 2020 (79,15%%); 10.255 compareceram e 2.605 se abstiveram em 2024 (79,74%%)." />
       </div>
@@ -622,14 +623,14 @@
     </div>
 
     <h3>Cruzamento com o IBGE: o eleitorado cresceu, a população não</h3>
-    <p>Pra entender se o crescimento do eleitorado (9.247 aptos em 2004 → 12.860 em 2024, +39%) reflete o município crescendo, cruzamos os dados do TSE com as estimativas populacionais anuais do IBGE (SIDRA, tabela 6579, código do município 3200300). A resposta é não: a população estimada de Alfredo Chaves ficou praticamente estável no período (14.113 em 2004, ~14.373 em 2024), até com quedas em alguns anos. O eleitorado não cresceu porque o município cresceu — cresceu porque uma fatia cada vez maior da população já residente passou a estar registrada pra votar.</p>
+    <p>Para entender se o crescimento do eleitorado (9.247 aptos em 2004 → 12.860 em 2024, +39%) reflete o município crescendo, cruzamos os dados do TSE com as estimativas populacionais anuais do IBGE (SIDRA, tabela 6579, código do município 3200300). A resposta é não: a população estimada de Alfredo Chaves ficou praticamente estável no período (14.113 em 2004, ~14.373 em 2024), até com quedas em alguns anos. O eleitorado não cresceu porque o município cresceu — cresceu porque uma fatia cada vez maior da população já residente passou a estar registrada para votar.</p>
 
     <figure class="exhibit">
-      <div class="exhibit-head"><span class="tag">Exhibit R</span><span class="cap">Eleitores aptos como % da população estimada (IBGE)</span></div>
+      <div class="exhibit-head"><span class="tag">Figura 14</span><span class="cap">Eleitores aptos como % da população estimada (IBGE)</span></div>
       <div class="exhibit-body">
         <img src="data:image/png;base64,{{CHART_IBGE_ELEITORADO}}" alt="Gráfico de linha mostrando o percentual da população estimada pelo IBGE que está registrada para votar em Alfredo Chaves: 65,5% em 2004, 72,7% em 2008, 80,7% em 2012, 79,6% em 2016, 84,0% em 2020, 89,5% em 2024." />
       </div>
-      <figcaption>Cobertura do eleitorado sobre a população total saltou de 65,5% (2004) pra 89,5% (2024) — um efeito nacional de transição demográfica e biometria, não um fenômeno local de Alfredo Chaves. Fonte: IBGE SIDRA, tabela 6579 (população residente estimada), cruzado com <code>QT_APTOS</code> do TSE por ano.</figcaption>
+      <figcaption>Cobertura do eleitorado sobre a população total saltou de 65,5% (2004) para 89,5% (2024) — um efeito nacional de transição demográfica e biometria, não um fenômeno local de Alfredo Chaves. Fonte: IBGE SIDRA, tabela 6579 (população residente estimada), cruzado com <code>QT_APTOS</code> do TSE por ano.</figcaption>
     </figure>
   </section>
 
@@ -639,7 +640,7 @@
     <p>Dados de <code>consulta_cand</code> e <code>bem_candidato</code> (TSE) trazem idade, escolaridade, ocupação e patrimônio declarado de cada candidato — informação pública, prestada por lei a cada eleição. O contraste com <strong style="color:var(--blue)">Hugo Luiz</strong> é o mais nítido do estudo inteiro.</p>
 
     <figure class="exhibit">
-      <div class="exhibit-head"><span class="tag">Exhibit N</span><span class="cap">Idade dos candidatos a prefeito</span></div>
+      <div class="exhibit-head"><span class="tag">Figura 15</span><span class="cap">Idade dos candidatos a prefeito</span></div>
       <div class="exhibit-body">
         <img src="data:image/png;base64,{{CHART_IDADE_CANDIDATOS}}" alt="Dois gráficos de barras horizontais comparando a idade dos três candidatos a prefeito em 2020 (Ronaldo Bianchi 58, Fernando 73, Armando Zanata 64) e em 2024 (Hugo Luiz 25, Rolmar Boteccia 71, Boldrini 61)." />
       </div>
@@ -649,18 +650,18 @@
     <p>Hugo Luiz tinha 25 anos no dia da eleição de 2024, é advogado formado (Direito &ndash; UFES) e, segundo o cadastro do TSE, é <strong>branco e solteiro</strong>. Os outros dois candidatos a prefeito daquele ano tinham 61 e 71 anos.</p>
 
     <figure class="exhibit">
-      <div class="exhibit-head"><span class="tag">Exhibit O</span><span class="cap">Patrimônio declarado dos candidatos a prefeito</span></div>
+      <div class="exhibit-head"><span class="tag">Figura 16</span><span class="cap">Patrimônio declarado dos candidatos a prefeito</span></div>
       <div class="exhibit-body">
         <img src="data:image/png;base64,{{CHART_PATRIMONIO_CANDIDATOS}}" alt="Dois gráficos de barras horizontais comparando o patrimônio declarado dos candidatos a prefeito: em 2020, Ronaldo Bianchi R$366 mil, Fernando R$621 mil, Armando Zanata R$1,38 milhão; em 2024, Hugo Luiz R$29,5 mil, Rolmar Boteccia R$718 mil, Boldrini R$0." />
       </div>
-      <figcaption>Hugo Luiz declarou <strong>R$&nbsp;29.573</strong> em bens — o menor patrimônio de qualquer candidato a prefeito registrado em Alfredo Chaves nas duas eleições, cerca de 25&times; menos que o segundo colocado de 2024 (Rolmar Boteccia, R$&nbsp;718 mil) e mais de 20&times; menos que o candidato derrotado em 2020 que nossa campanha apoiava (Ronaldo Bianchi, R$&nbsp;366 mil). Não é o perfil patrimonial típico de quem vence uma eleição majoritária no interior do Espírito Santo.</figcaption>
+      <figcaption>Hugo Luiz declarou <strong>R$&nbsp;29.573</strong> em bens — o menor patrimônio de qualquer candidato a prefeito registrado em Alfredo Chaves nas duas eleições, cerca de 25&times; menos que o segundo colocado de 2024 (Rolmar Boteccia, R$&nbsp;718 mil) e mais de 20&times; menos que o candidato derrotado em 2020 que a campanha do grupo apoiava (Ronaldo Bianchi, R$&nbsp;366 mil). Não é o perfil patrimonial típico de quem vence uma eleição majoritária no interior do Espírito Santo.</figcaption>
     </figure>
 
     <h3>As 9 pesquisas eleitorais registradas</h3>
     <p>O TSE mantém um sistema próprio de registro de pesquisas eleitorais (<a href="https://www.tse.jus.br/eleicoes/pesquisa-eleitorais/consulta-as-pesquisas-registradas" target="_blank" rel="noopener">pesqele&#8209;divulgacao.tse.jus.br</a>), exigido pelo art.&nbsp;33 da Lei&nbsp;9.504/97. Para Alfredo Chaves em 2024 constam <strong>9 pesquisas registradas</strong>, por 5 empresas diferentes, entre abril e setembro. Abrimos e lemos o conteúdo de todos os 9 editais de publicação em PDF — e vale registrar um limite real dos dados públicos: <strong>o TSE não publica o resultado</strong> (percentual de intenção de voto por candidato) nesses editais, apenas a confirmação formal do registro (empresa, protocolo, data, abrangência). Quem divulga o resultado é a empresa contratante, tipicamente via um veículo de imprensa local.</p>
 
     <figure class="exhibit">
-      <div class="exhibit-head"><span class="tag">Exhibit P</span><span class="cap">Registro das 9 pesquisas eleitorais — linha do tempo</span></div>
+      <div class="exhibit-head"><span class="tag">Figura 17</span><span class="cap">Registro das 9 pesquisas eleitorais — linha do tempo</span></div>
       <div class="exhibit-body">
         <img src="data:image/png;base64,{{CHART_PESQUISAS_TIMELINE}}" alt="Linha do tempo com as 9 pesquisas eleitorais registradas para Alfredo Chaves em 2024, de 19/04 a 27/09, por 5 empresas diferentes, com o dia da eleição (06/10/2024) marcado em verde." />
       </div>
@@ -678,7 +679,7 @@
     </ul>
 
     <figure class="exhibit">
-      <div class="exhibit-head"><span class="tag">Exhibit Q</span><span class="cap">Trajetória da intenção de voto (estimulada) até o resultado</span></div>
+      <div class="exhibit-head"><span class="tag">Figura 18</span><span class="cap">Trajetória da intenção de voto (estimulada) até o resultado</span></div>
       <div class="exhibit-body">
         <img src="data:image/png;base64,{{CHART_PESQUISAS_EVOLUCAO}}" alt="Gráfico de linha mostrando a intenção de voto estimulada de Hugo Luiz (verde) em 54,8% (abril), 57,4% (agosto), 51,2% (21/set), 47,75% (28/set), 51,5% (2/out) e 58,05% no resultado final; Rolmar Botecchia (vermelho) em trajetória inversa mais baixa; Boldrini (cinza, tracejado) entre 9,4% e 12,25% a partir de agosto; e um ponto isolado de 17/set marcado como atípico, com Rolmar em 53,23% e Hugo em 22,90%." />
       </div>

@@ -26,7 +26,7 @@ GOLD = "#caa0ac"
 GREY = "#8f8f8f"
 BG = "#ffffff"
 GRID = "#e2e2e2"
-INK = "#161616"
+INK = "#333333"
 
 plt.rcParams.update({
     "font.family": "Bricolage Grotesque",
@@ -76,12 +76,12 @@ for ax, cands, ano in zip(axes, [cand2020, cand2024], [2020, 2024]):
     for bar, v in zip(bars, vals):
         ax.text(v + max(vals)*0.02, bar.get_y()+bar.get_height()/2, f"R$ {v:,.0f}".replace(",", "."),
                  va='center', fontsize=9.5, fontweight='bold', fontfamily='Anton', color=INK)
-    ax.set_title(f"Receita declarada — {ano}", fontsize=12, fontweight='bold', fontfamily='Anton')
+    ax.set_title(f"RECEITA DECLARADA — {ano}", fontsize=12, fontweight='bold', fontfamily='Anton')
     ax.spines[['top', 'right']].set_visible(False)
     ax.grid(axis='x', color=GRID, linewidth=0.7)
     ax.set_axisbelow(True)
     ax.set_xlim(0, max(vals)*1.32)
-fig.suptitle("Financiamento das campanhas a prefeito — todos os candidatos\nAlfredo Chaves (ES) · nossa candidatura em azul, principal adversário em vermelho, 3º colocado em amarelo",
+fig.suptitle("FINANCIAMENTO DAS CAMPANHAS A PREFEITO — TODOS OS CANDIDATOS\nALFREDO CHAVES (ES) · CANDIDATURA DO GRUPO EM VERDE, PRINCIPAL ADVERSÁRIO EM VERMELHO, 3º COLOCADO EM AZUL",
              fontsize=12.5, fontweight='bold', fontfamily='Anton', y=1.05)
 plt.tight_layout()
 charts['financeiro_chapa'] = fig_to_b64(fig)
@@ -106,12 +106,12 @@ for ax, cands, ano in zip(axes, [cvcand2020, cvcand2024], [2020, 2024]):
     for bar, v in zip(bars, vals):
         ax.text(v + max(vals)*0.02, bar.get_y()+bar.get_height()/2, f"R$ {v:.2f}/voto",
                  va='center', fontsize=9.5, fontweight='bold', fontfamily='Anton', color=INK)
-    ax.set_title(f"Eficiência de investimento por voto — {ano}", fontsize=12, fontweight='bold', fontfamily='Anton')
+    ax.set_title(f"EFICIÊNCIA DE INVESTIMENTO POR VOTO — {ano}", fontsize=12, fontweight='bold', fontfamily='Anton')
     ax.spines[['top', 'right']].set_visible(False)
     ax.grid(axis='x', color=GRID, linewidth=0.7)
     ax.set_axisbelow(True)
     ax.set_xlim(0, max(vals)*1.35)
-fig.suptitle("Eficiência de investimento por voto — despesa paga / votos válidos, todos os candidatos a prefeito\nnossa candidatura em azul, principal adversário em vermelho, 3º colocado em amarelo",
+fig.suptitle("EFICIÊNCIA DE INVESTIMENTO POR VOTO — DESPESA PAGA / VOTOS VÁLIDOS, TODOS OS CANDIDATOS A PREFEITO\nCANDIDATURA DO GRUPO EM VERDE, PRINCIPAL ADVERSÁRIO EM VERMELHO, 3º COLOCADO EM AZUL",
              fontsize=12.5, fontweight='bold', fontfamily='Anton', y=1.05)
 plt.tight_layout()
 charts['custo_por_voto'] = fig_to_b64(fig)
@@ -131,7 +131,7 @@ ax.set_yticks(list(y))
 ax.set_yticklabels(cats, fontsize=10.5)
 ax.invert_yaxis()
 ax.set_xlabel('Receita declarada (R$)', fontsize=10)
-ax.set_title('De onde veio o dinheiro da chapa', fontsize=13, fontweight='bold', fontfamily='Anton', pad=12)
+ax.set_title('DE ONDE VEIO O DINHEIRO DA CHAPA', fontsize=13, fontweight='bold', fontfamily='Anton', pad=12)
 ax.spines[['top', 'right']].set_visible(False)
 ax.grid(axis='x', color=GRID, linewidth=0.7)
 ax.set_axisbelow(True)
@@ -155,7 +155,7 @@ for i, (c, a) in enumerate(zip(comp, abst)):
 ax.set_yticks(list(y))
 ax.set_yticklabels([f"2020 ({S['turnout']['pct_comparecimento_2020']}%)", f"2024 ({S['turnout']['pct_comparecimento_2024']}%)"], fontsize=11)
 ax.set_xlabel('Eleitores aptos', fontsize=10)
-ax.set_title('Comparecimento vs. abstenção — eleitorado apto ao voto', fontsize=12.5, fontweight='bold', fontfamily='Anton', pad=12)
+ax.set_title('COMPARECIMENTO VS. ABSTENÇÃO — ELEITORADO APTO AO VOTO', fontsize=12.5, fontweight='bold', fontfamily='Anton', pad=12)
 ax.spines[['top', 'right', 'left']].set_visible(False)
 ax.tick_params(left=False)
 handles = [mpatches.Patch(color=BLUE, label='Compareceram'), mpatches.Patch(color=GREY, label='Abstenções')]

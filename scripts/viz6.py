@@ -22,7 +22,7 @@ GOLD = "#caa0ac"
 GREY = "#8f8f8f"
 BG = "#ffffff"
 GRID = "#e2e2e2"
-INK = "#161616"
+INK = "#333333"
 
 plt.rcParams.update({
     "font.family": "Bricolage Grotesque",
@@ -64,7 +64,7 @@ labels = ["16/abr\nInst. Solução", "30/ago\nInst. Veritá", "21/set\nInove Con
 
 fig, ax = plt.subplots(figsize=(11, 6.2))
 
-ax.plot(main_dates, hugo, color=BLUE, linewidth=2.8, marker='o', markersize=8, zorder=5, label='Hugo Luiz (nossos)')
+ax.plot(main_dates, hugo, color=BLUE, linewidth=2.8, marker='o', markersize=8, zorder=5, label='Hugo Luiz')
 ax.plot(main_dates, rolmar, color=RED, linewidth=2.2, marker='o', markersize=7, zorder=4, label='Rolmar Botecchia')
 ax.plot(boldrini_dates, boldrini, color=GOLD, linewidth=1.8, marker='o', markersize=6, zorder=3, linestyle='--', label='Boldrini')
 
@@ -88,7 +88,7 @@ ax.spines[['top','right']].set_visible(False)
 ax.grid(axis='y', color=GRID, linewidth=0.7)
 ax.set_axisbelow(True)
 ax.legend(loc='lower left', frameon=False, fontsize=9.5, ncol=3)
-ax.set_title("Seis pesquisas reais, abril a outubro: Hugo Luiz nunca saiu da liderança", fontsize=12.5, fontweight='bold', fontfamily='Anton', pad=14)
+ax.set_title("SEIS PESQUISAS REAIS, ABRIL A OUTUBRO: HUGO LUIZ NUNCA SAIU DA LIDERANÇA", fontsize=12.5, fontweight='bold', fontfamily='Anton', pad=14)
 plt.tight_layout()
 b64 = fig_to_b64(fig)
 with open(os.path.join(OUT, "chart_pesquisas_evolucao.b64"), 'w') as f:

@@ -33,7 +33,7 @@ RED_TINT = "#3a211d"
 GREY = "#8f8f8f"
 BG = "#ffffff"
 GRID = "#e2e2e2"
-INK = "#161616"
+INK = "#333333"
 
 plt.rcParams.update({
     "font.family": "Bricolage Grotesque",
@@ -74,9 +74,9 @@ ax.axhline(50, color=GREY, linestyle='--', linewidth=1, alpha=0.7)
 ax.text(1.02, 50, '50%', color=GREY, va='center', fontsize=9)
 ax.set_xlim(-0.15, 1.15)
 ax.set_xticks([0, 1])
-ax.set_xticklabels(['2020\n(derrota, 37,8% no municipio)', '2024\n(vitoria, 56,4% no municipio)'], fontsize=10)
-ax.set_ylabel('% dos votos validos ao cargo de Prefeito, por secao', fontsize=10)
-ax.set_title('Evolucao do candidato a prefeito por secao eleitoral — 2020 vs 2024\nAlfredo Chaves (ES) · 36 secoes comparaveis', fontsize=12, fontweight='bold', fontfamily='Anton', pad=14)
+ax.set_xticklabels(['2020\n(derrota, 37,8% no município)', '2024\n(vitória, 56,4% no município)'], fontsize=10)
+ax.set_ylabel('% dos votos válidos ao cargo de Prefeito, por seção', fontsize=10)
+ax.set_title('EVOLUÇÃO DO CANDIDATO A PREFEITO POR SEÇÃO ELEITORAL — 2020 VS 2024\nALFREDO CHAVES (ES) · 36 SEÇÕES COMPARÁVEIS', fontsize=12, fontweight='bold', fontfamily='Anton', pad=14)
 ax.spines[['top', 'right']].set_visible(False)
 ax.grid(axis='y', color=GRID, linewidth=0.7)
 ax.set_axisbelow(True)
@@ -89,16 +89,16 @@ charts['slope'] = fig_to_b64(fig)
 m = merged.copy().sort_values('NR_SECAO')
 def categoria(row):
     if pd.isna(row['vencedor_2020']):
-        return 'Secao nova em 2024'
+        return 'Seção nova em 2024'
     if row['vencedor_2020'] == 'RONALDO BIANCHI' or 'HUGO' in str(row['vencedor_2020']).upper():
-        return 'Ja vencida em 2020'
-    return 'Virou: derrota -> vitoria'
+        return 'Já vencida em 2020'
+    return 'Virou: derrota → vitória'
 m['categoria'] = m.apply(categoria, axis=1)
 
 cat_colors = {
-    'Virou: derrota -> vitoria': BLUE,
-    'Ja vencida em 2020': BLUE_SOFT,
-    'Secao nova em 2024': GREY,
+    'Virou: derrota → vitória': BLUE,
+    'Já vencida em 2020': BLUE_SOFT,
+    'Seção nova em 2024': GREY,
 }
 n = len(m)
 ncols = 7
@@ -118,7 +118,7 @@ ax.set_aspect('equal')
 ax.axis('off')
 handles = [mpatches.Patch(color=v, label=k) for k, v in cat_colors.items()]
 ax.legend(handles=handles, loc='upper center', bbox_to_anchor=(0.5, -0.03), ncol=3, frameon=False, fontsize=9)
-ax.set_title('Todas as 42 secoes eleitorais de Alfredo Chaves em 2024 — vencedor: nosso candidato em 100%\n(numero = numero oficial da secao TSE)',
+ax.set_title('TODAS AS 42 SEÇÕES ELEITORAIS DE ALFREDO CHAVES EM 2024 — VENCEDOR: CANDIDATO DO GRUPO EM 100%\n(NÚMERO = NÚMERO OFICIAL DA SEÇÃO TSE)',
              fontsize=11, fontweight='bold', fontfamily='Anton', pad=10)
 plt.tight_layout()
 charts['grid'] = fig_to_b64(fig)
@@ -133,8 +133,8 @@ pcts = [37.8, 56.4]
 bars = ax.bar(anos, votos, color=[RED, BLUE], width=0.55)
 for bar, v_, p_ in zip(bars, votos, pcts):
     ax.text(bar.get_x()+bar.get_width()/2, v_+80, f"{v_} votos\n({p_}%)", ha='center', fontsize=10, fontweight='bold', fontfamily='Anton', color=INK)
-ax.set_ylabel('Votos validos nominais ao cargo de Prefeito', fontsize=10)
-ax.set_title('Resultado municipal — candidato a prefeito\nAlfredo Chaves (ES), 2020 vs 2024', fontsize=12, fontweight='bold', fontfamily='Anton', pad=12)
+ax.set_ylabel('Votos válidos nominais ao cargo de Prefeito', fontsize=10)
+ax.set_title('RESULTADO MUNICIPAL — CANDIDATO A PREFEITO\nALFREDO CHAVES (ES), 2020 VS 2024', fontsize=12, fontweight='bold', fontfamily='Anton', pad=12)
 ax.spines[['top', 'right']].set_visible(False)
 ax.grid(axis='y', color=GRID, linewidth=0.7)
 ax.set_axisbelow(True)
@@ -152,14 +152,14 @@ def verea_chart(df, ano, cadeiras_nossos, total):
     bars = ax.barh(d['NM_URNA_CANDIDATO'] + '  (' + d['SG_PARTIDO'] + ')', d['QT_VOTOS_NOMINAIS_VALIDOS'], color=colors, height=0.62)
     for bar, val in zip(bars, d['QT_VOTOS_NOMINAIS_VALIDOS']):
         ax.text(val + 6, bar.get_y() + bar.get_height()/2, str(val), va='center', fontsize=9, color=INK)
-    ax.set_xlabel('Votos nominais validos', fontsize=10)
-    ax.set_title(f'Vereadores eleitos em {ano} — Camara Municipal de Alfredo Chaves\n{cadeiras_nossos} de {total} cadeiras com a chapa (azul) · {total-cadeiras_nossos} com adversarios (vermelho)',
+    ax.set_xlabel('Votos nominais válidos', fontsize=10)
+    ax.set_title(f'VEREADORES ELEITOS EM {ano} — CÂMARA MUNICIPAL DE ALFREDO CHAVES\n{cadeiras_nossos} DE {total} CADEIRAS COM A CHAPA DO GRUPO (VERDE) · {total-cadeiras_nossos} COM ADVERSÁRIOS (VERMELHO)',
                  fontsize=11.5, fontweight='bold', fontfamily='Anton', pad=12)
     ax.spines[['top', 'right']].set_visible(False)
     ax.grid(axis='x', color=GRID, linewidth=0.7)
     ax.set_axisbelow(True)
-    handles = [mpatches.Patch(color=BLUE, label='Nossa chapa (Hugo Luiz)'),
-               mpatches.Patch(color=RED, label='Adversarios')]
+    handles = [mpatches.Patch(color=BLUE, label='Chapa do grupo (Hugo Luiz)'),
+               mpatches.Patch(color=RED, label='Adversários')]
     ax.legend(handles=handles, loc='lower right', frameon=False, fontsize=8.5)
     plt.tight_layout()
     return fig_to_b64(fig)
@@ -175,23 +175,23 @@ anos = ['2020', '2024']
 nossos = [summ['cadeiras_2020_nossos'], summ['cadeiras_2024_nossos']]
 advers = [summ['cadeiras_2020_total']-summ['cadeiras_2020_nossos'], summ['cadeiras_2024_total']-summ['cadeiras_2024_nossos']]
 y = range(len(anos))
-ax.barh(y, nossos, color=BLUE, height=0.5, label='Nossa chapa')
-ax.barh(y, advers, left=nossos, color=RED, height=0.5, label='Adversarios')
+ax.barh(y, nossos, color=BLUE, height=0.5, label='Chapa do grupo')
+ax.barh(y, advers, left=nossos, color=RED, height=0.5, label='Adversários')
 for i, (n_, a_) in enumerate(zip(nossos, advers)):
     ax.text(n_/2, i, f"{n_}", va='center', ha='center', color='white', fontsize=13, fontweight='bold', fontfamily='Anton')
     ax.text(n_ + a_/2, i, f"{a_}", va='center', ha='center', color='white', fontsize=13, fontweight='bold', fontfamily='Anton')
 tot = summ['cadeiras_2020_total']
 ax.axvline(tot/2, color=INK, linestyle=':', linewidth=1.2, alpha=0.6)
-ax.text(tot/2, 1.75, 'maioria simples', ha='center', fontsize=8.5, color=GREY)
+ax.text(tot/2, 1.42, 'maioria simples', ha='center', fontsize=8.5, color=GREY)
 ax.set_yticks(list(y))
 ax.set_yticklabels(['2020\n(minoria)', '2024\n(maioria)'], fontsize=11)
 ax.set_xlim(0, tot + 0.6)
-ax.set_xlabel('Cadeiras na Camara Municipal (9 vagas)', fontsize=10)
-ax.set_title('A virada politica na Camara de Alfredo Chaves', fontsize=13, fontweight='bold', fontfamily='Anton', pad=14)
+ax.set_xlabel('Cadeiras na Câmara Municipal (9 vagas)', fontsize=10)
+ax.set_title('A VIRADA POLÍTICA NA CÂMARA DE ALFREDO CHAVES', fontsize=13, fontweight='bold', fontfamily='Anton', pad=14)
 ax.spines[['top', 'right', 'left']].set_visible(False)
 ax.tick_params(left=False)
-handles = [mpatches.Patch(color=BLUE, label='Nossa chapa (Hugo Luiz)'),
-           mpatches.Patch(color=RED, label='Adversarios')]
+handles = [mpatches.Patch(color=BLUE, label='Chapa do grupo (Hugo Luiz)'),
+           mpatches.Patch(color=RED, label='Adversários')]
 ax.legend(handles=handles, loc='upper center', bbox_to_anchor=(0.5, -0.22), ncol=2, frameon=False, fontsize=9.5)
 plt.tight_layout()
 charts['camara'] = fig_to_b64(fig)
@@ -207,7 +207,7 @@ bars = ax.bar(anos, votos, color=[RED, BLUE], width=0.5)
 for bar, v_, p_ in zip(bars, votos, pcts):
     ax.text(bar.get_x()+bar.get_width()/2, v_+60, f"{v_} votos\n({p_:.1f}% do pleito)", ha='center', fontsize=10, fontweight='bold', fontfamily='Anton', color=INK)
 ax.set_ylabel('Soma de votos nominais — candidatos a vereador da chapa', fontsize=10)
-ax.set_title('Votacao total dos candidatos a vereador da chapa\nAlfredo Chaves (ES), 2020 vs 2024', fontsize=12.5, fontweight='bold', fontfamily='Anton', pad=12)
+ax.set_title('VOTAÇÃO TOTAL DOS CANDIDATOS A VEREADOR DA CHAPA\nALFREDO CHAVES (ES), 2020 VS 2024', fontsize=12.5, fontweight='bold', fontfamily='Anton', pad=12)
 ax.spines[['top', 'right']].set_visible(False)
 ax.grid(axis='y', color=GRID, linewidth=0.7)
 ax.set_axisbelow(True)
