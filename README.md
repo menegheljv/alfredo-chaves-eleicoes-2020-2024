@@ -4,6 +4,8 @@
 
 **[Read it in Portuguese →](https://claude.ai/code/artifact/22daf01e-c77d-446e-beb4-51d6a1c879a7)** · **[Read it in English →](https://claude.ai/code/artifact/487ac675-6174-4eee-be60-57189dc11525)**
 
+Both are the same full case study — same sections, charts, and interactive map — kept in sync with each other.
+
 ## Context
 
 Between 2004 and 2020, the political group behind this project lost five mayoral elections in a row in Alfredo Chaves, ES. In 2024, the same group elected Hugo Luiz, 25 at the time, the youngest mayor in the history of Espírito Santo. This repository documents the data pipeline used to analyze that turnaround, from raw TSE data to the final case study.
@@ -60,4 +62,18 @@ python scripts/viz2.py && python scripts/viz3.py && python scripts/viz4.py && py
 python scripts/build_artifact.py
 ```
 
-Produces `output/case_study.html`.
+Produces `output/case_study.html` (Portuguese).
+
+### English build
+
+`output/template_en.html` is a full hand-translation of `output/template.html`, and each `scripts/*_en.py` script is a twin of its Portuguese counterpart producing the same charts with translated titles, axis labels and legends (written to `output/en/`). Candidate, party and institution names are kept as-is (proper nouns); currency and number formatting switch from PT-BR (`1.234,56`) to EN-US (`1,234.56`) conventions.
+
+```bash
+python scripts/historical_arc_en.py
+python scripts/ibge_cruzamento_en.py
+python scripts/ibge_demografico_en.py
+python scripts/viz2_en.py && python scripts/viz3_en.py && python scripts/viz4_en.py && python scripts/viz5_en.py && python scripts/viz6_en.py
+python scripts/build_artifact_en.py
+```
+
+Produces `output/case_study_en.html`. Reuses `data/locais_votacao_geocoded.csv` and `output/basemap_alfredo_chaves.png` from the Portuguese build's map step (run that first) rather than re-fetching them.

@@ -1,4 +1,5 @@
 output/*.b64
+output/en/*.b64
 pesquisas/
 __pycache__/
 *.pyc

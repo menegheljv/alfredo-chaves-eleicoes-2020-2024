@@ -1,0 +1,95 @@
+# -*- coding: utf-8 -*-
+"""English twin of viz6.py. Same data, translated chart text."""
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+import matplotlib.font_manager as fm
+import os as _os_early
+_FONT_DIR = _os_early.path.join(_os_early.path.dirname(_os_early.path.abspath(__file__)), "fonts")
+for _f in ["Anton-Regular.ttf", "BricolageGrotesque-Regular.ttf", "BricolageGrotesque-SemiBold.ttf", "BricolageGrotesque-Bold.ttf"]:
+    _p = _os_early.path.join(_FONT_DIR, _f)
+    if _os_early.path.exists(_p):
+        fm.fontManager.addfont(_p)
+import os, base64, io
+from datetime import datetime
+
+BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+OUT = os.path.join(BASE, "output")
+OUT_EN = os.path.join(OUT, "en")
+os.makedirs(OUT_EN, exist_ok=True)
+
+BLUE = "#5fd996"
+RED = "#e2554c"
+GOLD = "#caa0ac"
+GREY = "#8f8f8f"
+BG = "#ffffff"
+GRID = "#e2e2e2"
+INK = "#333333"
+
+plt.rcParams.update({
+    "font.family": "Bricolage Grotesque",
+    "axes.edgecolor": GRID,
+    "axes.linewidth": 0.8,
+    "figure.facecolor": BG,
+    "axes.facecolor": BG,
+    "savefig.facecolor": BG,
+    "text.color": INK,
+    "axes.labelcolor": INK,
+    "axes.titlecolor": INK,
+    "xtick.color": INK,
+    "ytick.color": INK,
+    "legend.labelcolor": INK,
+})
+
+def fig_to_b64(fig, dpi=180):
+    buf = io.BytesIO()
+    fig.savefig(buf, format='png', dpi=dpi, bbox_inches='tight')
+    buf.seek(0)
+    b64 = base64.b64encode(buf.read()).decode('ascii')
+    plt.close(fig)
+    return b64
+
+main_dates = [datetime(2024,4,16), datetime(2024,8,30), datetime(2024,9,21),
+              datetime(2024,9,28), datetime(2024,10,2), datetime(2024,10,6)]
+hugo   = [54.8, 57.4, 51.2, 47.75, 51.5, 58.05]
+rolmar = [21.6, 30.8, 25.4, 16.25, 29.5, 31.91]
+boldrini_dates = [datetime(2024,8,30), datetime(2024,9,21), datetime(2024,9,28), datetime(2024,10,2), datetime(2024,10,6)]
+boldrini = [11.8, 11.5, 12.25, 9.4, 10.04]
+
+outlier_date = datetime(2024,9,17)
+outlier_hugo, outlier_rolmar, outlier_boldrini = 22.90, 53.23, 12.58
+
+labels = ["Apr 16\nInst. Solução", "Aug 30\nInst. Veritá", "Sep 21\nInove Consult.",
+          "Sep 28\nIpopes", "Oct 2\nI9-Inove", "Oct 6\nOfficial\nTSE result"]
+
+fig, ax = plt.subplots(figsize=(11, 6.2))
+
+ax.plot(main_dates, hugo, color=BLUE, linewidth=2.8, marker='o', markersize=8, zorder=5, label='Hugo Luiz')
+ax.plot(main_dates, rolmar, color=RED, linewidth=2.2, marker='o', markersize=7, zorder=4, label='Rolmar Botecchia')
+ax.plot(boldrini_dates, boldrini, color=GOLD, linewidth=1.8, marker='o', markersize=6, zorder=3, linestyle='--', label='Boldrini')
+
+ax.scatter([outlier_date], [outlier_hugo], marker='D', s=70, color=BLUE, alpha=0.35, zorder=6, edgecolor=INK, linewidth=0.8)
+ax.scatter([outlier_date], [outlier_rolmar], marker='D', s=70, color=RED, alpha=0.35, zorder=6, edgecolor=INK, linewidth=0.8)
+ax.annotate("poll from\nSep 17\n(outlier)", xy=(outlier_date, outlier_rolmar), xytext=(outlier_date, 68),
+            ha='center', fontsize=8, color=GREY, fontweight='bold', fontfamily='Anton',
+            arrowprops=dict(arrowstyle='-', color=GREY, linewidth=0.9, shrinkA=2, shrinkB=8))
+
+for d, v in zip(main_dates, hugo):
+    ax.text(d, v+2.6, f"{v:.1f}%", ha='center', fontsize=10, fontweight='bold', fontfamily='Anton', color=BLUE)
+for d, v in zip(main_dates, rolmar):
+    ax.text(d, v-4.4, f"{v:.1f}%", ha='center', fontsize=8.8, fontweight='bold', fontfamily='Anton', color=RED)
+
+ax.set_xticks(main_dates)
+ax.set_xticklabels(labels, fontsize=8.6)
+ax.set_ylim(0, 72)
+ax.set_ylabel('% voting intention (prompted) / valid votes', fontsize=10)
+ax.spines[['top','right']].set_visible(False)
+ax.grid(axis='y', color=GRID, linewidth=0.7)
+ax.set_axisbelow(True)
+ax.legend(loc='lower left', frameon=False, fontsize=9.5, ncol=3)
+ax.set_title("SIX REAL POLLS, APRIL TO OCTOBER: HUGO LUIZ NEVER LOST THE LEAD", fontsize=12.5, fontweight='bold', fontfamily='Anton', pad=14)
+plt.tight_layout()
+b64 = fig_to_b64(fig)
+with open(os.path.join(OUT_EN, "chart_pesquisas_evolucao.b64"), 'w') as f:
+    f.write(b64)
+print("Chart generated: pesquisas_evolucao")
