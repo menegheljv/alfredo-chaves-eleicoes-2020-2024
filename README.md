@@ -54,6 +54,8 @@ python scripts/candidate_profile_analysis.py
 python scripts/historical_arc.py
 python scripts/ibge_cruzamento.py
 python scripts/ibge_demografico.py
+python scripts/geocode_locais.py
+python scripts/fetch_basemap.py
 python scripts/viz2.py && python scripts/viz3.py && python scripts/viz4.py && python scripts/viz5.py && python scripts/viz6.py
 python scripts/build_artifact.py
 ```
