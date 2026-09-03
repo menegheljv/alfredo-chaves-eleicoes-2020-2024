@@ -13,7 +13,8 @@ chart_keys = ["historical_arc", "ibge_eleitorado", "slope", "grid", "municipio",
               "financeiro_chapa", "custo_por_voto", "origem_receitas", "comparecimento",
               "genero_candidatos", "raca_candidatos",
               "campanha_visualizacoes", "campanha_engajamento", "campanha_categorias",
-              "idade_candidatos", "patrimonio_candidatos", "pesquisas_timeline", "pesquisas_evolucao"]
+              "idade_candidatos", "patrimonio_candidatos", "pesquisas_timeline", "pesquisas_evolucao",
+              "distritos_heatmap"]
 for key in chart_keys:
     with open(os.path.join(OUT, f"chart_{key}.b64"), encoding="utf-8") as f:
         b64 = f.read().strip()

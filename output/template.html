@@ -614,6 +614,18 @@
       </table>
     </div>
     <p style="font-size:13px;color:var(--caption)">Fonte: <code>consulta_cand</code>, campos <code>SG_PARTIDO</code>, <code>DS_COMPOSICAO_COLIGACAO</code> e <code>DS_SIT_TOT_TURNO</code>, TSE, por ano. Espectro classificado pelo partido de registro do vencedor, não pela coligação inteira.</p>
+
+    <h3>Onde o grupo era forte, onde era fraco</h3>
+    <p>Alfredo Chaves tem 7 distritos oficiais: a sede e mais seis distritos rurais (Crubixá, Ibitiruí, Matilde, Ribeirão do Cristo, Sagrada Família e São Bento de Urânia). Cruzamos o local de votação de cada seção &mdash; e, por ele, o distrito &mdash; com a votação do candidato do grupo em cada uma das seis eleições, para ver se a virada foi uniforme pelo território ou concentrada em algum canto do município.</p>
+
+    <figure class="exhibit">
+      <div class="exhibit-head"><span class="tag">Figura 6</span><span class="cap">% do candidato do grupo para prefeito, por distrito, 2004&ndash;2024</span></div>
+      <div class="exhibit-body">
+        <img src="data:image/png;base64,{{CHART_DISTRITOS_HEATMAP}}" alt="Mapa de calor com 7 distritos de Alfredo Chaves nas linhas e as seis eleições (2004 a 2024) nas colunas, mostrando o percentual de votos válidos do candidato do grupo para prefeito em cada combinação. Ribeirão do Cristo salta de 8,8%% em 2004 e 9,4%% em 2012 (as piores marcas do grupo em qualquer distrito e ano) para 58,2%% em 2020 e 72,3%% em 2024 (a melhor marca de 2024). São Bento de Urânia e Ibitiruí também terminam acima de 63%% em 2024. Todos os sete distritos ficam acima de 47%% em 2024, sinal de uma virada disseminada, não concentrada." />
+      </div>
+      <figcaption>Ribeirão do Cristo foi, de longe, o distrito mais resistente ao grupo em 2004 e 2012 (8,8% e 9,4%, os piores números do estudo inteiro) &mdash; e virou o mais favorável em 2020 e 2024 (58,2% e 72,3%). Em 2024, todos os sete distritos passam de 47%: a virada não veio de um reduto específico, veio do território inteiro.</figcaption>
+    </figure>
+    <p style="font-size:13px;color:var(--caption)">Fonte: <code>votacao_secao</code>, TSE, todas as seis eleições. Distrito de cada seção determinado pelo local de votação de 2024, cruzado com a lista oficial de localidades da <a href="https://www.alfredochaves.es.gov.br/detalhe-da-materia/info/6517/localidades-e-distancia/" target="_blank" rel="noopener">Prefeitura de Alfredo Chaves</a> &mdash; os números de seção são estáveis ao longo do tempo neste município (só entram seções novas, nenhuma é renumerada), então o local de 2024 vale para todos os anos em que aquela seção existiu. Percentuais ponderados pelo total de votos válidos de cada seção.</p>
   </section>
 
   <section id="vereadores">
@@ -622,7 +634,7 @@
     <p>A Câmara de Alfredo Chaves tem <strong>9 cadeiras</strong>. Em 2020, a base política de Hugo Luiz Picoli Meneghel (então candidato a vereador pelo PTB, na coligação majoritária &ldquo;Mudança com Transparência&rdquo; — PTB / Republicanos / Patriota) elegeu apenas <strong style="color:var(--blue)">3 vereadores</strong>, contra <strong style="color:var(--red)">6 de partidos adversários</strong> (coligação vencedora para prefeito: PP / PSB / PSDB, entre outros) — minoria clara. Em 2024, com a coordenação de campanha estendida a todos os candidatos a vereador da coligação &ldquo;Renovação e Juventude&rdquo; (Republicanos / PP / PSDB), a bancada da chapa cresceu para <strong style="color:var(--blue)">5 de 9 cadeiras</strong>: maioria simples, ainda que apertada.</p>
 
     <figure class="exhibit">
-      <div class="exhibit-head"><span class="tag">Figura 6</span><span class="cap">Composição da Câmara, 2020 vs. 2024</span></div>
+      <div class="exhibit-head"><span class="tag">Figura 7</span><span class="cap">Composição da Câmara, 2020 vs. 2024</span></div>
       <div class="exhibit-body">
         <img src="data:image/png;base64,{{CHART_CAMARA}}" alt="Gráfico de barras horizontais empilhadas comparando a composição da Câmara Municipal: em 2020, 3 cadeiras da chapa (verde) contra 6 de adversários (vermelho); em 2024, 5 cadeiras da chapa contra 4 de adversários — virando de minoria para maioria." />
       </div>
@@ -632,7 +644,7 @@
     <p>Somando a votação nominal de <em>todos</em> os candidatos a vereador da chapa (eleitos e não eleitos), o crescimento também aparece na urna, não só nas cadeiras:</p>
 
     <figure class="exhibit">
-      <div class="exhibit-head"><span class="tag">Figura 7</span><span class="cap">Total de votos dos candidatos a vereador da chapa</span></div>
+      <div class="exhibit-head"><span class="tag">Figura 8</span><span class="cap">Total de votos dos candidatos a vereador da chapa</span></div>
       <div class="exhibit-body">
         <img src="data:image/png;base64,{{CHART_VOTOS_VEREADORES}}" alt="Gráfico de barras comparando o total de votos somados de todos os candidatos a vereador da chapa: 3.427 votos (38,8%% do pleito) em 2020 contra 4.206 votos (43,8%% do pleito) em 2024." />
       </div>
@@ -645,7 +657,7 @@
     </div>
 
     <figure class="exhibit">
-      <div class="exhibit-head"><span class="tag">Figura 8</span><span class="cap">Vereadores eleitos em 2020</span></div>
+      <div class="exhibit-head"><span class="tag">Figura 9</span><span class="cap">Vereadores eleitos em 2020</span></div>
       <div class="exhibit-body">
         <img src="data:image/png;base64,{{CHART_VEREADORES_2020}}" alt="Gráfico de barras horizontais com os 9 vereadores eleitos em 2020, coloridos por lado: 3 da chapa de Hugo Luiz em verde, 6 de adversários em vermelho." />
       </div>
@@ -653,7 +665,7 @@
     </figure>
 
     <figure class="exhibit">
-      <div class="exhibit-head"><span class="tag">Figura 9</span><span class="cap">Vereadores eleitos em 2024</span></div>
+      <div class="exhibit-head"><span class="tag">Figura 10</span><span class="cap">Vereadores eleitos em 2024</span></div>
       <div class="exhibit-body">
         <img src="data:image/png;base64,{{CHART_VEREADORES_2024}}" alt="Gráfico de barras horizontais com os 9 vereadores eleitos em 2024, coloridos por lado: 5 da chapa em verde, 4 de adversários em vermelho." />
       </div>
@@ -671,7 +683,7 @@
     <p>Dados da <strong>prestação de contas eleitorais</strong> do TSE (receitas e despesas declaradas por cada candidato, incluindo adversários) e do <strong>detalhamento de apuração</strong> (comparecimento e abstenção) completam o quadro: a virada não veio de um eleitorado maior, e a receita mobilizada pela candidatura do grupo nunca foi destacadamente superior à dos concorrentes — mas a campanha do grupo converteu esse recurso em voto com mais eficiência que qualquer outro candidato ao cargo, nas duas eleições.</p>
 
     <figure class="exhibit">
-      <div class="exhibit-head"><span class="tag">Figura 10</span><span class="cap">Receita declarada — todos os candidatos a prefeito</span></div>
+      <div class="exhibit-head"><span class="tag">Figura 11</span><span class="cap">Receita declarada — todos os candidatos a prefeito</span></div>
       <div class="exhibit-body">
         <img src="data:image/png;base64,{{CHART_FINANCEIRO_CHAPA}}" alt="Gráfico de barras horizontais com a receita declarada por cada candidato a prefeito. 2020: Fernando (PSB, eleito) R$108.642; Bianchi (Republicanos, grupo) R$53.120; Zanata (PDT) R$32.722. 2024: Hugo Luiz (PP, grupo, eleito) R$155.597; Boldrini (PL) R$141.130; Boteccia (PSB) R$119.400." />
       </div>
@@ -679,7 +691,7 @@
     </figure>
 
     <figure class="exhibit">
-      <div class="exhibit-head"><span class="tag">Figura 11</span><span class="cap">Eficiência de investimento por voto — todos os candidatos a prefeito</span></div>
+      <div class="exhibit-head"><span class="tag">Figura 12</span><span class="cap">Eficiência de investimento por voto — todos os candidatos a prefeito</span></div>
       <div class="exhibit-body">
         <img src="data:image/png;base64,{{CHART_CUSTO_POR_VOTO}}" alt="Gráfico de barras horizontais com a eficiência de investimento por voto (despesa paga dividida por votos válidos) de cada candidato a prefeito. 2020: Bianchi (grupo) R$13,58/voto; Fernando R$19,70/voto; Zanata R$80,36/voto. 2024: Hugo Luiz (grupo, eleito) R$26,69/voto; Boteccia R$36,20/voto; Boldrini R$141,27/voto." />
       </div>
@@ -687,7 +699,7 @@
     </figure>
 
     <figure class="exhibit">
-      <div class="exhibit-head"><span class="tag">Figura 12</span><span class="cap">Origem das receitas da chapa</span></div>
+      <div class="exhibit-head"><span class="tag">Figura 13</span><span class="cap">Origem das receitas da chapa</span></div>
       <div class="exhibit-body">
         <img src="data:image/png;base64,{{CHART_ORIGEM_RECEITAS}}" alt="Gráfico de barras horizontais comparando a origem das receitas da chapa em 2020 e 2024, por categoria: recursos de partido político, recursos próprios, pessoas físicas e outros candidatos." />
       </div>
@@ -698,7 +710,7 @@
     <p>O eleitorado apto cresceu apenas 4,6% (12.294 → 12.860) e o comparecimento às urnas ficou praticamente estável — <strong>79,15% em 2020, 79,74% em 2024</strong>. Como o candidato da chapa cresceu 57% em votos absolutos (3.681 → 5.779) enquanto o eleitorado total mal se moveu, a virada foi predominantemente <strong>conversão de eleitores que já votavam</strong>, não mobilização de novos votantes.</p>
 
     <figure class="exhibit">
-      <div class="exhibit-head"><span class="tag">Figura 13</span><span class="cap">Comparecimento vs. abstenção</span></div>
+      <div class="exhibit-head"><span class="tag">Figura 14</span><span class="cap">Comparecimento vs. abstenção</span></div>
       <div class="exhibit-body">
         <img src="data:image/png;base64,{{CHART_COMPARECIMENTO}}" alt="Gráfico de barras horizontais empilhadas comparando comparecimento e abstenção do eleitorado apto: 9.731 compareceram e 2.563 se abstiveram em 2020 (79,15%%); 10.255 compareceram e 2.605 se abstiveram em 2024 (79,74%%)." />
       </div>
@@ -715,7 +727,7 @@
     <p>Para entender se o crescimento do eleitorado (9.247 aptos em 2004 → 12.860 em 2024, +39%) reflete o município crescendo, cruzamos os dados do TSE com as estimativas populacionais anuais do IBGE (SIDRA, tabela 6579, código do município 3200300). A resposta é não: a população estimada de Alfredo Chaves ficou praticamente estável no período (14.113 em 2004, ~14.373 em 2024), até com quedas em alguns anos. O eleitorado não cresceu porque o município cresceu — cresceu porque uma fatia cada vez maior da população já residente passou a estar registrada para votar.</p>
 
     <figure class="exhibit">
-      <div class="exhibit-head"><span class="tag">Figura 14</span><span class="cap">Eleitores aptos como % da população estimada (IBGE)</span></div>
+      <div class="exhibit-head"><span class="tag">Figura 15</span><span class="cap">Eleitores aptos como % da população estimada (IBGE)</span></div>
       <div class="exhibit-body">
         <img src="data:image/png;base64,{{CHART_IBGE_ELEITORADO}}" alt="Gráfico de linha mostrando o percentual da população estimada pelo IBGE que está registrada para votar em Alfredo Chaves: 65,5% em 2004, 72,7% em 2008, 80,7% em 2012, 79,6% em 2016, 84,0% em 2020, 89,5% em 2024." />
       </div>
@@ -726,7 +738,7 @@
     <p>O Censo Demográfico 2022 do IBGE (SIDRA, tabelas 9514 e 9605) permite ir além da população total e cruzar sexo e raça ou cor com quem de fato concorre. A população de Alfredo Chaves é 49,3% mulheres e 50,7% homens, 61,4% branca, 34,3% parda e 4,2% preta — números muito próximos aos do eleitorado registrado, que também caminha para a paridade de gênero. Entre quem concorre, porém, o quadro diverge: dos 75 candidatos a prefeito e vereador em 2020, 37,3% eram mulheres; em 2024, entre 76 candidatos, essa fatia caiu para 31,6% — o oposto da tendência do eleitorado, que se aproxima cada vez mais dos 50%.</p>
 
     <figure class="exhibit">
-      <div class="exhibit-head"><span class="tag">Figura 15</span><span class="cap">Participação feminina — população, eleitorado e candidatos</span></div>
+      <div class="exhibit-head"><span class="tag">Figura 16</span><span class="cap">Participação feminina — população, eleitorado e candidatos</span></div>
       <div class="exhibit-body">
         <img src="data:image/png;base64,{{CHART_GENERO_CANDIDATOS}}" alt="Gráfico de barras comparando o percentual de mulheres em quatro grupos: população do IBGE em 2022 (49,3%%), eleitorado do TSE em 2024 (50,0%%), candidatas de 2020 (37,3%%) e candidatas de 2024 (31,6%%)." />
       </div>
@@ -740,7 +752,7 @@
     <p>A composição racial das candidaturas segue um padrão parecido. Em 2020, candidatos brancos eram 61,3% do total — quase idêntico aos 61,4% da população do município. Em 2024 essa proporção subiu para 69,7%, enquanto candidatos pardos caíram de 29,3% para 22,4%: um afastamento em relação à composição racial de Alfredo Chaves, ainda que a fatia de candidatos pretos tenha crescido ligeiramente (6,7% → 7,9%).</p>
 
     <figure class="exhibit">
-      <div class="exhibit-head"><span class="tag">Figura 16</span><span class="cap">Raça ou cor — população vs. candidatos</span></div>
+      <div class="exhibit-head"><span class="tag">Figura 17</span><span class="cap">Raça ou cor — população vs. candidatos</span></div>
       <div class="exhibit-body">
         <img src="data:image/png;base64,{{CHART_RACA_CANDIDATOS}}" alt="Gráfico de barras agrupadas comparando raça ou cor declarada entre população do IBGE em 2022, candidatos de 2020 e candidatos de 2024, nas categorias branca, parda e preta. Branca: 61,4%% população, 61,3%% candidatos 2020, 69,7%% candidatos 2024. Parda: 34,3%% população, 29,3%% candidatos 2020, 22,4%% candidatos 2024. Preta: 4,2%% população, 6,7%% candidatos 2020, 7,9%% candidatos 2024." />
       </div>
@@ -757,7 +769,7 @@
     <p>A linha do tempo cobre seis marcos: a <strong>filiação ao Progressistas</strong> em 27 de março de 2024; o <strong>lançamento da pré-candidatura</strong> em 7 de junho; o <strong>anúncio do vice-prefeito</strong> Cleber Bianchi, na convenção partidária de 3 de agosto; a disputa pública em torno de uma <strong>pesquisa suspensa</strong> em 22 de setembro; a <strong>vitória</strong> em 6 de outubro; e o post de agradecimento pelos <strong>5.779 votos</strong>, publicado horas depois do resultado — o post de maior engajamento de toda a campanha.</p>
 
     <figure class="exhibit">
-      <div class="exhibit-head"><span class="tag">Figura 17</span><span class="cap">Visualizações por post, filiação até a vitória</span></div>
+      <div class="exhibit-head"><span class="tag">Figura 18</span><span class="cap">Visualizações por post, filiação até a vitória</span></div>
       <div class="exhibit-body">
         <img src="data:image/png;base64,{{CHART_CAMPANHA_VISUALIZACOES}}" alt="Gráfico de dispersão mostrando as visualizações de cada post do Instagram da candidatura entre março e outubro de 2024, com tendência de alta: de cerca de 9,3 mil visualizações no post de filiação até picos acima de 40 mil visualizações na reta final e no resultado." />
       </div>
@@ -765,7 +777,7 @@
     </figure>
 
     <figure class="exhibit">
-      <div class="exhibit-head"><span class="tag">Figura 18</span><span class="cap">Engajamento médio por fase da campanha</span></div>
+      <div class="exhibit-head"><span class="tag">Figura 19</span><span class="cap">Engajamento médio por fase da campanha</span></div>
       <div class="exhibit-body">
         <img src="data:image/png;base64,{{CHART_CAMPANHA_ENGAJAMENTO}}" alt="Gráfico de barras mostrando o engajamento médio (curtidas mais comentários mais compartilhamentos) por fase da campanha: 533 na filiação, 223 na pré-campanha, 232 no lançamento, 308 na campanha, 308 na reta final, e 1.201 no resultado." />
       </div>
@@ -775,7 +787,7 @@
     <p>Classificamos cada um dos 175 posts identificados por tipo de conteúdo, para entender não só quando o alcance cresceu, mas o que a campanha efetivamente postava. <strong>Eventos de rua e caminhadas</strong> são o formato mais comum — quase um terço dos posts &mdash; seguidos por propostas de governo e por comunicação administrativa de rotina do mandato de vereador (convocações de sessão da Câmara, que a campanha publicava aos pares: um convite antes, um vídeo de esclarecimento depois). Mas o volume não é o mesmo que engajamento: <strong>testemunhos e depoimentos de eleitores</strong>, que aparecem bem menos, engajam bem mais que a média &mdash; quase três vezes a comunicação administrativa de rotina.</p>
 
     <figure class="exhibit">
-      <div class="exhibit-head"><span class="tag">Figura 19</span><span class="cap">Volume de posts e engajamento por tipo de conteúdo</span></div>
+      <div class="exhibit-head"><span class="tag">Figura 20</span><span class="cap">Volume de posts e engajamento por tipo de conteúdo</span></div>
       <div class="exhibit-body">
         <img src="data:image/png;base64,{{CHART_CAMPANHA_CATEGORIAS}}" alt="Dois gráficos de barras horizontais. À esquerda, número de posts por categoria: 49 eventos ou caminhadas, 27 propostas de governo, 23 posts administrativos, 19 de coligação, 14 testemunhos, 10 respostas a ataques, 9 pesquisas, 7 datas comemorativas, 7 contagens regressivas, 4 de resultado, 3 marcos, 2 de repercussão na mídia, 1 de filiação. À direita, engajamento médio por categoria, do maior para o menor: resultado (1.201), marco (601), filiação (533), pesquisa (426), testemunho (363), evento (315), data comemorativa (305), resposta a ataque (298), coligação (296), proposta (286), contagem regressiva (169), administrativo (123), mídia (104)." />
       </div>
@@ -799,7 +811,7 @@
     <p>Dados de <code>consulta_cand</code> e <code>bem_candidato</code> (TSE) trazem idade, escolaridade, ocupação e patrimônio declarado de cada candidato — informação pública, prestada por lei a cada eleição. O contraste com <strong style="color:var(--blue)">Hugo Luiz</strong> é o mais nítido do estudo inteiro.</p>
 
     <figure class="exhibit">
-      <div class="exhibit-head"><span class="tag">Figura 20</span><span class="cap">Idade dos candidatos a prefeito</span></div>
+      <div class="exhibit-head"><span class="tag">Figura 21</span><span class="cap">Idade dos candidatos a prefeito</span></div>
       <div class="exhibit-body">
         <img src="data:image/png;base64,{{CHART_IDADE_CANDIDATOS}}" alt="Dois gráficos de barras horizontais comparando a idade dos três candidatos a prefeito em 2020 (Ronaldo Bianchi 58, Fernando 73, Armando Zanata 64) e em 2024 (Hugo Luiz 25, Rolmar Boteccia 71, Boldrini 61)." />
       </div>
@@ -809,7 +821,7 @@
     <p>Hugo Luiz tinha 25 anos no dia da eleição de 2024, é advogado formado (Direito &ndash; UFES) e, segundo o cadastro do TSE, é <strong>branco e solteiro</strong>. Os outros dois candidatos a prefeito daquele ano tinham 61 e 71 anos.</p>
 
     <figure class="exhibit">
-      <div class="exhibit-head"><span class="tag">Figura 21</span><span class="cap">Patrimônio declarado dos candidatos a prefeito</span></div>
+      <div class="exhibit-head"><span class="tag">Figura 22</span><span class="cap">Patrimônio declarado dos candidatos a prefeito</span></div>
       <div class="exhibit-body">
         <img src="data:image/png;base64,{{CHART_PATRIMONIO_CANDIDATOS}}" alt="Dois gráficos de barras horizontais comparando o patrimônio declarado dos candidatos a prefeito: em 2020, Ronaldo Bianchi R$366 mil, Fernando R$621 mil, Armando Zanata R$1,38 milhão; em 2024, Hugo Luiz R$29,5 mil, Rolmar Boteccia R$718 mil, Boldrini R$0." />
       </div>
@@ -820,7 +832,7 @@
     <p>O TSE mantém um sistema próprio de registro de pesquisas eleitorais (<a href="https://www.tse.jus.br/eleicoes/pesquisa-eleitorais/consulta-as-pesquisas-registradas" target="_blank" rel="noopener">pesqele&#8209;divulgacao.tse.jus.br</a>), exigido pelo art.&nbsp;33 da Lei&nbsp;9.504/97. Para Alfredo Chaves em 2024 constam <strong>9 pesquisas registradas</strong>, por 5 empresas diferentes, entre abril e setembro. Abrimos e lemos o conteúdo de todos os 9 editais de publicação em PDF — e vale registrar um limite real dos dados públicos: <strong>o TSE não publica o resultado</strong> (percentual de intenção de voto por candidato) nesses editais, apenas a confirmação formal do registro (empresa, protocolo, data, abrangência). Quem divulga o resultado é a empresa contratante, tipicamente via um veículo de imprensa local.</p>
 
     <figure class="exhibit">
-      <div class="exhibit-head"><span class="tag">Figura 22</span><span class="cap">Registro das 9 pesquisas eleitorais — linha do tempo</span></div>
+      <div class="exhibit-head"><span class="tag">Figura 23</span><span class="cap">Registro das 9 pesquisas eleitorais — linha do tempo</span></div>
       <div class="exhibit-body">
         <img src="data:image/png;base64,{{CHART_PESQUISAS_TIMELINE}}" alt="Linha do tempo com as 9 pesquisas eleitorais registradas para Alfredo Chaves em 2024, de 19/04 a 27/09, por 5 empresas diferentes, com o dia da eleição (06/10/2024) marcado em verde." />
       </div>
@@ -838,7 +850,7 @@
     </ul>
 
     <figure class="exhibit">
-      <div class="exhibit-head"><span class="tag">Figura 23</span><span class="cap">Trajetória da intenção de voto (estimulada) até o resultado</span></div>
+      <div class="exhibit-head"><span class="tag">Figura 24</span><span class="cap">Trajetória da intenção de voto (estimulada) até o resultado</span></div>
       <div class="exhibit-body">
         <img src="data:image/png;base64,{{CHART_PESQUISAS_EVOLUCAO}}" alt="Gráfico de linha mostrando a intenção de voto estimulada de Hugo Luiz (verde) em 54,8% (abril), 57,4% (agosto), 51,2% (21/set), 47,75% (28/set), 51,5% (2/out) e 58,05% no resultado final; Rolmar Botecchia (vermelho) em trajetória inversa mais baixa; Boldrini (cinza, tracejado) entre 9,4% e 12,25% a partir de agosto; e um ponto isolado de 17/set marcado como atípico, com Rolmar em 53,23% e Hugo em 22,90%." />
       </div>
