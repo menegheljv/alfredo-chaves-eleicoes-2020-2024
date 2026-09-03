@@ -1,5 +1,15 @@
 data;fase;views;likes;comentarios;compartilhamentos;tema;categoria
 2024-03-27;filiacao;9300;389;144;0;Filiação ao Progressistas (PP);filiacao
+2024-03-27;pre-campanha;1500;32;2;0;Convocação: sessão ordinária 27/03;administrativo
+2024-04-01;pre-campanha;1500;38;2;0;Convocação: sessão extraordinária 01/04;administrativo
+2024-04-08;pre-campanha;2300;100;5;0;Vídeo 92, esclarecimentos sessão extraordinária 01/04;administrativo
+2024-04-10;pre-campanha;1500;30;4;0;Convocação: sessão ordinária 10/04;administrativo
+2024-05-12;pre-campanha;2000;247;25;0;Parabéns, professora Sílvia (feliz dia das mães);data-comemorativa
+2024-08-13;campanha;9800;324;99;1;Nossos entes queridos merecem mais dignidade (proposta cemitério);proposta
+2024-08-26;campanha;9600;192;27;0;Uma nova esperança com Hugo Luiz e Cleber Bianchi (loja/comércio);coligacao
+2024-08-27;campanha;11700;273;38;0;Juventude experiente: credenciais de Cleber Bianchi;coligacao
+2024-08-29;campanha;9900;262;29;0;Apoio da bancada federal e estadual (2º post);coligacao
+2024-08-31;campanha;17000;381;37;0;Alfredo Chaves é 11 (repost da caminhada);evento
 2024-04-01;pre-campanha;7200;278;70;0;Sessão extraordinária (vereador);administrativo
 2024-04-18;pre-campanha;1500;52;0;0;Vídeo 93, esclarecimentos sessão 10/04;administrativo
 2024-04-23;pre-campanha;5000;158;17;1;Agendas nos gabinetes dos deputados federais (Brasília);evento
@@ -72,7 +82,7 @@ data;fase;views;likes;comentarios;compartilhamentos;tema;categoria
 2024-08-25;campanha;4900;149;5;0;Visita à companhia de Lurdes Galina e Edmilson Bottechia;evento
 2024-08-25;campanha;6100;184;18;0;A mulherada vem aí (mobilização feminina);evento
 2024-08-25;campanha;8900;291;31;0;Encontro de mulheres com a deputada Raquel Lessa;evento
-2024-08-29;campanha;33600;366;77;1;Apoio da bancada federal e estadual;coligacao
+2024-08-29;campanha;33600;366;77;1;IPTU Doce IPTU: chega de fazer a população de boba;resposta-ataque
 2024-08-30;campanha;8300;184;22;0;Caminhada com o futuro;evento
 2024-08-31;campanha;9200;209;12;1;Caminhada de rua com bandeiras;evento
 2024-08-31;campanha;12000;477;44;10;Caminhada de rua (casal com bandeiras);evento
