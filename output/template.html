@@ -57,6 +57,7 @@
     color: var(--blue-deep);
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
     margin-bottom: 20px;
   }
@@ -73,6 +74,7 @@
     line-height: 1.22;
     letter-spacing: 0.005em;
     text-transform: uppercase;
+    text-align: center;
     margin: 0 0 20px;
     white-space: nowrap;
   }
@@ -86,9 +88,8 @@
   .dek {
     font-size: 1.15rem;
     color: var(--ink-soft);
-    max-width: 62ch;
     margin: 0 0 28px;
-    text-wrap: balance;
+    text-align: justify;
   }
   .meta-row {
     display: flex;
@@ -143,6 +144,7 @@
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--caption);
+    text-align: center;
     margin-bottom: 10px;
   }
   h2 {
@@ -150,6 +152,7 @@
     font-size: clamp(0.72rem, 3.4vw, 1.5rem);
     letter-spacing: 0.01em;
     text-transform: uppercase;
+    text-align: center;
     margin: 0 0 20px;
     white-space: nowrap;
   }
@@ -157,14 +160,15 @@
     font-family: "Bricolage Grotesque", sans-serif;
     font-weight: 600;
     font-size: 1.05rem;
+    text-align: center;
     margin: 32px 0 12px;
     color: var(--ink);
   }
-  p { margin: 0 0 16px; max-width: 68ch; color: var(--ink-soft); }
+  p { margin: 0 0 16px; color: var(--ink-soft); text-align: justify; }
   p strong, li strong { color: var(--ink); font-weight: 600; }
-  .prose { max-width: 68ch; }
-  ul.list, ol.list { max-width: 66ch; padding-left: 22px; color: var(--ink-soft); }
-  ul.list li, ol.list li { margin-bottom: 8px; }
+  ul.list, ol.list { padding-left: 22px; color: var(--ink-soft); }
+  ul.list li, ol.list li { margin-bottom: 8px; text-align: justify; }
+  figcaption, .callout { text-align: justify; }
 
   /* ---------- Figuras (data/code/charts) ---------- */
   .exhibit {
@@ -617,7 +621,7 @@
     </figure>
 
     <h3>Perfil do eleitorado: quase nada mudou</h3>
-    <p>O perfil demográfico do eleitorado (dados de <code>perfil_eleitor_secao</code>, TSE) também ficou estável entre as duas eleições: a divisão por gênero passou de 6.171 homens / 6.113 mulheres (2020) para 6.420 homens / 6.431 mulheres (2024) — praticamente 50/50 nos dois pleitos.</p>
+    <p>O perfil demográfico do eleitorado (dados de <code>perfil_eleitor_secao</code>, TSE) também ficou estável ao longo do tempo. A divisão por gênero vem convergindo lentamente para a paridade a cada eleição: 51,7% homens / 48,2% mulheres em 2008, 51,1% / 48,8% em 2012, 50,6% / 49,3% em 2016, 50,2% / 49,7% em 2020, e 49,9% / 50,0% em 2024 — o TSE não publicou esse dado para 2004. Praticamente meio a meio desde sempre, com uma tendência constante de leve maioria feminina se formando.</p>
     <div class="callout">
       <strong>Curiosidade dos dados.</strong> O número de eleitores de 16 a 24 anos foi <strong>exatamente 1.225 em 2020 e 1.225 em 2024</strong> — mesma faixa etária, mesmo total, dois pleitos diferentes. Coincidência real, confirmada linha a linha na base oficial do TSE; não tem explicação causal óbvia, mas descarta a hipótese de que a virada tenha sido puxada por uma onda de eleitores jovens recém-habilitados — a base de eleitores jovens do município simplesmente não cresceu nem encolheu entre as duas eleições.
     </div>
@@ -632,6 +636,32 @@
       </div>
       <figcaption>Cobertura do eleitorado sobre a população total saltou de 65,5% (2004) para 89,5% (2024) — um efeito nacional de transição demográfica e biometria, não um fenômeno local de Alfredo Chaves. Fonte: IBGE SIDRA, tabela 6579 (população residente estimada), cruzado com <code>QT_APTOS</code> do TSE por ano.</figcaption>
     </figure>
+
+    <h3>Sexo, raça e renda: quem concorre é quem vive aqui?</h3>
+    <p>O Censo Demográfico 2022 do IBGE (SIDRA, tabelas 9514 e 9605) permite ir além da população total e cruzar sexo e raça ou cor com quem de fato concorre. A população de Alfredo Chaves é 49,3% mulheres e 50,7% homens, 61,4% branca, 34,3% parda e 4,2% preta — números muito próximos aos do eleitorado registrado, que também caminha para a paridade de gênero. Entre quem concorre, porém, o quadro diverge: dos 75 candidatos a prefeito e vereador em 2020, 37,3% eram mulheres; em 2024, entre 76 candidatos, essa fatia caiu para 31,6% — o oposto da tendência do eleitorado, que se aproxima cada vez mais dos 50%.</p>
+
+    <figure class="exhibit">
+      <div class="exhibit-head"><span class="tag">Figura 15</span><span class="cap">Participação feminina — população, eleitorado e candidatos</span></div>
+      <div class="exhibit-body">
+        <img src="data:image/png;base64,{{CHART_GENERO_CANDIDATOS}}" alt="Gráfico de barras comparando o percentual de mulheres em quatro grupos: população do IBGE em 2022 (49,3%%), eleitorado do TSE em 2024 (50,0%%), candidatos de 2020 (37,3%%) e candidatos de 2024 (31,6%%)." />
+      </div>
+      <figcaption>População e eleitorado são praticamente 50/50; entre os candidatos, a fatia de mulheres é bem menor — e caiu ainda mais de 2020 para 2024.</figcaption>
+    </figure>
+
+    <p>A composição racial das candidaturas segue um padrão parecido. Em 2020, candidatos brancos eram 61,3% do total — quase idêntico aos 61,4% da população do município. Em 2024 essa proporção subiu para 69,7%, enquanto candidatos pardos caíram de 29,3% para 22,4%: um afastamento em relação à composição racial de Alfredo Chaves, ainda que a fatia de candidatos pretos tenha crescido ligeiramente (6,7% → 7,9%).</p>
+
+    <figure class="exhibit">
+      <div class="exhibit-head"><span class="tag">Figura 16</span><span class="cap">Raça ou cor — população vs. candidatos</span></div>
+      <div class="exhibit-body">
+        <img src="data:image/png;base64,{{CHART_RACA_CANDIDATOS}}" alt="Gráfico de barras agrupadas comparando raça ou cor declarada entre população do IBGE em 2022, candidatos de 2020 e candidatos de 2024, nas categorias branca, parda e preta. Branca: 61,4%% população, 61,3%% candidatos 2020, 69,7%% candidatos 2024. Parda: 34,3%% população, 29,3%% candidatos 2020, 22,4%% candidatos 2024. Preta: 4,2%% população, 6,7%% candidatos 2020, 7,9%% candidatos 2024." />
+      </div>
+      <figcaption>Em 2020, a composição racial dos candidatos era quase um espelho da população. Em 2024, brancos ficaram sobrerrepresentados e pardos, sub-representados.</figcaption>
+    </figure>
+
+    <p>O mesmo Censo traz a renda nominal mensal domiciliar per capita do município: média de R$ 1.469,82 (mediana R$ 1.212,00). Cruzada por raça, essa renda varia de forma consistente com o padrão nacional: R$ 1.618,38 entre moradores brancos, R$ 1.230,73 entre pardos e R$ 1.152,90 entre pretos — uma diferença de 40% entre os extremos. Por sexo, a diferença é pequena (R$ 1.474,30 entre homens, R$ 1.465,22 entre mulheres).</p>
+    <div class="callout warn">
+      <strong>Limite dos dados.</strong> A renda domiciliar per capita do Censo é a renda total do domicílio dividida pelo número de moradores — não a renda individual do trabalho de cada pessoa, e por isso não captura diretamente uma eventual desigualdade salarial entre homens e mulheres no mercado de trabalho local, apenas a renda média de quem mora na mesma casa. A raça ou cor dos candidatos é autodeclarada ao TSE no ato da candidatura (campo <code>DS_COR_RACA</code>), obrigatória desde 2014; já a raça ou cor do eleitorado (<code>perfil_eleitor_secao</code>) é de preenchimento facultativo e ficou sem resposta em mais de 89% dos registros de 2024 — dado real, mas incompleto demais para comparação, por isso não usado aqui.
+    </div>
   </section>
 
   <section id="candidatos">
@@ -640,7 +670,7 @@
     <p>Dados de <code>consulta_cand</code> e <code>bem_candidato</code> (TSE) trazem idade, escolaridade, ocupação e patrimônio declarado de cada candidato — informação pública, prestada por lei a cada eleição. O contraste com <strong style="color:var(--blue)">Hugo Luiz</strong> é o mais nítido do estudo inteiro.</p>
 
     <figure class="exhibit">
-      <div class="exhibit-head"><span class="tag">Figura 15</span><span class="cap">Idade dos candidatos a prefeito</span></div>
+      <div class="exhibit-head"><span class="tag">Figura 17</span><span class="cap">Idade dos candidatos a prefeito</span></div>
       <div class="exhibit-body">
         <img src="data:image/png;base64,{{CHART_IDADE_CANDIDATOS}}" alt="Dois gráficos de barras horizontais comparando a idade dos três candidatos a prefeito em 2020 (Ronaldo Bianchi 58, Fernando 73, Armando Zanata 64) e em 2024 (Hugo Luiz 25, Rolmar Boteccia 71, Boldrini 61)." />
       </div>
@@ -650,7 +680,7 @@
     <p>Hugo Luiz tinha 25 anos no dia da eleição de 2024, é advogado formado (Direito &ndash; UFES) e, segundo o cadastro do TSE, é <strong>branco e solteiro</strong>. Os outros dois candidatos a prefeito daquele ano tinham 61 e 71 anos.</p>
 
     <figure class="exhibit">
-      <div class="exhibit-head"><span class="tag">Figura 16</span><span class="cap">Patrimônio declarado dos candidatos a prefeito</span></div>
+      <div class="exhibit-head"><span class="tag">Figura 18</span><span class="cap">Patrimônio declarado dos candidatos a prefeito</span></div>
       <div class="exhibit-body">
         <img src="data:image/png;base64,{{CHART_PATRIMONIO_CANDIDATOS}}" alt="Dois gráficos de barras horizontais comparando o patrimônio declarado dos candidatos a prefeito: em 2020, Ronaldo Bianchi R$366 mil, Fernando R$621 mil, Armando Zanata R$1,38 milhão; em 2024, Hugo Luiz R$29,5 mil, Rolmar Boteccia R$718 mil, Boldrini R$0." />
       </div>
@@ -661,7 +691,7 @@
     <p>O TSE mantém um sistema próprio de registro de pesquisas eleitorais (<a href="https://www.tse.jus.br/eleicoes/pesquisa-eleitorais/consulta-as-pesquisas-registradas" target="_blank" rel="noopener">pesqele&#8209;divulgacao.tse.jus.br</a>), exigido pelo art.&nbsp;33 da Lei&nbsp;9.504/97. Para Alfredo Chaves em 2024 constam <strong>9 pesquisas registradas</strong>, por 5 empresas diferentes, entre abril e setembro. Abrimos e lemos o conteúdo de todos os 9 editais de publicação em PDF — e vale registrar um limite real dos dados públicos: <strong>o TSE não publica o resultado</strong> (percentual de intenção de voto por candidato) nesses editais, apenas a confirmação formal do registro (empresa, protocolo, data, abrangência). Quem divulga o resultado é a empresa contratante, tipicamente via um veículo de imprensa local.</p>
 
     <figure class="exhibit">
-      <div class="exhibit-head"><span class="tag">Figura 17</span><span class="cap">Registro das 9 pesquisas eleitorais — linha do tempo</span></div>
+      <div class="exhibit-head"><span class="tag">Figura 19</span><span class="cap">Registro das 9 pesquisas eleitorais — linha do tempo</span></div>
       <div class="exhibit-body">
         <img src="data:image/png;base64,{{CHART_PESQUISAS_TIMELINE}}" alt="Linha do tempo com as 9 pesquisas eleitorais registradas para Alfredo Chaves em 2024, de 19/04 a 27/09, por 5 empresas diferentes, com o dia da eleição (06/10/2024) marcado em verde." />
       </div>
@@ -679,7 +709,7 @@
     </ul>
 
     <figure class="exhibit">
-      <div class="exhibit-head"><span class="tag">Figura 18</span><span class="cap">Trajetória da intenção de voto (estimulada) até o resultado</span></div>
+      <div class="exhibit-head"><span class="tag">Figura 20</span><span class="cap">Trajetória da intenção de voto (estimulada) até o resultado</span></div>
       <div class="exhibit-body">
         <img src="data:image/png;base64,{{CHART_PESQUISAS_EVOLUCAO}}" alt="Gráfico de linha mostrando a intenção de voto estimulada de Hugo Luiz (verde) em 54,8% (abril), 57,4% (agosto), 51,2% (21/set), 47,75% (28/set), 51,5% (2/out) e 58,05% no resultado final; Rolmar Botecchia (vermelho) em trajetória inversa mais baixa; Boldrini (cinza, tracejado) entre 9,4% e 12,25% a partir de agosto; e um ponto isolado de 17/set marcado como atípico, com Rolmar em 53,23% e Hugo em 22,90%." />
       </div>
